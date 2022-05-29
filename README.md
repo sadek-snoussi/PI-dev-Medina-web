@@ -5,7 +5,7 @@ Run the command : composer install within your project to install all bundles th
 
 ----------------------------
 Mailer : 
-sure to change the email and password in the config/packages/dev/swiftmailer.yaml to yours. 
+Make sure to change the email and password in the config file. 
 
 ----------------------------
 //database configuration : 
