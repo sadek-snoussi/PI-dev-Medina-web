@@ -1,0 +1,325 @@
+{% extends ":client:layout.html.twig" %}
+
+{% block flexslider %}
+
+    <div class="flexslider home-slider">
+        <ul class="slides">
+            <li>
+                <img alt="alt" src="{{ asset('client/images/2.jpg') }}" >
+            </li>
+            <li>
+                <img alt="alt" src="{{ asset('client/images/img3o1111.jpg') }}" >
+            </li>
+            <li>
+                <img alt="alt" src="{{ asset('client/images/boutique-artisanat-malgache-sainte-marie.jpg') }}" >
+            </li>
+
+
+        </ul>
+        <div class="container">
+            <div class="banner_nav ">
+                <div class="scroll_down">Scroll down <span class="fa fa-arrow-circle-down"></span></div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+
+
+
+    <div id="content">
+        <div class="container">
+            <div class="catelog_c">
+
+                <div class="title clearfix">
+                    <h2>Nos Produits.</h2>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 ">
+                        <div class="sidebar sidebar_1 " >
+
+
+
+                            <div class="side_box">
+                                <h5><a href="#" class="tgl_btn">Prix.</a></h5>
+                                <div class="price tgl_c">
+                                    <div class="clearfix">
+                                        {{ form_start(form2) }}
+
+                                        {{ form_widget(form2.mini,{'attr': {'class': 'txtbox','placeholder':'Min'}}) }}
+                                       {# <input type="text" class="txtbox" placeholder="Min">#}
+                                        <span class="to">to</span>
+
+                                        {{ form_widget(form2.maxi,{'attr': {'class': 'txtbox','placeholder':'Max'}}) }}
+                                        {#<input type="text" class="txtbox" placeholder="Max">#}
+
+
+
+
+
+                                    </div>
+                                    <div class="price_bar">
+
+
+                                        <!-- Slider -->
+
+                                        {{ form_widget(form2.s,{'attr': {'class': 'btn btn-warning fa fa-search'}}) }}
+
+
+                                        {{ form_end(form2) }}
+
+
+
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+
+                            <div class="side_box side_box_1 red5">
+                                <h5><a href="#" class="tgl_btn">Categories.</a></h5>
+                                <ul class="tgl_c">
+                                    <li><a href="{{ path('selectAllClient') }}">All</a></li>
+                                    {% for cat in categories %}
+                                        <li><a href="{{ path('selectCategories',{'id': cat.idcategorie})  }}" >{{ cat.nomcategorie }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+
+
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {#*********************************************************************************#}
+                    {#*********************************************************************************#}
+                {{ form_start(form) }}
+
+                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                        <div class="product_c">
+
+
+
+                                <div id="custom-search-input">
+                                    <div class="input-group col-md-12">
+
+                                        {{ form_widget(form.nomProduit, {'attr': {'class': 'form-control input-lg','placeholder':'Recherche...'}}) }}
+
+
+
+                                        {#<input type="text" class="form-control input-lg" placeholder="Recherche..." />#}
+
+                                        <span class="input-group-btn">
+
+                                            {{ form_widget(form.s,{'attr': {'class': 'btn btn-warning btn-lg fa fa-search'}}) }}
+
+
+                        {# <button class="btn btn-warning btn-lg" type="button">
+                            <i class="fa fa-search"></i></button>#}
+
+                                       </span>
+
+                                    </div>
+                                </div>
+                            <br>
+                            <br>
+                            <br>
+
+                            {{ form_end(form) }}
+
+     {#*********************************************************************************#}
+      {#*********************************************************************************#}
+
+
+
+
+                            <div class="row view-grid animated  fadeInUp" data-animation="fadeInUp" >
+
+                                {% for produit in produits %}
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="main_box">
+                                        <div class="box_1">
+                                            <img width="259" height="200" src="{{ asset('uploads/ImgProduit/'~ produit.urlimgproduit ) }}" draggable="false">
+
+                                        </div>
+                                        <div class="desc">
+                                            <h5><a href="#">{{ produit.nomproduit }}</a></h5>
+                                            <p>{{ produit.idcategorie.nomcategorie }}</p>
+                                            <div class="price">{{ produit.prixventeproduit }} DT</div>
+                                            <br>
+
+                                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#product_view{{ produit.idproduit }}">Details</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                    {#****************************************************************************************************************#}
+
+
+
+                                    <div class="modal fade product_view" id="product_view{{ produit.idproduit }}">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+
+                                                <div class="modal-header">
+                                                    <a href="#" data-dismiss="modal" class="class pull-right"><span class="fa fa-remove"></span></a>
+                                                    <h3 class="modal-title">Nos Produits.</h3>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <div class="row">
+
+
+
+
+                                                        <div class="col-md-6 product_img">
+                                                            <h3>{{ produit.nomproduit }}.</h3>
+                                                            <br>
+                                                            <img src="{{ asset('uploads/ImgProduit/'~ produit.urlimgproduit ) }}" class="img-responsive">
+                                                            <br><br><br><br>
+                                                            <div class="btn-ground">
+                                                                <a href="{{ path('Ajout_produit_cart',{'idp':produit.idproduit  , 'idu':app.user.id}) }}" class="btn btn-warning"><span class="fa fa-shopping-cart"></span> Panier</a>
+                                                                <button type="button" class="btn btn-warning"><span class="fa fa-heart"></span> Wishlist</button>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-xs-6 product_content">
+
+
+
+                                                            <p>Référence : <h3>{{ produit.referenceProd }}.</h3></p>
+
+                                                            <br>
+                                                            <p>Date d'éxposition : <h3>{{ produit.dateexpoproduit | date("m/d/Y", "Europe/Paris") }}.</h3></p>
+
+                                                            <br>
+
+                                                            <p>Catégorie : <h3>{{ produit.idcategorie.nomcategorie}}.</h3></p>
+                                                            <br>
+
+
+                                                            <p>Matière : <h3>{{ produit.matiereproduit }}.</h3></p>
+
+                                                            <br>
+
+                                                            <p>Prix : <h3>{{ produit.prixventeproduit }} DT.</h3></p>
+
+                                                            <br>
+
+                                                            <p>Quantité Disponible : <h3>{{ produit.qtedispoproduit }} Pièces.</h3></p>
+
+                                                            <br>
+                                                            {% if produit.dateexpirationproduit is not null %}
+
+                                                            <p>Date d'Expiration : <h3>{{ produit.dateexpirationproduit | date("m/d/Y", "Europe/Paris") }}.</h3></p>
+
+                                                             {% endif %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {#****************************************************************************************************************#}
+
+
+
+
+                                {% endfor %}
+
+                            </div>
+
+
+
+                            <div class="page_c clearfix red5"> <a href="#" class="prev"><span class="fa fa-chevron-left"></span>Previous</a>
+                                <ul>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#">6</a></li>
+                                    <li><a href="#">7</a></li>
+                                    <li><a href="#">8</a></li>
+                                    <li><a href="#">9</a></li>
+                                    <li><a href="#">10</a></li>
+                                </ul>
+                                <a href="#" class="next">Next<span class="fa fa-chevron-right"></span></a> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}

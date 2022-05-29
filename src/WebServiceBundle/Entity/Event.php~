@@ -1,0 +1,89 @@
+<?php
+
+namespace WebServiceBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Event
+ *
+ * @ORM\Table(name="event")
+ * @ORM\Entity
+ */
+class Event
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idEvent", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idevent;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomEvent", type="string", length=254, nullable=true)
+     */
+    private $nomevent;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="urlafficheevent", type="string", length=254, nullable=true)
+     */
+    private $urlafficheevent;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateEvent", type="datetime", nullable=true)
+     */
+    private $dateevent;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbreStand", type="integer", nullable=true)
+     */
+    private $nbrestand;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="objectifEvent", type="string", length=254, nullable=true)
+     */
+    private $objectifevent;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lieux", type="string", length=254, nullable=true)
+     */
+    private $lieux;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbrePlace", type="integer", nullable=true)
+     */
+    private $nbreplace;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descriptionevent", type="string", length=254, nullable=true)
+     */
+    private $descriptionevent;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="typeEvent", type="string", length=254, nullable=true)
+     */
+    private $typeevent;
+
+
+}
+

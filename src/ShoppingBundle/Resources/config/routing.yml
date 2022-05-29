@@ -1,0 +1,77 @@
+shopping_homepage:
+    path:     /
+    defaults: { _controller: ShoppingBundle:Default:index }
+
+
+
+shopping_commande_view:
+    path:   /Commande
+    defaults: { _controller: ShoppingBundle:Commande:AfficherCommande }
+
+shopping_commande_ajout:
+    path: /AjoutCommande/{iduser}/{idpn}
+    defaults: { _controller: ShoppingBundle:Commande:AjouterCommande }
+
+Commande_Succes:
+    path: /CommandeSucces
+    defaults: { _controller: ShoppingBundle:Commande:CommandeSucces }
+
+Afficher_Produit:
+    path: /Produits
+    defaults: {_controller: ShoppingBundle:Shop:aff}
+
+Ajout_produit_cart:
+    path: /AjoutCart/{idp}/{idu}
+    defaults: {_controller: ShoppingBundle:Shop:AjoutCard}
+
+Afficher_Panier:
+    path: /ShoppingCart
+    defaults: { _controller:  ShoppingBundle:Shop:AfficherPanier}
+
+Supprimer_du_Panier:
+    path: /delete from panier/{id}
+    defaults: { _controller: ShoppingBundle:Shop:delete }
+
+Calculer_Totale_Panier:
+    path: /calculerTotalPanier
+    defaults: { _controller: ShoppingBundle:Shop:CalculTotalProduit }
+
+Consulter_Commande:
+    path: /MesComammandes
+    defaults: { _controller: ShoppingBundle:Commande:MesCommande }
+
+Generer_Pdf:
+    path: /pdf/{idc}
+    defaults: { _controller: ShoppingBundle:Commande:pdf }
+
+Valider_Commande:
+    path: /ValiderCommande
+    defaults: { _controller: ShoppingBundle:Admin:Valider }
+
+Valider_Etat_Commande:
+    path: /ValiderEtatCommande/{id}
+    defaults: { _controller: ShoppingBundle:Admin:ValiderEtat }
+
+Ne_Valider_Pas_Etat_Commande:
+    path: /ValiderCommande/{id}
+    defaults: { _controller: ShoppingBundle:Admin:NeValiderPasEtat }
+
+Envoyer:
+    path: /Envoyer/{idu}
+    defaults: { _controller: ShoppingBundle:Commande:Envoyer }
+
+AGenerer_Pdff_Mobile:
+    path: /pdfM/{idc}
+    defaults: { _controller: ShoppingBundle:Commande:pdfMobile }
+
+Test_Produit_In_Panier:
+    path: /ProduitInPanier/{idpr}/{idu}
+    defaults: { _controller: ShoppingBundle:Shop:ProduitInPanier}
+
+Plus_Quantite:
+    path: /PlusQuantite/{idpn}
+    defaults: { _controller: ShoppingBundle:Shop:PlusQuantite}
+
+Moins_Quantite:
+    path: /MoinsQuantite/{idpn}
+    defaults: { _controller: ShoppingBundle:Shop:MoinsQuantite}

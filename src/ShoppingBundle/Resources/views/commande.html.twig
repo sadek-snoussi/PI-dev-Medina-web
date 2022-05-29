@@ -1,0 +1,289 @@
+{% extends ":client:layout.html.twig" %}
+{% block title %}
+    Commande
+{% endblock  %}
+{% block flexslider %}
+{% endblock %}
+{% block content %}
+
+<form method="post" action="{{ path('shopping_commande_ajout',{ 'iduser': app.user.id, 'idpn': app.request.get('idpn') }) }}">
+
+    <div id="content">
+        <div class="container">
+            <div class="title clearfix">
+
+                <div class="col-md-offset-6">
+                    <h2>Votre Commande</h2>
+                </div>
+            </div>
+            <div class="cart_c">
+                <div class="cart_top">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                            <div class="sidebar">
+                                <div class="side_box side_box_1 red5">
+                                    <h5>helpful information</h5>
+                                    <ul>
+                                        <li><a href="#">Deliver</a></li>
+                                        <li><a href="#">Payment </a></li>
+                                        <li><a href="#">Warranty</a></li>
+                                        <li><a href="#">Services</a></li>
+                                        <li><a href="#">Discounts</a></li>
+                                        <li><a href="#">Loyalty Program</a></li>
+                                        <li><a href="#">Contacts</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                            <div class="cart_tbl">
+                                <div class="clearfix title_row">
+                                    <ul>
+                                        <li>Photo</li>
+                                        <li>Nom Produit</li>
+                                        <li>Quantity</li>
+                                        <li>Prix</li>
+                                    </ul>
+                                </div>
+
+                                <form method="post" >
+                                    <div class="clearfix con_row">
+                                        {% for panier in paniers %}
+                                            {% if app.user.id == panier.user.id  %}
+                                                <ul>
+                                                    <li><div class="thumb"><span> <img alt="alt"  src="{{ asset('uploads/ImgProduit/'~ panier.produit.urlimgproduit) }}" class="" draggable="false"> </span></div></li>
+                                                    <li>
+                                                        <h5>{{ panier.produit.nomproduit }}</h5>
+                                                        <p></p>
+                                                    </li>
+                                                    <li>
+                                                        <input type="text" class="txtbox" placeholder="{{ panier.quantiteproduit }}" name="nombre" pattern="[0-9]{*}" readonly>
+                                                    </li>
+                                                    <li>
+                                                        <div class="price">{{ panier.produit.prixventeproduit }}</div>
+                                                    </li>
+                                                </ul>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </form>
+
+
+                                <div class="clearfix total_row">
+                                    <ul>
+                                        <li>
+                                            <p><span></span></p>
+                                        </li>
+                                        <li>
+                                            <div class="total_val">Prix totale:</div>
+                                        </li>
+
+                                        {% set x = 0 %}
+                                        {% for p in paniers %}
+                                            {% if app.user.id == p.user.id  %}
+                                                {% set x= x + (p.produit.prixventeproduit * p.quantiteproduit) %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% set y =0 %}
+                                        {% set y = x %}
+                                        <li>
+                                            <div class="price"> {{ y }} Dinars   </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+                                <div class="cart_btn clearfix">
+                                    <a href="{{ path('Afficher_Panier') }}" class="btn btn-danger"><span class="fa fa-chevron-left"></span> Retour</a>
+                                </div>
+
+
+                                <div class="clearfix total_row">
+                                    <ul>
+                                        <li>
+                                            <p><span></span></p>
+                                        </li>
+                                        <li>
+                                            <div class="total_val"></div>
+                                        </li>
+                                        <li>
+                                            <div class="price"> </div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+                                <div class="title clearfix">
+                                    <h2> Mode de payement </h2>
+                                    <div class="title_right cart_list">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <div class="lbltxt"><input type="radio" class="rad_btn" name="payement" required>Payement à la livrision</div>
+                                </div>
+
+
+
+
+                                <div class="clearfix total_row">
+                                    <ul>
+                                        <li>
+                                            <p><span></span></p>
+                                        </li>
+                                        <li>
+                                            <div class="total_val"></div>
+                                        </li>
+                                        <li>
+                                            <div class="price"> </div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+
+
+
+
+
+                                <div class="title clearfix">
+                                    <h2> Livraison </h2>
+                                    <div class="title_right cart_list">
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                                        <div class="ship_frm_c">
+                                            <div class="frm ship_frm">
+                                                <div class="row">
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="lbltxt">Prénom:<span class="req">*</span></div>
+                                                        <input type="text" class="txtbox" name="prenom" required>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="lbltxt">Nom<span class="req">*</span></div>
+                                                        <input type="text" class="txtbox" name="nom" required>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="lbltxt">E-mail: <span class="req">*</span></div>
+                                                        <input type="text" class="txtbox" name="email" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="lbltxt">Pays<span class="req">*</span></div>
+                                                        <input type="text" class="txtbox" name="pays" required>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="lbltxt">Gouvernorat :<span class="req">*</span></div>
+                                                        <input type="text" class="txtbox" name="gouvernorat" required>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="lbltxt">Ville: <span class="req">*</span></div>
+                                                        <input type="text" class="txtbox" name="ville" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="lbltxt">Addresse:<span class="req">*</span></div>
+                                                        <input type="text" class="txtbox" name="adresse" required>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="lbltxt">Code postale:<span class="req">*</span></div>
+                                                        <input type="text" class="txtbox" name="codePostale" required>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="lbltxt">Télephone: <span class="req">*</span></div>
+                                                        <input type="text" class="txtbox" name="phone" required>
+                                                    </div>
+
+                                                    <input type="number" value="{{  app.request.get('idpn') }}" name="idPanier" hidden>
+                                                    <input type="number" value="{{ app.user.id }}" hidden name="idUser">
+                                                    <input type="number" step="any" value="{{ y }}" name="prixTotat" hidden>
+                                                    {% set q =  'now'|date('d/m/Y')  %}
+                                                    <input type="text" value="{{ q }}" name="date" hidden>
+
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="reqired">* Required Fields</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="clearfix total_row">
+                                    <ul>
+                                        <li>
+                                            <p><span></span></p>
+                                        </li>
+                                        <li>
+                                            <div class="total_val"></div>
+                                        </li>
+                                        <li>
+                                            <div class="price"> </div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+
+                                            <div class="frm ship_frm">
+                                                <div class="cart_bot col-offset-6">
+                                                    <div class="cart_btn clearfix">
+
+
+                                                        <a href="{{ path('Afficher_Panier') }}"  class="btn btn-danger"><span class="fa fa-chevron-left"></span> Annuler</a>
+                                                        <button data-toggle="modal" data-target="#Commander" class="btn btn-success btn-rounded">Commander <span class="fa fa-chevron-right"></span></button>
+
+                                                        <div class="modal fade in" id="Commander" role="dialog"  >
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title">Commande</h4>
+                                                                    </div>
+
+                                                                    <div class="modal-body">
+                                                                        <p>Etes-vous sûre de passés cette commande ?</p>
+                                                                    </div>
+                                                                    <div class="modal-footer" align="center">
+                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-remove"></span>Annuler</button>
+                                                                        <button type="submit" class="btn btn-success btn-rounded" href="{{ path('shopping_commande_ajout',{ 'iduser': app.user.id, 'idpn': app.request.get('idpn') }) }}"><span class="fa fa-check"></span>Commander</button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                    </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+</form>
+{% endblock  %}

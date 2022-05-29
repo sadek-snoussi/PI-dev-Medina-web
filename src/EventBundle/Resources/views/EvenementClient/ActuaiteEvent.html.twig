@@ -1,0 +1,188 @@
+{% extends "client/layout.html.twig" %}
+     {% block flexslider %}
+
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <div id="content" xmlns="http://www.w3.org/1999/html">
+        <div class="container">
+            <div class="catelog_c">
+                <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                        <div class="sidebar sidebar_1">
+                            <div class="side_box" style="text-align: center">
+
+                            {{ form_start(form) }}
+                            {{ form_widget(form.lieux,{'attr':{'class':'form-control','required' : 'true'}})  }}
+
+                            {{ form_widget(form.Recherche,{'attr':{'class':'btn btn-default btn-circled btn-sm  fa fa-search','value':'Recherche'}} ) }}
+
+                            {{ form_end(form) }}
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7" >
+                        <div class="product_c">
+
+
+
+
+                        {% for event in events %}
+                            <div class="blog_blk red5 clearfix " >
+
+                                    <div class="box">
+                                        <figure ><img  alt="alt"  src="{{ asset('uploads/img/' ~ event.urlafficheevent ) }}" width="500px" >
+
+                                        </figure>
+                                    </div>
+                                <div class="blog_desc">
+
+                                    <h1><center> <span style="font-family: Arial">{{ event.nomevent }}</span></center> </h1>
+                                    <table border="0">
+
+                                        <tr><td>  <img src="{{ asset('client/images/calendar3.png') }}" width="25px" height="25px"/><span style="font-family: Arial" > {{ event.dateevent|date('Y-m-d H:i') }}h</span></td>
+                                            </tr>
+                                           <tr> <td>  <img src="{{ asset('client/images/maps-and-flags.png') }}" width="25px" height="25px"/> {{ event.lieux }} </td>
+                                      </tr>
+                                        <input type="text" name="utilisateur" value="{{ app.user.id }}" hidden >
+                                    </table>
+                                </div>
+
+
+                                <button class="btn btn-rounded btn-block btn-outline-info "  data-target="#detail   " data-toggle="modal" >Details</button>
+
+                               <br/>
+
+                                {%  if event.nbrePlace <= 0 %}
+
+                                    <div class="overlay">
+
+                                        <button class="btn btn-rounded btn-block btn-outline-info "  data-target="#ins" data-toggle="modal" ><span style="font-family: Arial"> S'inscrire </span></button>
+
+                                    </div>
+
+
+                                {% else %}
+
+                                        <a href="{{ path('inscription', { 'ide':event.idevent ,'idu':app.user.id} ) }}" class="btn btn-rounded btn-block btn-outline-info "><span style="font-family: Arial">S'inscrire</span></a>
+
+                                {% endif %}
+
+                            </div>
+
+
+
+
+                            {{ facebookButton() }}
+                            {{ twitterButton() }}
+                            {{ googleplusButton() }}
+
+
+
+
+                            {# *********************************************************************************************************************#}
+
+                            <div class="modal fade in" id="detail" align="center">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" style="color: #721c24">{{ event.nomevent }}</h4>
+                                        </div>
+
+
+                                        <div class="modal-body" align="center">
+                                            <h4> Description   :{{ event.descriptionevent }}</h4><br>
+                                            <h4> Objectif     : {{ event.objectifevent }}</h4><br>
+                                            <h4> Nombre Stands Disponibles    : {{ event.nbrestand }}</h4><br>
+                                            <h4> Nombre Places Disponibles    : {{ event.nbrePlace }}</h4><br>
+
+
+
+
+
+                                        </div>
+
+
+
+                                        <div class="modal-footer" align="center">
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            {# *********************************************************************************************************************#}
+                            {#*********************************************************************************************************************#}
+
+                            <div class="modal fade" id="ins"  align="center" >
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" style="color: #721c24">Inscription</h4>
+                                        </div>
+
+
+                                        <div class="modal-body">
+                                            <h4>Tickets Epuisées</h4><br>
+                                            <br>
+
+
+
+
+                                        </div>
+
+
+
+                                        <div class="modal-footer" align="center">
+
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            {# *********************************************************************************************************************#}
+
+
+
+                        {% endfor %}
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+        </div>
+        <div class="text-center">{{ knp_pagination_render(events) }}</div>
+        </div>
+
+
+
+{% endblock %}

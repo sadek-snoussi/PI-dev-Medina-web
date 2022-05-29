@@ -1,0 +1,95 @@
+{% extends "admin/base_admin.html.twig"%}
+
+{% block content %}
+
+    <div class="container">
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+<div class="col-md-offset-8">
+        <div class="col-md-12 col-md-offset-8">
+
+
+            {% if app.session.flashBag.has('success') %}
+                <div class="alert alert-success">
+                    <a data-dismiss="alert" class="class pull-right"><i class="fa fa-remove"></i></a>
+
+                    {% for msg in app.session.flashBag.get('success') %}
+                        {{ msg }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+
+
+        <div class="span7">
+        <div class="widget stacked widget-table action-table">
+
+            <div class="widget-header">
+                <i class="icon-th-list"></i>
+                <h3>Produits à valider.</h3>
+            </div> <!-- /widget-header -->
+
+            <div class="widget-content">
+
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+
+
+
+                        <th>Nom Produit</th>
+                        <th>Date D'exposition</th>
+                        <th>Categorie Produit</th>
+                        <th>Prix De Vente</th>
+                        <th>Photo Produit</th>
+                        <th>Actions</th>
+
+
+
+
+                    </tr>
+                    </thead>
+
+                    {% for invalide in invalides %}
+                    <tr>
+                        <td>{{ invalide.nomproduit }}</td>
+                        <td>{{ invalide.dateexpoproduit | date("m/d/Y", "Europe/Paris") }}</td>
+                        <td>{{ invalide.idcategorie.nomcategorie }}</td>
+                        <td>{{ invalide.prixventeproduit }}</td>
+                        <td><img width="50" height="50" src="{{ asset('uploads/ImgProduit/' ~ invalide.urlimgproduit) }}"></td>
+
+
+                        <td class="td-actions">
+
+                            <a href="{{ path('accepterProd',{'id': invalide.idproduit  }) }}" class="btn btn-info btn-xs">
+                                <i class=" icon-Like"></i>
+                            </a>
+
+                            <a href="{{ path('refuserProduit',{'id': invalide.idproduit  }) }}" class="btn btn-danger btn-xs">
+                                <i class=" sl-icon-dislike"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+    </div>
+        </div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,78 @@
+html,body{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+
+}
+
+#map-canvas{
+
+    position: relative;
+    height: 640px;
+}
+
+.floating-panel
+{
+    min-width : 200px ;
+    width: 15%;
+    height: auto;
+    padding: 15px 15px;
+
+    display: inline-block;
+    position: absolute;
+    left : 0 ;
+    top: 50%;
+
+    transform: translate(0,-50%);
+
+    background-color: rgba(60,60,60,0.9);
+
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.coordinates
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+}
+
+section
+{
+    margin-top: 10px;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    justify-content: space-between;
+}
+
+
+.section-title
+{
+    margin-right: 8px;
+    color: #3fbcff;
+    font-family: Arial;
+    font-size: 14px;
+}
+.section-value
+{
+    color:  white;
+    font-family: Arial;
+    font-size: 12px;
+}
+
+.address-container
+{
+    display: block;
+}
+
+.address-container .section-value{
+
+    position: relative;
+    display: block;
+    font-size: 10px;
+    line-height: 14px;
+}

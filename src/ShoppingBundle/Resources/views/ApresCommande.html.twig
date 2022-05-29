@@ -1,0 +1,20 @@
+{% extends ":client:layout.html.twig" %}
+{% block flexslider %}
+{% endblock %}
+{% block content %}
+<br>
+<br>
+    <br>
+    <br>
+    <div align="center">
+<h1> Votre commande a été passe avec </h1> <h1 style="color:greenyellow;">Succes </h1>
+    <br>
+    <br>
+        <p><span>Si vous voulez Imprimer votre commande .</span></p>
+    <br>
+    <a href="{{ path('Generer_Pdf',{'idc':idc}) }}" class="btn-dark  col-md-offset-0"><span class="fa fa-file-pdf-o"></span>Imprimer</a>
+    </div>
+    <br>
+    <br>
+
+{% endblock %}

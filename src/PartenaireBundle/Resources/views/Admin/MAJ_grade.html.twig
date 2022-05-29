@@ -1,0 +1,73 @@
+{% extends ":admin:base_admin.html.twig" %}
+
+{% block content %}
+
+    <div class="page-wrapper" style="min-height: 636px;">
+    <div class="container-fluid">
+<div class="row">
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body wizard-content">
+                <h4 class="card-title">Silver</h4>
+
+                <form method="post">
+                    <div class="content clearfix">
+                        <!-- Step 1 -->
+
+
+                        <section id="steps-uid-0-p-0" role="tabpanel" aria-labelledby="steps-uid-0-h-0" class="body current" aria-hidden="false">
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label>Select Grade :</label>
+                                        <select class="custom-select form-control"  name="grade">
+                                            <option value="silver">Silver</option>
+                                            <option value="gold">Gold</option>
+                                            <option value="platinuim">Platinium</option>
+
+                                        </select>
+                                    </div>
+                                    <a  href="{{ path('Aff_grade2') }}" class="btn btn-success" value="find"> <i class="fa fa-check"></i> </a>
+                                </div>
+                                <div class="col-md-8">
+
+
+                                    <div class="form-group">
+                                        <label>plafond nbre videos</label>
+                                       <input type="text" class="form-control"  name="video" value="{{ grade.nbvideoPost }}" >
+                                    </div>
+
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+
+                                        <label>plafond nbre produits</label>
+                                         <input type="text" class="form-control" name="produit" value="{{ grade.nbproduitsVendu }}">
+
+                                    </div>
+                                </div>
+
+                                </div>
+                        </section>
+
+                        <a  class="btn btn-success" href="{{ path('modif_grade',{'id':grade.id}) }}">
+                            <i class="fa fa-check">Mettre A jour </i></a>
+
+
+
+
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,313 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>{% block title %} Acceuil {% endblock %}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="{{ asset('client/css/master.css') }}">
+    <link rel="stylesheet" href="{{ asset('client/css/color7.css') }}">
+
+
+</head>
+
+
+<body>
+
+<div id="header">
+
+    <div class="header_bot">
+        <div class="container">
+            <div class="logo"> <a href="{{ asset('client/index-2.html') }}"><img alt="alt" src="{{ asset('client/images/souk.png') }}"   ></a> </div>
+            <div id="nav" class="yamm">
+                <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <nav id="navbar-collapse-1" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown"><a href="{{ path('index_Acceuil') }}"  >Acceuil </a> </li>
+                        <li class="dropdown yamm-fw"><a href="{{ path('index_Acceuil') }}" data-toggle="dropdown" class="dropdown-toggle">Produits <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div class="yamm-content">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-lg-2 col-md-3 col-sm-2 col-xs-12">
+                                                    <h5>Habillement</h5>
+                                                    <ul>
+                                                        <li><a href="{{ path('index_Acceuil') }}">Foutas </a></li>
+                                                        <li><a href="catalog.html">chachia</a></li>
+                                                        <li><a href="catalog.html">panier</a></li>
+
+                                                    </ul>
+                                                    <h5>Tapis</h5>
+                                                    <ul>
+                                                        <li><a href="{{ asset('catalog.html') }}catalog.html">Baby</a></li>
+                                                        <li><a href="catalog.html">Children 3-7</a></li>
+                                                        <li><a href="catalog.html">Children 8-12</a></li>
+                                                    </ul>
+                                                    <h5>Epicerie</h5>
+                                                    <ul>
+                                                        <li><a href="{{ asset('catalog.html') }}">Gateau Tunisien </a></li>
+                                                        <li><a href="catalog.html">Epices</a></li>
+                                                        <li><a href="catalog.html">Huile d'olive</a></li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-2 col-md-3 col-sm-2 col-xs-12">
+                                                    <h5>Décoration</h5>
+                                                    <ul>
+                                                        <li><a href="{{ asset('catalog.html') }}">Articles en cuivre</a></li>
+                                                        <li><a href="catalog.html">Article en verre </a></li>
+                                                        <li><a href="catalog.html">Mosaique </a></li>
+                                                        <li><a href="catalog.html">Bougeoire </a></li>
+
+                                                    </ul>
+                                                    <h5>Commande sur Mesure</h5>
+                                                    <ul>
+                                                        <li><a href="{{ asset('catalog.html') }}">Mattresses</a></li>
+                                                        <li><a href="catalog.html">Beds</a></li>
+
+                                                    </ul>
+                                                    <h5>Bijoux</h5>
+                                                    <ul>
+                                                        <li><a href="{{ asset('catalog.html') }}">Mattresses</a></li>
+
+
+                                                    </ul>
+                                                </div>
+
+
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                    <div class="new_item">
+                                                        <div class="clearfix item_title">
+                                                            <h5>New items and sales</h5>
+                                                            <div class="item_nav">
+                                                                <ul>
+                                                                    <li class="active"><a href="catalog.html"></a></li>
+                                                                    <li><a href="catalog.html"></a></li>
+                                                                    <li><a href="catalog.html"></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item_thumb"></div>
+                                                        <div class="item_desc">
+                                                            <div class="pull-left">
+                                                                <h5>Mugs with yellow stripes</h5>
+                                                                <p>Kitchen utensils</p>
+                                                            </div>
+                                                            <div class="price">$15.50</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown"><a href="{{ path('index_Acceuil') }}" data-toggle="dropdown" class="dropdown-toggle">Galerie<b class="caret"></b></a>
+                            <ul role="menu" class="dropdown-menu">
+                                <li>
+                                    <h5>Shops</h5>
+                                    <ul>
+                                        <li><a href="{{ asset('client/index-2.html')}}">Visite Guidée</a></li>
+                                        <li><a href="{{ asset('client/catalog.html') }}">Bon Plans</a></li>
+                                        <li><a href="{{ asset('client/product.html') }}">Habits Traditionnels</a></li>
+                                        <li><a href="{{ asset('client/product.html') }}">Les Intournables </a></li>
+                                        <li><a href="{{ path('index_Acceuil') }}">Trouver un guide</a></li>
+
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href={{ path('index_Acceuil') }}  >Evénements </a> </li>
+                        <li class="dropdown"><a href="{{ asset('client/blog.html') }}"  >Forum</a> </li>
+                        <li class="dropdown"><a href="{{ asset('client/contact.html') }}" >Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="right_menu">
+                <ul>
+                    <li class="menubtn"><a href="#"><span class="fa fa-shopping-cart"></span></a>
+                        <div class="menu_c cart_menu">
+                            <div class="menu_title clearfix">
+                                <h4>Your Cart</h4>
+                            </div>
+                            <div class="cart_row">
+                                <ul>
+                                    <li>
+                                        <div class="pro_img"><span></span></div>
+                                    </li>
+                                    <li>
+                                        <h5><a href="http://templines.com/demo/html/cooncook/catalog.html">POÄNG - Chair, Blomstermåla</a></h5>
+                                        <p>Living room furniture</p>
+                                    </li>
+                                    <li>
+                                        <div class="price">$360.00</div>
+                                        <a href="#" class="del_btn"></a> </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <div class="pro_img"><span></span></div>
+                                    </li>
+                                    <li>
+                                        <h5><a href="http://templines.com/demo/html/cooncook/catalog.html">Mugs with yellow stripes</a></h5>
+                                        <p>Kitchen utensils</p>
+                                    </li>
+                                    <li>
+                                        <div class="price">$15.50</div>
+                                        <a href="#" class="del_btn"></a> </li>
+                                </ul>
+                            </div>
+                            <div class="cheout_row clearfix">
+                                <p><span class="fa fa-clock-o"></span>Praesent egestas est vitae interdum amet erat varius elementum.</p>
+                                <a href="#" class="checkout_btn">Checkout</a> </div>
+                        </div>
+                        {% block login %}
+                    <li class="menubtn"><a href="#"><span class="fa fa-user"></span></a>
+                        {% trans_default_domain 'FOSUserBundle' %}
+                        <form action="{{ path("index_Acceuil") }}" method="post">
+                            {% if csrf_token|default('') %}
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                            {% endif %}
+
+                            <div class="menu_c acc_menu">
+                                <div class="menu_title clearfix">
+                                    <h4>Account</h4>
+                                    <div class="login_frm">
+                                        <input type="text" class="txtbox" placeholder="Username"  id="username" name="_username" value="{{ last_username|default('') }}" required="required" autocomplete="username">
+                                        <input type="password" class="txtbox" placeholder="Password" id="password" name="_password" required="required" >
+
+                                    </div>
+                                    <input class="signin_btn btn_c" type="submit" id="_submit" name="_submit" value="{{ 'submit'|default('')|trans }}" />
+                                    <div class="forgot clearfix">  <a href="{{ path('index_Acceuil') }}"> mot de passe oublié</a> </div>
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                    {% endblock %}
+
+                    <li class="menubtn"><a href="#"><span class="fa fa-search"></span></a>
+                        <div class="menu_c search_menu">
+                            <div class="search_box">
+                                <input type="search" class="txtbox" placeholder="Search">
+                                <a href="#"><span class="fa fa-level-down fa-rotate-90"></span></a>
+
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="flexslider home-slider">
+    <ul class="slides">
+        <li> <img alt="alt" src="{{ asset('client/images/color1.jpg') }}" >
+            <div class="flex-caption">
+                <div class="banner">
+                    <h1>Le Souk</h1>
+                    <div class="line_1"></div>
+                    <h4>El-Medina</h4>
+                    <p>bla blabla blabla blabla blabla blabla blabla blabla bla</p>
+                    <a class="btn_c" href="#">Details</a> </div>
+            </div>
+        </li>
+        <li> <img alt="alt" src="{{ asset('client/images/color2.jpg') }}" >
+            <div class="flex-caption">
+                <div class="banner">
+                    <h1>Le Souk</h1>
+                    <div class="line_1"></div>
+                    <h4>El-Medina</h4>
+                    <p>bla blabla blabla blabla blabla blabla blabla blabla bla</p>
+                    <a class="btn_c" href="#">Details</a> </div>
+            </div>
+        </li>
+        <li> <img alt="alt" src="{{ asset('client/media/slides/catalog-slide1.png') }}" >
+            <div class="flex-caption">
+                <div class="banner">
+                    <h1>Le Souk</h1>
+                    <div class="line_1"></div>
+                    <h4>El-Medina</h4>
+                    <p>bla blabla blabla blabla blabla blabla blabla blabla bla</p>
+                    <a class="btn_c" href="#">Details</a> </div>
+            </div>
+        </li>
+
+
+    </ul>
+    <div class="container">
+        <div class="banner_nav ">
+            <div class="scroll_down">Scroll down <span class="fa fa-arrow-circle-down"></span></div>
+        </div>
+    </div>
+</div>
+<div id="footer" >
+    <div class="f_top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="ftop_blk">
+                        <h5>Customer loyalty <br>
+                            programs<a href="#" class="fa fa-arrow-circle-right"></a></h5>
+                        <span class="icon_1 icon"></span> </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="ftop_blk">
+                        <h5>Worldwide <br>
+                            shipping <a href="#" class="fa fa-arrow-circle-right"></a></h5>
+                        <span class="icon_2 icon"></span> </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="ftop_blk">
+                        <h5>24/7 technical <br>
+                            support<a href="#" class="fa fa-arrow-circle-right"></a></h5>
+                        <span class="icon_3 icon"></span> </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="ftop_blk bor_none">
+                        <h5>returns and <br>
+                            exchanges <a href="#" class="fa fa-arrow-circle-right"></a></h5>
+                        <span class="icon_4 icon"></span> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        {{ form_widget(form) }}
+        <div>
+            <input type="submit" value="{{ 'registration.submit'|trans }}" />
+        </div>
+
+
+
+
+    {{ form_end(form) }}
+    <script type="text/javascript" src="{{ asset('client/js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('client/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('client/js/jquery.icheck.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('client/js/package.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('client/js/jquery.flexslider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('client/js/bxslider/jquery.bxslider.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('client/js/scripts.js') }}"></script>
+</div>
+
+</body>
+</html>
+
+
+
+
+

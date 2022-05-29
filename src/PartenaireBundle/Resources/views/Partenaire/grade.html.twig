@@ -1,0 +1,331 @@
+
+{% extends "admin/base_admin.html.twig" %}
+
+{% block head %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/images/favicon.png') }}">
+    <title>Admin | Souk</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('admin/node_modules/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/node_modules/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
+    <!-- This page CSS -->
+    <!-- chartist CSS -->
+    <link href="{{ asset('admin/node_modules/morrisjs/morris.css') }}" rel="stylesheet">
+    <!--c3 CSS -->
+    <link href="{{ asset('admin/node_modules/c3-master/c3.min.css') }}" rel="stylesheet">
+    <!--Toaster Popup message CSS -->
+    <link href="{{ asset('admin/node_modules/toast-master/css/jquery.toast.css') }}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
+    <!-- Dashboard 1 Page CSS -->
+    <link href="{{ asset('admin/css/pages/dashboard1.css') }}" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="{{ asset('admin/css/colors/default.css') }}" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <title>Google Charts Tutorial</title>
+    <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js">
+    </script>
+
+{% endblock %}
+
+    {% block content %}
+
+        <script type = "text/javascript">
+            google.charts.load('current', {packages: ['corechart']});
+        </script>
+
+        {% set total = 0 %}
+        {% set totalv = 0 %}
+
+
+
+        {% for p in produits %}
+            {% set total= total + p.qtevenduproduit %}
+        {% endfor %}
+        {% for v in videos %}
+            {% set totalv= totalv + 1 %}
+        {% endfor %}
+        {% set y =0 %}
+        {% set y = total %}
+        {% set w =0 %}
+        {% set w = totalv %}
+
+
+
+    <div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Fiche d'information</h3>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active">partenaires</li>
+                    <li class="breadcrumb-item active">fiche</li>
+                </ol>
+            </div>
+
+            <div class="">
+                <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+
+        <div class="row">
+            {% set gold=0 %}
+            {% set plat=0 %}
+            {% if user.typeuser=='pro' %}
+            {% if rep=='gold' %}
+                {% set gold=gold+1 %}
+            <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                <h3 class="text-info"><i class="fa fa-exclamation-circle"></i> Information</h3> {{ messageGold }}
+            </div>
+                <div class="col-lg-4 col-xlg-3 col-md-5">
+                    <a  class="tst3 btn btn-success" href="{{ path('attribuer_grade',{'id':user.id,'plat':plat,'gold':gold}) }}">Attribuer LUI ce Grade</a>
+                </div>
+
+            {% elseif rep=='platinium' %}
+                {% set plat=plat+1 %}
+                <div class="alert alert-info">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                    <h3 class="text-info"><i class="fa fa-exclamation-circle"></i> Information</h3> {{ messagePlat }}
+                </div>
+                <div class="col-lg-4 col-xlg-3 col-md-5">
+                    <a  class="tst3 btn btn-success" href="{{ path('attribuer_grade',{'id':user.id,'plat':plat,'gold':gold}) }}">Attribuer LUI ce Grade</a>
+                </div>
+                {% else %}
+            {% endif %}
+            {% endif %}
+            <div>
+                <div class="card card-body">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-3 text-center">
+                            {% if user.typeuser == 'freelancer' %}
+                           <img src="{{ asset('uploads/logo/' ~ user.urlphotofree ) }}" alt="user" class="img-circle img-responsive">
+                            {% else %}
+                            <img src="{{ asset('uploads/logo/' ~ user.urllogopro ) }}" alt="user" class="img-circle img-responsive">
+                            {% endif %}
+                        </div>
+                        <div class="col-md-offset-12">
+                            <h3 class="box-title m-b-0">{{ user.username }}</h3> <small>{{ user.nomentreprisepro }}</small>
+                            <address>
+                                {{ user.adresse }}
+                                <br>
+                                <br>
+                                <abbr title="Phone">00216</abbr> {{ user.telbureaupro }}
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {#************************************************************************************************************#}
+
+            <div class="col-lg-5 col-md-4 col-xlg-3 ">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Produits</h4>
+
+                        <div class="table-responsive">
+                            <table class="table stylish-table">
+                                <thead>
+                                <tr>
+                                    <th style="width:90px;">Produit</th>
+                                    <th>Description</th>
+                                    <th>Quantité Vendu</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for produit in produits %}
+                                <tr>
+
+                                    <td><span class="round"><i class="ti-shopping-cart"></i></span></td>
+                                    <td>
+                                        <h6><a href="javascript:void(0)" class="link"><small class="text-muted">nom :</small>{{ produit.nomproduit}}<small class="text-muted">, taille : </small>{{ produit.tailleproduit }},<small class="text-muted">, matiere :</small>{{produit.matiereproduit  }},<small class="text-muted">, prix:</small>{{ produit.prixventeproduit  }}</a>
+                                        </h6><small class="text-muted">Product id : {{ produit.idproduit }} </small></td>
+                                    <td>
+                                        <h5>{{ produit.qtevenduproduit }}</h5></td>
+                                    <td>
+
+
+                                </tr>
+                                {% endfor %}
+
+                                </tbody>
+
+                            </table>
+                            <h5> total produits vendus : {{ y }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {#************************************************************************************************************#}
+
+            <div class="col-lg-7 col-xlg-10 ">
+                <div class="card">
+                    <div class="card-body">
+                        <div id = "container" style = "width: 550px; height: 400px; margin: 0 auto">
+                        </div>
+
+                        <script language = "JavaScript">
+                            function drawChart() {
+                                // Define the chart to be drawn.
+
+                                var data = google.visualization.arrayToDataTable([
+                                    ['Produits', 'produit Dispo', 'produit vendu'],
+
+                                    ['Janvier', {{ janvier }}, {{ janvierVendu }}],
+
+                                    ['Fevrier', {{fevrier }}, {{fevrierVendu}}],
+                                    ['Mars', {{mars }}, {{ marsVendu}} ],
+                                    ['Avril', {{ avril}}, {{avrilVendu }} ],
+                                    ['Mai', {{mai }}, {{ maiVendu}} ],
+                                    ['Juin', {{juin }}, {{juinVendu }}]
+                                ]);
+
+
+                                // Set chart options
+                                var options = {
+                                    title : 'Suivi Vente des Produits',
+                                    vAxis: {title: 'Produits'},
+                                    hAxis: {title: 'Mois'},
+                                    seriesType: 'bars',
+                                    series: {2: {type: 'line'}}
+                                };
+
+                                // Instantiate and draw the chart.
+                                var chart = new google.visualization.ComboChart(document.getElementById('container'));
+                                chart.draw(data, options);
+                            }
+                            google.charts.setOnLoadCallback(drawChart);
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+          <div class="col-lg-5 col-xlg-3 ">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Videos </h4>
+
+                        <div class="table-responsive">
+                            <table class="table stylish-table">
+                                <thead>
+                                <tr>
+
+                                    <th style="width:90px;">Video</th>
+                                    <th>Duree</th>
+                                    <th>Date d'exposition</th>
+                                    <th>Description</th>
+
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for video in videos %}
+                                    <tr>
+
+                                        <td><span class="round"><i class="ti-video-camera"></i></span></td>
+
+                                        <td>
+                                            <h5>{{ video.dureevideo }}</h5>
+                                        </td>
+
+                                        <td>
+                                            <h5>{{ video.dateexpovideo | date('d-m-Y') }}</h5>
+                                        </td>
+
+                                        <td>
+                                            <h5>{{ video.descriptionvideo }}</h5></td>
+                                        <td>
+
+
+
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+
+                            </table>
+                            <h5> total videos  postées : {{ w }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+                    <div class="col-lg-5 col-xlg-10 ">
+                        <div class="card">
+                            <div class="card-body">
+                                <div id = "container2" style = "width: 550px; height: 400px; margin: 0 auto">
+                                </div>
+
+                                <script language = "JavaScript">
+                                    function drawChart2() {
+                                        // Define the chart to be drawn.
+
+                                        var data = google.visualization.arrayToDataTable([
+                                            ['Mois', 'videos postées'],
+
+                                            ['Janvier', {{ janvierV }}],
+
+                                            ['Fevrier', {{fevrierV}}],
+                                            ['Mars', {{marsV}}],
+                                            ['Avril', {{ avrilV }} ],
+                                            ['Mai', {{maiV }} ],
+                                            ['Juin', {{juinV }}]
+                                        ]);
+
+
+                                        // Set chart options
+                                        var options = {
+                                            title : 'Suivi des Videos DIY',
+                                            vAxis: {title: 'Videos'},
+                                            hAxis: {title: 'Mois'},
+                                            seriesType: 'bars',
+                                            series: {2: {type: 'line'}}
+                                        };
+
+                                        // Instantiate and draw the chart.
+                                        var chart = new google.visualization.ComboChart(document.getElementById('container2'));
+                                        chart.draw(data, options);
+                                    }
+                                    google.charts.setOnLoadCallback(drawChart2);
+                                </script>
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+
+    {% endblock content %}
+
+

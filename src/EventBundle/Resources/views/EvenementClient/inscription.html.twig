@@ -1,0 +1,51 @@
+{% extends "client/layout.html.twig" %}
+     {% block flexslider %}
+
+
+     {% endblock %}
+{% block content %}
+    <center>
+
+
+
+        <h1>Vos information</h1><br>
+        <div id="header">
+            <div class="acc_menu">
+                <form method="post">
+
+
+                    <div class="line_sep"></div>
+
+
+                    <input class="txtbox"  placeholder="Nom : " type="text" name="nom"  pattern="[A-Za-z]{3,}"  title="Votre Nom doit etre chaine de caractére" >
+                    <input class="txtbox" placeholder="Prenom : " type="text" name="prenom" pattern="[A-Za-z]{3,}" title="Votre Prenom doit etre chaine de caractére">
+
+                    <input class="txtbox" placeholder="Adresse e-mail : " type="email" name="Adressmail">
+
+
+
+
+                    </br>
+                    <input class="btn btn-success"  type="submit" value="Valider" href="{{ path('inscriReussite',{'idi':app.request.get('idi')} ) }}"   >
+                    <input type="text" name="utilisateur" value="{{ app.user.id }}" hidden>
+
+
+
+
+                </form>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </center>
+{% endblock content %}

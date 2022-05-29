@@ -1,0 +1,127 @@
+
+{% extends "client/layout.html.twig" %}
+{% block flexslider %}
+{% endblock %}
+{% block content %}
+    {{ form_start(form)}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form action="" method="post" id="fileForm" role="form">
+                    <fieldset><legend class="text-center">Valid information is required to register. <span class="req"><small> required *</small></span></legend>
+
+                        <div class="form-group">
+                            <label for="Nom"><span class="req">* </span> Nom : </label>
+                            {{ form_widget(form.nomuser,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.nomuser) }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Prenom"><span class="req">* </span> Prenom : </label>
+                            {{ form_widget(form.prenomuser,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.prenomuser) }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Email"><span class="req">* </span> Email : </label>
+                            {{ form_widget(form.email,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.email) }}
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="Username"><span class="req">* </span>  Nom d'utilisateur : </label>
+                            {{ form_widget(form.username,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.username) }}
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="password"><span class="req">* </span>  mot de passe : </label>
+                            {{ form_widget(form.plainPassword.first,{'attr':{'class':'form-control'}}) }}
+
+                        </div>
+                        <div class="form-group">
+                            <label for="password"><span class="req">* </span>  confirmer mot de passe : </label>
+                            {{ form_widget(form.plainPassword.second,{'attr':{'class':'form-control'}}) }}
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password"><span class="req">* </span>  Numero : </label>
+                            {{ form_widget(form.teluser,{'attr':{'class':'form-control'}}) }}
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password"><span class="req">* </span>  Role : </label>
+                            {{ form_widget(form.roles,{'attr':{'class':'form-control'}}) }}
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date"><span class="req">* </span>  Date de  naissance : </label>
+                            {{ form_widget(form.datenaissuser,{'attr':{'class':''}}) }}
+                        </div>
+
+
+                        <div class="form-group">
+                            <input class="btn btn-success" type="submit" name="submit_reg" value="Register">
+                        </div>
+
+                           {# <input type="checkbox" required name="terms" onchange="this.setCustomValidity(validity.valueMissing ? 'Please indicate that you accept the Terms and Conditions' : '');" id="field_terms">   <label for="terms">I agree with the <a href="terms.php" title="You may read our terms and conditions by clicking on this link">terms and conditions</a> for Registration.</label><span class="req">* </span>#}
+
+
+                            {#  //////////////////////////////////////////////////////////////////////////// #}
+
+
+
+
+
+
+                        {# <div class="form-group">
+                             <label for="Password"><span class="req">* </span>  Password : </label>
+                             {{ form_widget(form.plainPassword.first,{'attr':{'class':'form-control'}}) }}
+                             {{ form_errors(form.plainPassword.first) }}
+                         </div>
+
+
+                         <div class="form-group">
+                             <label for="Confirm Password"><span class="req">* </span>  Confirm Password : </label>
+                             {{ form_widget(form.plainPassword.second,{'attr':{'class':'form-control'}}) }}
+                             {{ form_errors(form(form.plainPassword.second)) }}
+                         </div> #}
+
+
+               <!--         <div class="form-group">
+                            <label for="password"><span class="req">* </span> Password: </label>
+                            <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="pass1" /> </p>
+
+                            <label for="password"><span class="req">* </span> Password Confirm: </label>
+                            <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16" placeholder="Enter again to validate"  id="pass2" onkeyup="checkPass(); return false;" />
+                            <span id="confirmMessage" class="confirmMessage"></span>
+                        </div>-->
+
+
+
+                        <h5>You will receive an email to complete the registration and validation process. </h5>
+                        <h5>Be sure to check your spam folders. </h5>
+
+
+                    </fieldset>
+                </form><!-- ends register form -->
+
+                <script type="text/javascript">
+                    document.getElementById("field_terms").setCustomValidity("Please indicate that you accept the Terms and Conditions");
+                </script>
+            </div><!-- ends col-6 -->
+
+
+
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+
+
+    {% endblock %}

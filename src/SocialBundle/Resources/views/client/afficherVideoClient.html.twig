@@ -1,0 +1,107 @@
+{% extends ':client:layout.html.twig' %}
+
+{% block flexslider %}
+{% endblock flexslider %}
+
+
+    {% block content %}
+
+
+
+
+<head >
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+
+
+</head>
+
+
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">"Do It Yourself"</h1>
+                <font size="3" color="#505050"> Entre tradition et créativité, nos artisants ouvrent les portes de leurs ateliers pour vous faire découvrir leurs métiers,
+                    produits et savoir-faire.</br> Entrez dans leurs secrets de fabrication et laissez-vous séduire par le charme de l'artisanat  !</font>
+
+
+            </div>
+        </section>
+
+
+        </br>
+
+
+
+
+
+            <div class="album text-muted">
+                <div class="container">
+                    <div >
+
+                        {{ form_start(Form) }}
+                        <div id="custom-search-input">
+                            <div class="input-group col-md-offset-8">
+                                {{ form_widget(Form.tags, {'attr':{'class':'search-query form-control','required' : 'true', 'placeholder':'Recercher video'}})}}
+
+
+                                <span class="input-group-btn ">
+
+                               <span >   {{ form_widget(Form.Rechercher, {'attr':{'class':'btn btn-danger','style':'width=80px'}}) }}</span>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                        {% for video in videos %}
+                                    <div class="video-element" >
+
+                                            <video controls onClick="location.href='{{ path('detailVideo', {'id':video.idvideo}) }}';">
+                                                <source src="{{ asset('uploads/videos/' ~ video.video) }} " >
+                                            </video>
+
+
+
+                                        {#<video src="{{ asset('uploads/videos/' ~ video.video) }} "  style="height: 280px; width: 375px; display: block;">  </video>#}
+                                        <div class="video-info-mgr">
+                                            <p class="video-title">{{ video.titre }}  {{ video.avgRating |rating }}</p>
+
+
+
+                                            <p>{{ video.dateexpovideo|date }}</p>
+
+
+                                            <p class="video-desc">{{ video.descriptionvideo }} </p>
+
+
+
+
+
+
+
+                                        </div>
+                                       {# {{ video.rating | rating}}#}
+                                   </div>
+                        {% endfor %}
+
+
+                </div>
+            </div>
+
+        <script src="{{ asset('client/js/jquery/2.0.3/jquery.min.js') }}"></script>
+        <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+      {# <script>forceStarVal(
+
+                    {{ avgRating }}
+
+            );</script>#}
+
+
+    {% endblock content %}
+
+

@@ -1,0 +1,25 @@
+{% extends "@User/layout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block flexslider %}
+{% endblock %}
+
+
+{% block fos_user_content %}
+    <div class="row">
+   <DIV class="col-lg-offset-4">
+
+        <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+
+         {% if targetUrl %}
+            <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+        {% endif %}
+   </DIV>
+    </div>
+
+
+
+{% endblock fos_user_content %}
+
+
+

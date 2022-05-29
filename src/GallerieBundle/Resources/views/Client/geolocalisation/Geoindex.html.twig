@@ -1,0 +1,86 @@
+{% extends "@Gallerie/Client/geolocalisation/GeoBase.html.twig" %}
+{% block content %}
+    <div style="height: 610px">
+        <div class="col-md-4 " >
+            <div class="col-lg-7" >
+                <div class="product_c">
+                    <div class="blog_blk red5 clearfix " >
+                        <div class="box">
+                            <figure ><img  alt="alt"  src="{{ asset('uploads/imgBonplan/' ~ Img ) }}" width="500px" >
+
+                            </figure>
+                        </div>
+                        <div class="blog_desc">
+                            <h1> <span style="font-family: Arial">{{ titre }}</span> </h1>
+                            <table border="0">
+
+                                <tr><td> <section class="lat-container"><span class="section-title">Latitudes : </span><span style="font-family: Arial"> {{ Latitudes }} </span></td>
+                                </tr>
+                                <tr><td>  <section class="lng-container"><span class="section-title">Longitudes : </span><span style="font-family: Arial"> {{  Longitudes }} </span></td>
+                                </tr>
+                                <tr> <td>  <section class="lng-container"><span class="section-title">Adresse:</span> <span style="font-family: Arial"/> {{ Adress }} </span></td>
+                                </tr>
+                                <tr><td>  <section class="lng-container"><span>  {{ form(ratingform) }}  </span></td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8 " >
+            <div  id="map-canvas" ></div>
+        </div>
+    </div>
+
+
+
+    <script src="{{ asset('client/js/jquery/2.0.3/jquery.min.js') }}"></script>
+
+
+    <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+    <script>forceStarVal(
+                {% if retrievedRatingResult %}
+                {{ retrievedRatingResult.ratingValue  }}
+                {% endif %}
+        );</script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-vCmodVK2l83rQrKifH9AX9RhSDp-VHE"
+            type="text/javascript"></script>
+    <script>
+
+
+
+        var myCenter =new google.maps.LatLng({{ Latitudes }}, {{ Longitudes }});
+        function initialize() {
+            var mapProp= {
+                center: myCenter,
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            /*  var mapOptions = {
+                  center: {lat: -34.397, lng: 150.644},
+                  zoom: 8
+              };*/
+            var map = new google.maps.Map(document.getElementById('map-canvas'),
+                mapProp);
+            var marker = new google.maps.Marker({
+                position: myCenter,
+                animation: google.maps.Animation.BOUNCE
+            });
+            marker.setMap(map);
+            /* var myLating = new google.maps.LatLng(-25.363882, 131.044922);
+              var mapOptions = {
+                  zoom: 4,
+                  center: myLating
+              }
+             var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+     */
+        }
+        google.maps.event.addDomListner(window,'load',initialize());
+    </script>
+
+{% endblock %}
+
+

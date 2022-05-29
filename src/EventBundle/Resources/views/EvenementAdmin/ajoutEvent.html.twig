@@ -1,0 +1,191 @@
+{% extends ':admin:base_admin.html.twig' %}
+
+
+
+{% block content %}
+    <div class="page-wrapper">
+    <div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Jsgrid</h3>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active">Jsgrid</li>
+            </ol>
+        </div>
+        <div class="col-md-7 align-self-center text-right d-none d-md-block">
+            <button type="button" class="btn btn-info"><i class="fa fa-plus-circle"></i> Create New</button>
+        </div>
+        <div class="">
+            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+        </div>
+    </div>
+
+
+
+        <div class="col-lg-12">
+            <div class="card ">
+                <div class="card-header bg-info">
+                    <h4 class="m-b-0 text-white">Ajouter Evenement</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" class="form-horizontal">
+                        <div class="form-body">
+
+                            <hr class="m-t-0 m-b-40">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="control-label text-right col-md-3">Nom Evenement</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" placeholder="Nom Evenement" name="nomEvent">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--/span-->
+
+                                <!--/span-->
+                            </div>
+                            <!--/row-->
+                            <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label text-right col-md-3">Description</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="Description" name="description">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="control-label text-right col-md-3">Type Evenement</label>
+                                        <div class="col-md-9">
+                                            <select class="form-control custom-select" name="typeEvent">
+                                                <option value="Traditionnel">Traditionnel</option>
+                                                <option value="Culturelle">Culturelle</option>
+                                                <option value="Galerie">Galerie</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+
+                                        <div class="col-md-9">
+                                            <input   class="form-control" type="file" name="img" />
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="control-label text-right col-md-3">Date Evenement</label>
+                                        <div class="col-md-9">
+                                            <input type="date" class="form-control" placeholder="dd/mm/yyyy" name="dateEvent">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+
+                            <!--/row-->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="control-label text-right col-md-3">Objectif</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="objectif">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <!--/row-->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="control-label text-right col-md-3">Nombre max stand</label>
+                                        <div class="col-md-9">
+                                            <input type="number" class="form-control" name="nbrstand">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                            <!--/row-->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="control-label text-right col-md-3">Lieux</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="lieux">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <!--/row-->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="control-label text-right col-md-3">Nombre Places</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="nbplaces">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+
+                            <!--/row-->
+
+                        </div>
+
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-offset-3 col-md-9">
+                                            <input type="submit" class="btn btn-success" value="Ajouter"/>
+                                            <input type="button" class="btn btn-inverse" value="Annuler"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6"> </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+{% endblock %}

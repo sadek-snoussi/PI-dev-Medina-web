@@ -1,0 +1,81 @@
+<?php
+
+namespace WebServiceBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * UserEvent
+ *
+ * @ORM\Table(name="user_event", indexes={@ORM\Index(name="IDX_D96CF1FFA76ED395", columns={"user_id"}), @ORM\Index(name="IDX_D96CF1FF71F7E88B", columns={"event_id"})})
+ * @ORM\Entity
+ */
+class UserEvent
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idInscri", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idinscri;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateInscri", type="datetime", nullable=true)
+     */
+    private $dateinscri;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="quantite", type="string", length=255, nullable=true)
+     */
+    private $quantite;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255, nullable=true)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=255, nullable=true)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adressemail", type="string", length=255, nullable=true)
+     */
+    private $adressemail;
+
+    /**
+     * @var \Event
+     *
+     * @ORM\ManyToOne(targetEntity="Event")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="event_id", referencedColumnName="idEvent")
+     * })
+     */
+    private $event;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+
+}
+

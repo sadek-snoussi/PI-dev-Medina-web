@@ -1,0 +1,148 @@
+<?php
+
+namespace UserBundle\Entity;
+
+use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * User
+ *
+ * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_8D93D64992FC23A8", columns={"username_canonical"}), @ORM\UniqueConstraint(name="UNIQ_8D93D649A0D96FBF", columns={"email_canonical"}), @ORM\UniqueConstraint(name="UNIQ_8D93D649C05FB297", columns={"confirmation_token"})})
+ * @ORM\Entity(repositoryClass="PartenaireBundle\Repository\UserRepository")
+ */
+class User extends BaseUser
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomUser", type="string", length=254, nullable=true)
+     */
+    private $nomuser;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenomUser", type="string", length=254, nullable=true)
+     */
+    private $prenomuser;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateNaissUser", type="date", nullable=true)
+     */
+    private $datenaissuser;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mailUser", type="string", length=254, nullable=true)
+     */
+    private $mailuser;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telUser", type="string", length=254, nullable=true)
+     */
+    private $teluser;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="specialitePart", type="string", length=254, nullable=true)
+     */
+    private $specialitepart;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="popularitePart", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $popularitepart;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="surnomFree", type="string", length=254, nullable=true)
+     */
+    private $surnomfree;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="urlPhotoFree", type="string", length=254, nullable=true)
+     */
+    private $urlphotofree;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gradePro", type="string", length=254, nullable=true)
+     */
+    private $gradepro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomEntreprisePro", type="string", length=254, nullable=true)
+     */
+    private $nomentreprisepro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telBureauPro", type="string", length=254, nullable=true)
+     */
+    private $telbureaupro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="urlLogoPro", type="string", length=254, nullable=true)
+     */
+    private $urllogopro;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="typeUser", type="string", length=254, nullable=true,options={"default":"client"})
+     */
+    private $typeuser='client';
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="partenariat", type="integer", nullable=true)
+     */
+    private $partenariat=0;
+    
+      /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", nullable=true)
+     */
+    private $adresse;
+    
+    
+        public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+        $this->roles = array('ROLE_CLIENT');
+    }
+    
+  
+}

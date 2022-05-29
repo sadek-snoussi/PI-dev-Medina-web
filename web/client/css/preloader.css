@@ -1,0 +1,116 @@
+/* CSS Document */
+@import "../fonts/Quicksand-Regular/stylesheet.css";
+
+.preloader-container
+{
+	height : 100% ;
+	width: 100% ;
+	
+	position:fixed;
+	
+	display: flex;
+	align-items: center;
+	flex:auto ;
+	
+	text-align:center ;
+		
+	background-color : #FFF ; 
+	
+	z-index: 1001;
+}
+.preloader-content-group
+{
+
+	position:relative;
+	
+	
+	display: flex;
+	align-items: center;
+	flex: auto ;
+	flex-direction : column ;
+	
+
+}
+.preloader-logo-bg
+{	
+	height : 15% ; 
+	width:100% ;
+	position:relative;
+	
+	display:flex;
+	flex: auto;
+	align-items: center;
+	flex-direction : column ;
+	justify-content : center ; 
+		
+	background-color:#FFF ;
+	background-image:url(../images/logo_souk_bg.png) ; 
+	background-repeat: no-repeat;
+	background-position:center ;
+	background-size:contain;
+	
+	text-align:center;
+}
+.preloader-logo-positioner
+{
+	
+	position:relative ;
+	/*top: 50% ;
+	left : 50% ;  
+	transform: translate(-50%, -50%);
+	*/
+
+	text-align:center;
+	
+}
+.preloader-logo-positioner img
+{		
+	height : 100px;
+	
+	-webkit-animation: logo-spin 2.7s infinite;
+   -moz-animation: logo-spin 2.7s infinite;
+   -o-animation: logo-spin 2.7s infinite;
+    animation: logo-spin 2.7s infinite;	
+}
+	
+
+.preloader-text
+{
+	margin-top : 15px ;
+	text-align:center ; 
+	
+    font-family: Quicksand-Regular;
+	font-size: 25px ;
+	color: Black ;
+	
+	-webkit-animation: flickerAnimation 2.7s infinite;
+   -moz-animation: flickerAnimation 2.7s infinite;
+   -o-animation: flickerAnimation 2.7s infinite;
+    animation: flickerAnimation 2.7s infinite;
+}
+
+@-moz-keyframes logo-spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes logo-spin { 100% { -webkit-transform: rotate(360deg);} }
+@keyframes logo-spin {	100% {  transform:rotate(360deg); } }
+
+
+@keyframes flickerAnimation {
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-o-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-moz-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-webkit-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}

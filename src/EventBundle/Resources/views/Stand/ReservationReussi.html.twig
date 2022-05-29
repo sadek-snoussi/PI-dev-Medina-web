@@ -1,0 +1,66 @@
+{% extends "client/layout.html.twig" %}
+     {% block flexslider %}
+
+
+     {% endblock %}
+
+{% block content %}
+<center>
+
+
+
+
+            <table  border="0">
+
+
+
+                <form method="post">
+
+                  <tr ><h1 align="center"  > Reçu </h1></tr>
+                    <tr>
+
+                        <td style="font-family: Arial"><h2>{{ event.nomevent }}</h2></td>
+                        <td align="right"><img  alt="alt"  src="{{ asset('uploads/img/' ~ event.urlafficheevent ) }}" height="120px" ></td>
+                    </tr>
+
+
+                    <tr><td   style="font-family: Arial" size="5"> {{ app.user.nomuser }}</td>
+                        <td align="center" style="font-family: Arial"> {{ app.user.prenomuser }}</td>
+
+                    </tr>
+                    <tr>
+                        <td style="font-family: Arial">Numero Stand:</td>
+                        <td  align="center" style="font-family: Arial">{{  stand.numstand }}</h3></td> </tr>
+                    <br/>
+                    <tr><td style="font-family: Arial">Superficie:</td>
+                    <td  align="center" style="font-family: Arial">{{ stand.superficiestand }} m²</td></tr>
+                    <tr><td style="font-family: Arial">Emplacement:</td>
+                        <td  align="center" style="font-family: Arial">{{ stand.emplacementstand }}</td></tr>
+                    <tr><td style="font-family: Arial">Prix:</td>
+                    <td  align="center" style="font-family: Arial">{{ stand.prix }}DT</td></tr>
+
+                    <tr> <td style="font-family: Arial">Date de reservation   :  </td>
+                        <td  align="center"  style="font-family: Arial" >{{ "now"|date("m/d/Y") }} </td></tr>
+
+
+                    <input type="text" name="utilisateur" value="{{ app.user.id }}" hidden>
+                    </br>
+
+
+                </form>
+
+
+
+
+
+<tr> <td align="center"> N'oubliez pas d'apporter ce reçu  lorsque vous prendrez votre Stand </td>
+    <td align="right">
+        <a class="btn btn-default fa fa-file-pdf-o"  href="{{ path('Generer_Pdf2',{'ide':event.idevent,'ids':stand.numstand })  }}"  > Imprimer</a>
+        </td>
+</tr>
+
+
+            </table>
+</center>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{#*********************************************BILAN***********************************************************#}
+
+<table class="table " border="2">
+
+
+    <thead>
+    <tr>
+        <th>Reference Produit</th>
+        <th>Nom Produit</th>
+        <th>Date D exposition</th>
+        <th>Quantite Vendue</th>
+        <th>Prix de Base</th>
+        <th>Prix de vente</th>
+        <th>Gain Potentiel</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {% set total=0 %}
+    {% set qte=0 %}
+
+
+
+
+    {% for prod in produits %}
+        {% set gain= prod.qtevenduproduit*(prod.prixventeproduit - prod.prixbaseproduit) %}
+
+        <tr>
+
+            <td>{{ prod.referenceProd }}</td>
+            <td>{{ prod.nomproduit }}</td>
+            <td>{{ prod.dateexpoproduit | date("m/d/Y", "Europe/Paris") }}</td>
+            <td>{{ prod.qtevenduproduit }}</td>
+            <td>{{ prod.prixbaseproduit }}</td>
+            <td>{{ prod.prixventeproduit }}</td>
+            <td>{{ gain }}</td>
+            {% set total = total+gain %}
+            {% set qte = qte + prod.qtevenduproduit %}
+
+
+        </tr>
+    {% endfor %}
+
+    <tr>
+        <td colspan="3" align="center">Quantite Totale =  </td>
+
+        <td>{{ qte }} </td>
+        <td colspan="2" align="center">Gain Total = </td>
+        <td>{{ total }} </td>
+
+
+
+
+
+    </tr>
+    </tbody>
+
+
+
+
+</table>
+
+
+
+
+
+
+
+
+{#****************************************************************************************************************
+****************************************************************************************************************#}

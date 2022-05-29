@@ -1,0 +1,98 @@
+{% extends ':admin:base_admin.html.twig' %}
+{% block content %}
+    <div class="page-wrapper" style="min-height: 612px;">
+
+        {% if app.session.flashBag.has('success') %}
+            <div class="alert alert-success">
+                <a data-dismiss="alert" class="class pull-right"><i class="fa fa-remove"></i></a>
+                {% for msg in app.session.flashBag.get('success') %}
+                    {{ msg }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-header bg-info" style="font-size: x-large" align="center">
+                                <h4 class="m-b-0 text-white">Liste des images de la Gallerie</h4>
+                            </div>
+                            </br>
+
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Titre Image</th>
+                                        <th>Description</th>
+                                        <th>Type</th>
+                                        <th>Ville</th>
+                                        <th>Image</th>
+
+                                        <th class="text-nowrap">Action</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    {% for Gallerie in Gallerie %}
+                                        <tr>
+                                            <td>{{ Gallerie.titreGallerie }}</td>
+                                            <td>{{ Gallerie.description }}</td>
+                                            <td>{{ Gallerie.typeGallerie }}</td>
+                                            <td>{{ Gallerie.lieuGallerie }}</td>
+
+                                            <td><img src="{{ asset('uploads/imgGallerie/' ~ Gallerie.imgGallerie) }}" width="100" height="100" ></td>
+                                            <td class="text-nowrap">
+                                                <a  href="{{ path('Modifier_Gallerie',{'id':Gallerie.idgallerie}) }}" data-toggle="tooltip" data-original-title="Modifier"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                                <a class="fa fa-close text-danger" data-toggle="modal" data-target="#supprimerGuide{{ Gallerie.idgallerie }}" ></a>
+                                            </td>
+                                        </tr>
+
+                                        {#******************************************************************************************************************#}
+
+                                        <div class="modal fade in" id="supprimerGuide{{ Gallerie.idgallerie }}"  >
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Confirmation.</h4>
+                                                    </div>
+
+
+                                                    <div class="modal-body">
+                                                        <h4>Vous êtes sur le point de supprimer {{ Gallerie.titreGallerie }}.</h4><br>
+                                                        <h4>êtes-vous sûr de vouloir continuer ?</h4><br>
+
+                                                        <a  href="{{ path('Supprimer_Gallerie',{ 'id':Gallerie.idgallerie }) }}"   class="btn btn-default" >Oui</a>
+                                                        <a  class="btn btn-default" data-dismiss="modal">Annuler</a>
+                                                    </div>
+
+
+
+                                                    <div class="modal-footer" align="center">
+
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {#******************************************************************************************************************#}
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

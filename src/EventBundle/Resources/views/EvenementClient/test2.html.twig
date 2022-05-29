@@ -1,0 +1,56 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <base href="https://localhost/">
+</head>
+
+
+<center>
+<table  border="1">
+
+
+
+            <form method="post">
+
+                <tr><h1 align="center" style="text-underline:" > Reçu </h1></tr>
+                <tr>
+
+                    <td style="font-family: Arial" colspan="2" align="center"><h2>{{ event.nomevent }}</h2></td>
+
+                </tr>
+
+
+                <tr><td   style="font-family: Arial" size="5" align="left"> {{ app.user.nomuser }}</td>
+                    <td align="right" style="font-family: Arial" > {{ app.user.prenomuser }}</td>
+
+                </tr>
+                <tr>
+                    <td style="font-family: Arial" align="left">Numero Stand:</td>
+                    <td  align="right" style="font-family: Arial" >{{  stand.numstand }}</h3></td> </tr>
+                <br/>
+                <tr><td style="font-family: Arial" align="left"> Superficie:</td>
+                    <td  align="right" style="font-family: Arial">{{ stand.superficiestand }} m²</td></tr>
+                <tr><td style="font-family: Arial" align="left">Emplacement:</td>
+                    <td  align="right" style="font-family: Arial">{{ stand.emplacementstand }}</td></tr>
+                <tr><td style="font-family: Arial" align="left">Prix:</td>
+                    <td  align="right" style="font-family: Arial">{{ stand.prix }}DT</td></tr>
+
+                <tr> <td style="font-family: Arial" align="left">Date de reservation   :  </td>
+                    <td  align="right"  style="font-family: Arial"  >{{ "now"|date("m/d/Y") }} </td></tr>
+
+
+
+                </br>
+
+
+            </form>
+
+
+
+
+
+
+
+        </table>
+</center>
+</html>

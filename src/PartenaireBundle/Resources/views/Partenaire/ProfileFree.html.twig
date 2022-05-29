@@ -1,0 +1,57 @@
+{% extends "client/layout.html.twig" %}
+
+{% block content %}
+    <center>
+
+
+        <div class="container">
+            <div class="row" >
+                <div class="col-md-4 col-md-offset-4 center">
+                    <fieldset>
+                        <legend class="text-center" style="font-size: x-large">Modifier Profile Freelancer</legend>
+                        <legend class="text-center" style="color: red; font-size: smaller">Veuillez saisir des informations valide pour modifier votre profil</legend>
+
+                        <form method="post">
+                            <div class="form-group">
+
+                                <label for="Nom"><span class="req">* </span> Nom : </label>
+                                <input class="txtbox" placeholder="Nom du partenaire : " type="text" name="nom" value="{{ user.nomuser}}">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="Prenom"><span class="req">* </span> Prenom : </label>
+                                <input class="txtbox" placeholder="Prenom : " type="text" name="prenom" value="{{ user.prenomuser }}">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="Email"><span class="req">* </span> Email : </label>
+                                <input class="txtbox" placeholder="Email de l'entreprise: " type="email" name="email" value="{{ user.email }}">
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="teluser"><span class="req">* </span>  Numero personnel: </label>
+                                <input class="txtbox" placeholder=" : " type="text" name="numero" value="{{ user.telbureaupro }}">
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="specialite"><span class="req">* </span>  Specialité: </label>
+                                <select class="form-control custom-select" name="specialite" aria-selected="{{ user.specialitepart }}">
+                                    <option value="patisserie">patisserie</option>
+                                    <option value="epicerie">epicerie</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input class="btn_c" type="submit" name="submit_reg" value="Modifier">
+                            </div>
+
+
+
+                        </form>
+                    </fieldset>
+                </div></div></div>
+    </center>
+{% endblock content %}

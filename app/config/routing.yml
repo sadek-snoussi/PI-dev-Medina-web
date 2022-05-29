@@ -1,0 +1,60 @@
+web_service:
+    resource: "@WebServiceBundle/Resources/config/routing.yml"
+    prefix:   /prod
+
+esprit_api:
+    resource: "@EspritApiBundle/Resources/config/routing.yml"
+    prefix:   /esprit
+
+index:
+    resource: "@IndexBundle/Resources/config/routing.yml"
+    prefix:   /
+shopping:
+    resource: "@ShoppingBundle/Resources/config/routing.yml"
+    prefix:   /
+prod:
+    resource: "@ProdBundle/Resources/config/routing.yml"
+    prefix:   /
+
+graphe:
+    resource: "@GrapheBundle/Resources/config/routing.yml"
+    prefix:   /
+
+event:
+    resource: "@EventBundle/Resources/config/routing.yml"
+    prefix:   /    
+
+mail:
+    resource: "@MailBundle/Resources/config/routing.yml"
+    prefix:   /
+
+partenaire:
+    resource: "@PartenaireBundle/Resources/config/routing.yml"
+    prefix:   /souk
+
+guide:
+    resource: "@GallerieBundle/Resources/config/routing.yml"
+    prefix:   /
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /user
+
+
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+    
+social:
+    resource: "@SocialBundle/Resources/config/routing.yml"
+    prefix:   /    
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_comment_api:
+    type: rest
+    resource: "@FOSCommentBundle/Resources/config/routing.yml"
+    prefix:  /api
+    defaults: { _format: html }

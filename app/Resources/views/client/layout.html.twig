@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+
+        <title>{% block title %} Acceuil {% endblock %}</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" href="{{ asset('client/css/master.css') }}">
+        <link rel="stylesheet" href="{{ asset('client/css/color7.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+        <link rel="stylesheet" href="{{ asset('client/css/map.css') }}">
+
+        {% block headmeta %}
+        {% endblock %}
+
+    </head>
+
+
+    <body>
+
+
+
+<link rel="stylesheet" type="text/css" href="{{ asset('client/css/rating.css') }}" />
+    <div id="header">
+
+        <div class="header_bot">
+            <div class="container">
+                <div class="logo"> <a href="{{ path('index_Acceuil') }}"><img alt="alt" src="{{ asset('client/images/souk.png') }}"   ></a> </div>
+                <div id="nav" class="yamm">
+                    <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    <nav id="navbar-collapse-1" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown"><a href="{{ path('index_Acceuil') }}"  >Acceuil </a> </li>
+                            <li class="dropdown yamm-fw"><a href="{{ path('index_Acceuil') }}" data-toggle="dropdown" class="dropdown-toggle">Produits <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <div class="yamm-content">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-md-3 col-sm-2 col-xs-12">
+                                                        <ul>   <li><a href="{{ path('selectAllClient') }}">Show All </a></li></ul>
+                                                        <h5>Habillement</h5>
+                                                        <ul>
+                                                            <li><a href="{{ path('Afficher_Produit') }}">Produit</a></li>
+                                                           <li><a href="#">Foutas </a></li>
+                                                            <li><a href="#">Djebba</a></li>
+                                                            <li><a href="#">Chachia</a></li>
+                                                            <li><a href="#">Sacs et Paniers</a></li>
+
+                                                        </ul>
+                                                        <h5>Tapis</h5>
+                                                        <ul>
+                                                            <li><a href="#">Moderne</a></li>
+                                                            <li><a href="#">Kerouanaise</a></li>
+                                                            <li><a href="#">Tribal</a></li>
+                                                        </ul>
+                                                        <h5>Epicerie</h5>
+                                                        <ul>
+                                                            <li><a href="{{ asset('catalog.html') }}">Gateau Tunisien </a></li>
+                                                            <li><a href="catalog.html">Epices</a></li>
+                                                            <li><a href="catalog.html">Huile d'olive</a></li>
+
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-3 col-sm-2 col-xs-12">
+                                                        <h5>Décoration</h5>
+                                                        <ul>
+                                                            <li><a href="{{ asset('catalog.html') }}">Articles en cuivre</a></li>
+                                                            <li><a href="catalog.html">Article en verre </a></li>
+                                                            <li><a href="catalog.html">Mosaique </a></li>
+                                                            <li><a href="catalog.html">Bougeoire </a></li>
+
+                                                        </ul>
+                                                        <h5>Commande sur Mesure</h5>
+                                                        <ul>
+                                                            <li><a href="{{ asset('catalog.html') }}">Mattresses</a></li>
+                                                            <li><a href="catalog.html">Beds</a></li>
+
+                                                        </ul>
+                                                        <h5>Bijoux</h5>
+                                                        <ul>
+                                                            <li><a href="{{ asset('catalog.html') }}">Coliers</a></li>
+                                                            <li><a href="{{ asset('catalog.html') }}">Bagues</a></li>
+                                                            <li><a href="{{ asset('catalog.html') }}">Boucles d'oreilles</a></li>
+                                                        </ul>
+                                                      
+
+
+                                                    </div>
+
+
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="new_item">
+                                                            <div class="clearfix item_title">
+                                                                <h5>New items and sales</h5>
+                                                                <div class="item_nav">
+                                                                    <ul>
+                                                                        <li class="active"><a href="catalog.html"></a></li>
+                                                                        <li><a href="catalog.html"></a></li>
+                                                                        <li><a href="catalog.html"></a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="item_thumb"></div>
+                                                            <div class="item_desc">
+                                                                <div class="pull-left">
+                                                                    <h5>Mugs with yellow stripes</h5>
+                                                                    <p>Kitchen utensils</p>
+                                                                </div>
+                                                                <div class="price">$15.50</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown "><a data-toggle="dropdown" class="dropdown-toggle"  href="{{ path('index_Gallerie') }}">Découverte<b class="caret"></b></a>
+                            <ul role="menu" class="dropdown-menu">
+                                <li>
+                                    <ul>
+                                        <li><a href="{{ path('Visite')}}"> Visite Guidée </a></li>
+                                        <li><a href="{{ path('Affiche_GallerieClient')}}"> Galerie </a></li>
+                                        <li><a href="{{ path('Affiche_GuideClient') }}"> Trouver un guide</a></li>
+                                        <li><a href="{{ path('AfficherClient_Bonplan')}}"> Bonplans</a></li>
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                            <li class="dropdown">
+                                <a href="{{ asset('client/catalog.html') }}" data-toggle="dropdown" class="dropdown-toggle" >Evénements </a>
+                                <ul role="menu" class="dropdown-menu">
+
+                                    <li><a href="{{ path('ListEventClient') }}" >Actualité</a></li>
+
+
+                                      {% if ( is_granted('ROLE_FREELANCER') or (is_granted('ROLE_PRO'))) %}
+                                    <li><a href="{{ path('afficheStandEvent') }}">Reserver Stand </a></li>
+                                    {% endif %}
+                                </ul>
+                            </li>
+
+
+                             {% if (is_granted('ROLE_CLIENT') ) %}
+
+                            <li class="dropdown"><a href={{ path('afficherClient') }} >Forum</a> </li>
+
+                             {% endif %}
+
+                            {% if (is_granted('ROLE_PRO')or (is_granted('ROLE_FREELANCER') )) %}
+                            <li class="dropdown open-nav"><a href="" data-toggle="dropdown" class="dropdown-toggle">Espace Partenaire<b class="caret"></b></a>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li>
+
+                                        <ul>
+                                            {% if (is_granted('ROLE_PRO')) %}
+                                            <li><a href="{{ path('partenaire_modifPro') }}">Profile</a></li>
+                                            {% endif %}
+                                            {% if (is_granted('ROLE_FREELANCER')) %}
+                                            <li><a href="{{ path('partenaire_modifFree') }}">Profile</a></li>
+                                            {% endif %}
+                                            <li><a href="{{ path('MesProduits')}}">Ma boutique</a></li>
+                                            <li><a href="{{ path('gererStock')}}">Gérer mon stock</a></li>
+					    <li class="dropdown"><a href={{ path('afficher') }} >Mes Videos</a> </li>
+                                        </ul>
+
+
+                                    </li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                            <li class="dropdown"><a href={{ path('partenaire_list_client') }} >Contact</a></li>
+                            {% if app.user is null %}
+                            <li class="dropdown"><a href={{ path('fos_user_security_login') }} >demander Partenariat</a></li>
+
+
+                            {% elseif is_granted('ROLE_CLIENT') %}
+
+                            <li class="dropdown open-nav"><a href="" data-toggle="dropdown" class="dropdown-toggle">demander Patenariat<b class="caret"></b></a>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li>
+
+                                        <ul>
+
+                                                <li><a href="{{ path('demandePartFree',{ 'userid':app.user.id }) }}">Freelancer</a></li>
+
+
+                                                <li><a href="{{ path('demandePartPro' ,{ 'userid':app.user.id })}}">Professionnel</a></li>
+
+                                        </ul>
+
+
+                                    </li>
+                                </ul>
+                            </li>
+                                {% else %}
+
+                            {% endif %}
+
+
+                        </ul>
+                    </nav>
+                </div>
+                <div class="right_menu">
+                    <ul>
+                        <li class="menubtn"><a href="{{ path('Afficher_Panier') }}"><span class="fa fa-shopping-cart"></span></a>
+
+                        <li class="menubtn"><a href="#"><span class="fa fa-user"></span></a>
+                                <div class="menu_c acc_menu">
+                                    {% block login %}
+
+                                    {% if  (is_granted("ROLE_CLIENT")) or (is_granted("ROLE_ADMIN")) or (is_granted("ROLE_FREELANCER")) or (is_granted("ROLE_PRO"))  %}
+
+
+                                    Connected as : <a href="{{ path('fos_user_profile_edit') }}">{{ app.user.username }}</a>
+                                    <a href="{{ path('fos_user_change_password') }}" class="signin_btn btn_c">Change password</a>
+                                    <a href="{{ path('fos_user_profile_edit') }}" class="signin_btn btn_c">Update</a>
+                                    <a href="{{ path('fos_user_security_logout') }}" class="signin_btn btn_c">Logout</a>
+                                    <a href="{{ path('Consulter_Commande') }}" class="signin_btn btn_c">Consulter mes commandes</a>
+                                    <input type="text" id="idUser" hidden value="{{ app.user.id }}"/>
+
+                                    {% else %}
+
+
+                                    <div class="row" >
+
+                                        <div class="menu_title clearfix">
+                                            <div class="sign_up " >
+                                                <a href="{{ path('fos_user_registration_register') }}" class="sign_up">Sign up</a>
+                                                <br/> <br/>
+                                                <a href="{{ path('fos_user_security_login') }}" class="sign_up"> Login</a>
+                                            </div><br>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                    {% endif %}
+
+
+
+
+
+                                    {% endblock %}
+
+                        </li>
+
+
+                        <li class="menubtn"><a href="#"><span class="fa fa-search"></span></a>
+                            <div class="menu_c search_menu">
+                                <div class="search_box">
+                                    <input type="search" class="txtbox" placeholder="Search">
+                                    <a href="#"><span class="fa fa-level-down fa-rotate-90"></span></a>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+     {% block flexslider %}
+    <div class="flexslider home-slider">
+        <ul class="slides">
+            <li> <img alt="alt" src="{{ asset('client/images/12.jpg') }}" >
+                <div class="flex-caption">
+                    <div class="banner">
+                        <h1>Le Souk</h1>
+                        <div class="line_1"></div>
+                        <h4>El-Medina</h4>
+                        <p>Souk El Medina est une plateforme destinée à la promotion du métier d’artisan et des produits Tunisiens</p>
+                        <a class="btn_c" href="#">Details</a> </div>
+                </div>
+            </li>
+            <li> <img alt="alt" src="{{ asset('client/images/15.jpg') }}" >
+                <div class="flex-caption">
+                    <div class="banner">
+                        <h1>Le Souk</h1>
+                        <div class="line_1"></div>
+                        <h4>El-Medina</h4>
+                        <p>Souk El Medina est une plateforme destinée à la promotion du métier d’artisan et des produits Tunisiens</p>
+                        <a class="btn_c" href="#">Details</a> </div>
+                </div>
+            </li>
+            <li> <img alt="alt" src="{{ asset('client/images/18.jpg') }}" >
+                <div class="flex-caption">
+                    <div class="banner">
+                        <h1>Le Souk</h1>
+                        <div class="line_1"></div>
+                        <h4>El-Medina</h4>
+                        <p>Souk El Medina est une plateforme destinée à la promotion du métier d’artisan et des produits Tunisiens</p>
+                        <a class="btn_c" href="#">Details</a> </div>
+                </div>
+            </li>
+            <li> <img alt="alt" src="{{ asset('client/images/26.jpg') }}" >
+                <div class="flex-caption">
+                    <div class="banner">
+                        <h1>Le Souk</h1>
+                        <div class="line_1"></div>
+                        <h4>El-Medina</h4>
+                        <p>Souk El Medina est une plateforme destinée à la promotion du métier d’artisan et des produits Tunisiens</p>
+                        <a class="btn_c" href="#">Details</a> </div>
+                </div>
+            </li>
+            <li> <img alt="alt" src="{{ asset('client/images/17.jpg') }}" >
+                <div class="flex-caption">
+                    <div class="banner">
+                        <h1>Le Souk</h1>
+                        <div class="line_1"></div>
+                        <h4>El-Medina</h4>
+                        <p>Souk El Medina est une plateforme destinée à la promotion du métier d’artisan et des produits Tunisiens</p>
+                        <a class="btn_c" href="#">Details</a> </div>
+                </div>
+            </li>
+            <li> <img alt="alt" src="{{ asset('client/images/19.jpg') }}" >
+                <div class="flex-caption">
+                    <div class="banner">
+                        <h1>Le Souk</h1>
+                        <div class="line_1"></div>
+                        <h4>El-Medina</h4>
+                        <p>Souk El Medina est une plateforme destinée à la promotion du métier d’artisan et des produits Tunisiens</p>
+                        <a class="btn_c" href="#">Details</a> </div>
+                </div>
+            </li>
+
+
+        </ul>
+        <div class="container">
+            <div class="banner_nav ">
+                <div class="scroll_down">Scroll down <span class="fa fa-arrow-circle-down"></span></div>
+            </div>
+        </div>
+    </div>
+     {% endblock %}
+    {% block content %}
+    {% endblock content %}
+    <div id="footer" >
+<br><br>
+        <div class="f_mid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <h4>A propos</h4>
+                        <div class="desc">  Née d’une collaboration multiple entre promouvoir l'aspect touristique et culturel de la tunisie ainsi que donnée la chance aux talentueux artisants d'exposer leur travail, Souk El Medina est une plateforme numérique destinée à la promotion du métier d’artisan et des produits du terroir Tunisien.
+
+                            C’est un lieu de rencontre des créateurs qui se veut être la référence du savoir-faire ancestral riche et varié, transmis de père en fils et qui a pour ambition de devenir le marketplace incontournable de promotion des artisans de tous horizons et des « Petits métiers » en voie de déperdition.</div>
+                        <div class="partner">
+                            <h4>Nos partenaires</h4>
+                            <ul>
+                                <li><a href="#"><img alt="alt" src="{{ asset('client/images/partner_logo_1.png') }}" ></a>
+                                <a href="#"><img alt="alt" src="{{ asset('client/images/partner_logo_2.png') }}" ></a>
+                                <a href="#"><img alt="alt" src="{{ asset('client/images/partner_logo_3.png') }}" ></a>
+                                <a href="#"><img width="20%" alt="alt" src="{{ asset('client/images/Logo_3000.jpg') }}"></a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <h4>Contacts</h4>
+
+                        <p><strong>Adress : </strong>Z.I. Chotrana II B.P. 160 Pôle Technologique El Ghazela - Ariana 208 </p>
+                        <p><strong>Phone : </strong>+216 79 123 456</p>
+                        <p><strong>E-mail : </strong><a href="#">YouthVision@esprit.tn</a></p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <h4>Newsletter</h4>
+                        <div class="desc">Rejoingez notre Newsletter, vous recevrez régulièrement toutes nos actualités sur votre boîte de réception</div>
+                        <div class="emial_box">
+                            <input type="text" class="txtbox" placeholder="Enter your e-mail">
+                            <a href="#"><span class="fa fa-level-down fa-rotate-90"></span></a></div>
+                        <div class="social">
+                            <ul>
+                                <li class="facebook"><a href="#"><span class="fa fa-facebook"></span></a></li>
+                                <li class="twitter"><a href="#"><span class="fa fa-twitter"></span></a></li>
+                                <li class="dribbble"><a href="#"><span class="fa fa-google-plus"></span></a></li>
+                                <li class="plus"><a href="#"><span class="fa fa-dribbble"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="f_bot">
+            <div class="container">
+                <div class="f_bot_left"><strong>Souk El Medina - </strong>Responsive  Theme  © 2018</div>
+                <div class="f_bot_right">Design By <a href="#">YouthVision</a></div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script  src="{{ asset('client/js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('client/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('client/js/jquery.icheck.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('client/js/package.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('client/js/jquery.flexslider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('client/js/bxslider/jquery.bxslider.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('client/js/scripts.js') }}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('client/js/rating.js') }}"></script>
+
+    </body>
+</html>

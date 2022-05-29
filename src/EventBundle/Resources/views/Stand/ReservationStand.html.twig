@@ -1,0 +1,63 @@
+{% extends ":client:layout.html.twig" %}
+{% block flexslider %}
+
+{% endblock %}
+{% block content %}
+
+    <div class="container">
+
+        <div class="row">
+            <center>
+                <div class="page-header">
+                    <h3>Stands Disponibles</h3>
+                </div>
+            </center>
+            <br>
+            <br>
+            <div class="span5">
+
+                <table class="table table-striped table-condensed">
+                    <thead>
+                    <tr>
+                        <th>Superficie </th>
+                        <th>Emplacement</th>
+                        <th>Couleur</th>
+                        <th>Prix </th>
+                        <th> </th>
+
+                    </tr>
+                    </thead>
+
+
+
+
+                    {% for stand in standclient %}
+                        <tr>
+
+
+                                <td>{{ stand.superficiestand }}</td>
+                                <td>{{ stand.emplacementstand }}</td>
+                                <td>{{ stand.couleur }}</td>
+                               <td>{{ stand.prix }}</td>
+                                <td><a href="{{ path('reserverStandClient',{'ids':stand.numstand,'ide':app.request.get('ide'),'idu':app.user.id } ) }}" class="btn_c info_btn"  >Reserver</a></td>
+                            <input type="number" name="stand" value="{{ stand.numstand }}" hidden>
+
+
+                        </tr>
+                    {% endfor %}
+
+                </table>
+
+
+                <input type="text" name="utilisateur" value="{{ app.user.id }}" hidden >
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% for event in events %}
+    <tr>
+        <td>{{ event.nomevent }}</td>
+        <td>{{ event.dateevent }}</td>
+        <td>{{ event.lieux }}</td>
+        <td>{{ event.nbreplace }}</td>
+
+
+        <td>
+            <div>
+                <img src="{{ asset('uploads/img' ~ event.urlafficheevent ) }}" >
+            </div>
+        </td>
+
+    </tr>
+{% endfor %}

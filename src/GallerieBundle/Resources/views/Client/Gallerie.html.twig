@@ -1,0 +1,135 @@
+{% extends "client/layout.html.twig" %}
+
+{% block title %}Gallerie{% endblock %}
+
+{% block body %}
+
+    {% block flexslider %}
+        <div class="flexslider home-slider">
+             <ul class="slides">
+                  <img alt="alt" src="{{ asset('client/images/100_00671.jpg') }}" >
+                     <div class="flex-caption">
+                         <div class="banner">
+                             <h1>Visite Guidée</h1>
+                                 <div class="line_1"></div>
+                                   <p>Cette partie est consacré pour la visite guidée 3D </p>
+                             <p>Visiter la Galerie en 3D </p>
+                                    <a class="btn_c" href="{{ path('Visite') }}">Visiter</a> </div>
+                     </div>
+             </ul>
+        </div>
+    {% endblock %}
+
+    {% block content %}
+
+        <div id="content">
+             <div class="container">
+                 <div class="catelog_c">
+                    <div class="row">
+                     <div class="col-lg-3 col-md-3  col-sm-4 col-xs-12 ">
+                         <div class="sidebar sidebar_1 " >
+                             <div class="side_box" style="text-align: center">
+                                     <h5><a href="#" class="tgl_btn">Rechercher</a></h5>
+                                     <ul class="tgl_c">
+                                         {{ form_start(FormRecherche2) }}
+                                         {{ form_widget(FormRecherche2.description,{'attr':{'class':'group-form'}})}}
+                                         {{ form_widget(FormRecherche2.recherche,{'attr':{'class':'btn btn-primary'}})}}
+                                         {{ form_end(FormRecherche2) }}
+                                     </ul>
+                                 </div>
+
+                             <div class="side_box" style="text-align: center">
+                                 <h5><a href="#" class="tgl_btn">LES GOUVERNERATS</a></h5>
+                                 <ul class="tgl_c">
+                                     {{ form_start(FormRecherche) }}
+                                     {{ form_widget(FormRecherche.lieugallerie,{'attr':{'class':'form-group-custom'}}) }}
+                                     {{ form_widget(FormRecherche.rechercher,{'attr':{'class':'btn btn-primary'}}) }}
+                                     {{ form_end(FormRecherche) }}
+                                 </ul>
+                             </div>
+                                 <div class="side_box" style="text-align: center">
+                                 <h5><a href="#" class="tgl_btn">LES CATÉGORIES</a></h5>
+                                 <ul class="tgl_c">
+                                     {{ form_start(FormRecherche1) }}
+                                     {{ form_widget(FormRecherche1.typeGallerie,{'attr':{'class':'form-group-custom'}})}}
+                                     {{ form_widget(FormRecherche1.rechercher,{'attr':{'class':'btn btn-primary'}})}}
+                                     {{ form_end(FormRecherche1) }}
+                                 </ul>
+
+
+                             </div>
+
+                         </div>
+                     </div>
+                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                         <div class="product_c">
+                             <div class="row view-grid animated  fadeInUp" data-animation="fadeInUp" >
+                                 <h2 class="h2" >Histoire</h2>
+                                 <div class="table-responsive">
+                                     <table class="table table-striped">
+                                         <thead>
+                                         <tr>
+                                             <th width="10%">Titre</th>
+                                             <th width="45%">Description</th>
+                                             <th width="8%">Type</th>
+                                             <th width="8%">Ville</th>
+                                             <th width="30%">Image</th>
+                                         </tr>
+                                         </thead>
+                                         <tbody>
+                                         {% for x in x %}
+
+                                             <tr>
+
+                                                 <td>{{ x.titreGallerie }}</td>
+                                                 <td>{{ x.description  }}</td>
+                                                 <td>{{ x.typeGallerie }}</td>
+                                                 <td>{{ x.lieuGallerie}}</td>
+                                                 <td><a target="_blank" href="{{ asset('uploads/imgGallerie/' ~ x.imgGallerie)  }}">
+                                                         <img class="modal-content" id="myImg" src="{{ asset('uploads/imgGallerie/' ~ x.imgGallerie) }}" width="250" height="200" >
+                                                     </a>
+                                                 </td>
+                                             </tr>
+
+                                         {% endfor %}
+                                         </tbody>
+                                     </table>
+                                     <div class="navigation"  >
+                                         {{ knp_pagination_render(x) }}
+                                     </div>
+                                 </div>
+                             </div>
+                            </div>
+                         </div>
+                     </div>
+                  </div>
+             </div>
+        </div>
+
+
+
+        <div class="modal fade" id="Gallerie" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Bon plans</h4>
+                    </div>
+                    <div class="modal-body">
+                        <a>Localisation</a>
+                    </div>
+                    <div class="modal-body">
+                        <a>site web</a>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    {% endblock content %}
+
+
+{% endblock %}

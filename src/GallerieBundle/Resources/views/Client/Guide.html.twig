@@ -1,0 +1,111 @@
+{% extends "client/layout.html.twig" %}
+
+{% block title %}Gallerie{% endblock %}
+
+{% block body %}
+
+    {% block flexslider %}
+        <div class="flexslider home-slider">
+            <ul class="slides">
+                <img alt="alt" src="{{ asset('client/images/100_00671.jpg') }}" >
+                <div class="flex-caption">
+                    <div class="banner">
+                        <h1>Visite Guidée</h1>
+                        <div class="line_1"></div>
+                        <p>Cette partie est consacré pour la visite guidée 3D </p>
+                        <p>Visiter la Galerie en 3D </p>
+                        <a class="btn_c" href="{{ path('Visite') }}">Visiter</a> </div>
+                </div>
+            </ul>
+        </div>
+    {% endblock %}
+
+    {% block content %}
+
+        <div id="content">
+        <div class="container">
+            <div class="catelog_c">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3  col-sm-4 col-xs-12 ">
+                        <div class="sidebar sidebar_1 " >
+                            <div class="side_box" style="text-align: center">
+                                <h5><a href="#" class="tgl_btn">LES GOUVERNERATS</a></h5>
+                                <ul class="tgl_c">
+                                    {{ form_start(ListGuide) }}
+                                {{ form_widget(ListGuide.villeguide,{'attr':{'class':'form-group-custom'}}) }}
+                                {{ form_widget(ListGuide.Ajouter,{'attr':{'class':'btn btn-primary'}}) }}
+                                    {{ form_end(ListGuide) }}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                        <div class="product_c">
+                            <div class="row view-grid animated  fadeInUp" data-animation="fadeInUp" >
+                                <h2 class="h2" >Liste des Guides</h2>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th >Nom du Guide</th>
+                                            <th>Prenom Guide</th>
+                                            <th >Email</th>
+                                            <th >Telephone</th>
+                                            <th >Ville</th>
+                                            <th width="30%">Photo de profil</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for Guide in x %}
+
+                                            <tr>
+
+                                                <td>{{ Guide.nomguide }}</td>
+                                                <td>{{ Guide.prenomguide  }}</td>
+                                                <td>{{ Guide.mailguide }}</td>
+                                                <td>{{ Guide.telguide}}</td>
+                                                <td>{{ Guide.villeguide}}</td>
+                                                <td><a target="_blank" href="{{ asset('uploads/imgGuide/' ~ Guide.imgGuide)  }}">
+                                                        <img class="modal-content" id="myImg" src="{{ asset('uploads/imgGuide/' ~ Guide.imgGuide) }}" width="250" height="200" >
+                                                    </a>
+                                                </td>
+                                            </tr>
+
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    <div class="navigation"  >
+                                        {{ knp_pagination_render(x) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="Guide" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Trouver un Guide</h4>
+                    </div>
+                    <div class="modal-body">
+                        <a>Profil</a>
+                    </div>
+                    <div class="modal-body">
+                        <a>Contacter</a>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endblock content %}
+
+
+{% endblock %}

@@ -1,0 +1,81 @@
+<?php
+
+namespace WebServiceBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Stand
+ *
+ * @ORM\Table(name="stand", indexes={@ORM\Index(name="IDX_64B918B6A76ED395", columns={"user_id"}), @ORM\Index(name="IDX_64B918B626572406", columns={"eventstand"})})
+ * @ORM\Entity
+ */
+class Stand
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numStand", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $numstand;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="superficieStand", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $superficiestand;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="emplacementStand", type="string", length=254, nullable=true)
+     */
+    private $emplacementstand;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="couleur", type="string", length=254, nullable=true)
+     */
+    private $couleur;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="etat", type="boolean", nullable=true)
+     */
+    private $etat = '1';
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="prix", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $prix;
+
+    /**
+     * @var \Event
+     *
+     * @ORM\ManyToOne(targetEntity="Event")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="eventstand", referencedColumnName="idEvent")
+     * })
+     */
+    private $eventstand;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+
+}
+

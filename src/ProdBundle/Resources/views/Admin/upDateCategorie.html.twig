@@ -1,0 +1,38 @@
+{% extends "admin/base_admin.html.twig"%}
+
+{% block content %}
+    <center>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="container">
+            <div class="col-md-8 col-md-offset-6">
+                <div class="col-md-8 col-md-offset-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Editer Categorie.</h3>
+                        </div>
+                        {{ form_start(form) }}
+                        <div class="panel-body">
+                                <fieldset>
+
+                                    <div class="form-group">
+                                        {{ form_widget(form.nomcategorie, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ form_widget(form.typecategorie, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                    {{ form_widget(form.save,{'attr': {'class': 'btn btn-lg btn-success btn-block','label':'Editer'}} ) }}
+                                </fieldset>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+{% endblock %}

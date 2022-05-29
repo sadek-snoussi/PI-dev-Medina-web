@@ -1,0 +1,77 @@
+{% extends ":client:layout.html.twig" %}
+{% block flexslider %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+        <div class="col-md-8 col-md-offset-3">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{ prod.nomproduit }}</h3>
+                    </div>
+                    {{ form_start(form) }}
+                    <div class="panel-body">
+                        <fieldset>
+
+                            <p>Prix de Base :</p>
+
+                            <div class="form-group">
+                                {{ form_widget(form.prixbaseproduit, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+
+                                   <p>Prix de Vente :</p>
+
+
+                            <div class="form-group">
+                                {{ form_widget(form.prixventeproduit, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+
+
+
+                                    <p>Quantité :</p>
+
+                            <div class="form-group">
+                                {{ form_widget(form.qtedispoproduit, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+
+
+                           {{ form_widget(form.save,{'attr': {'class': 'btn btn-warning fa fa-edit','label':' '}} ) }}
+
+                        </fieldset>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+

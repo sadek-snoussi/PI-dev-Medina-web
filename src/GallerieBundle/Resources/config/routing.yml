@@ -1,0 +1,58 @@
+guide_homepage:
+    path:     /
+    defaults: { _controller: GallerieBundle:Default:index }
+index_Gallerie:
+    path:     /Gallerie
+    defaults: { _controller: GallerieBundle:Gallerie:Gallerie }
+Ajout_Guide:
+    path:     /AjoutGuide
+    defaults: { _controller: GallerieBundle:Guide:addGuide }
+Affiche_Guide:
+    path:     /AfficheGuide
+    defaults: { _controller: GallerieBundle:Guide:showGuide }
+Modifier_Guide:
+    path:     /ModifierGuide/{id}
+    defaults: { _controller: GallerieBundle:Guide:updateGuide }
+Supprimer_Guide:
+    path:     /SupprimerGuide/{id}
+    defaults: { _controller: GallerieBundle:Guide:deleteGuide }
+Affiche_GuideClient:
+    path:     /AfficheGuideClient
+    defaults: { _controller: GallerieBundle:Guide:showClientGuide }
+Ajout_Gallerie:
+    path:     /AjoutGallerie
+    defaults: { _controller: GallerieBundle:Gallerie:addGallerie }
+Affiche_Gallerie:
+    path:     /AfficheGallerie
+    defaults: { _controller: GallerieBundle:Gallerie:showGallerie }
+Modifier_Gallerie:
+    path:     /ModifierGallerie/{id}
+    defaults: { _controller: GallerieBundle:Gallerie:updateGallerie }
+Supprimer_Gallerie:
+    path:     /SupprimerGallerie/{id}
+    defaults: { _controller: GallerieBundle:Gallerie:deleteGallerie }
+Affiche_GallerieClient:
+    path:     /AfficheGallerieClient
+    defaults: { _controller: GallerieBundle:Gallerie:showClientGallerie }
+Ajout_Bonplan:
+    path:     /AjoutBonplan
+    defaults: { _controller: GallerieBundle:Bonplan:addBonplan }
+Affiche_Bonplan:
+    path:     /AfficheBonplan
+    defaults: { _controller: GallerieBundle:Bonplan:showBonplan }
+Modifier_Bonplan:
+    path:     /ModifierBonplan/{id}
+    defaults: { _controller: GallerieBundle:Bonplan:updateBonplan }
+Supprimer_Bonplan:
+    path:     /SupprimerBonplan/{id}
+    defaults: { _controller: GallerieBundle:Bonplan:deleteBonplan }
+AfficherClient_Bonplan:
+    path:     /AfficheCBonplan
+    defaults: { _controller: GallerieBundle:Bonplan:showClientBonplan }
+Visite:
+    path:     /Visite
+    defaults: { _controller: GallerieBundle:Default:VG }
+Geoindex:
+    path:     /Geo/{id}
+    defaults: { _controller: GallerieBundle:Bonplan:Geoindex }
+

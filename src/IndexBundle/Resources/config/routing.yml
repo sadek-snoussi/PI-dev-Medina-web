@@ -1,0 +1,19 @@
+
+index_homepage:
+    path:     /index
+    defaults: { _controller: AppBundle:Default:index }
+index_Acceuil:
+    path:     /Acceuil
+    defaults: { _controller: IndexBundle:Index:Acceuil }
+index_Admin:
+    path:     /homeA
+    defaults: { _controller: IndexBundle:HomeA:homeAdmin }
+index_Forum:
+    path:     /Forum
+    defaults: { _controller: IndexBundle:Index:Forum }
+index_Event:
+    path:     /Event
+    defaults: { _controller: IndexBundle:Index:Event }
+index_Contact:
+    path:     /Contact
+    defaults: { _controller: IndexBundle:Index:Contact }

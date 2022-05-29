@@ -1,0 +1,231 @@
+web_service_homepage:
+    path:     /
+    defaults: { _controller: WebServiceBundle:Default:index }
+
+allEvent:
+    path: /allEvent
+    defaults: {_controller: WebServiceBundle:Event:all }
+inscription23:
+    path: /inscri23/{iduser}/{idevent}
+    defaults: {_controller: WebServiceBundle:Event:inscription }
+StandDispo:
+    path: /standDispo
+    defaults: {_controller: WebServiceBundle:Stand:all }
+Reservation:
+    path: /Reserver/{ids}/{idEvent}/{idu}
+    defaults: {_controller: WebServiceBundle:Stand:Reservation }
+allUsers:
+      path: /users/all
+      defaults: {_controller: WebServiceBundle:User:all}
+findUserById:
+      path: /user/{id}
+      defaults: {_controller: WebServiceBundle:User:FindById}
+findUserByUsername:
+      path: /auth/{username}
+      defaults: {_controller: WebServiceBundle:User:FindByUsername}
+allPartenaires:
+      path: /Partenaires/all
+      defaults: {_controller: WebServiceBundle:User:FindPart}
+addUser:
+      path: /userAdd/add
+      defaults: { _controller: WebServiceBundle:User:add}
+authentification:
+      path: /authentification/{login}/{password}
+      defaults: { _controller: WebServiceBundle:User:authentification}
+updateUser:
+      path: /modifProfileClient/{id}
+      defaults: {_controller: WebServiceBundle:User:updateProfile}
+updatePro:
+      path: /modifProfilePro/{id}
+      defaults: {_controller: WebServiceBundle:User:updateProfilePro}
+updateFree:
+      path: /modifProfileFree/{id}
+      defaults: {_controller: WebServiceBundle:User:updateProfileFree}
+demanderPartPro:
+      path: /DemanderPart/Pro/{id}
+      defaults: {_controller: WebServiceBundle:User:demanderPartPro}
+demanderPartFree:
+      path: /DemanderPart/Free/{id}
+      defaults: {_controller: WebServiceBundle:User:demanderPartFree}
+listProduitByPart:
+      path: /produits/all/{id}
+      defaults: {_controller: WebServiceBundle:User:listProduits}
+listVideosByPart:
+      path: /videos/all/{id}
+      defaults: {_controller: WebServiceBundle:User:listVideos}
+
+
+
+
+
+
+
+
+
+allBonplan:
+    path: /allBonplan
+    defaults: {_controller: WebServiceBundle:BonplanService:all }
+allGallerie:
+    path: /allGallerie
+    defaults: {_controller: WebServiceBundle:GalerieService:all }
+allGuide:
+    path: /allGuide
+    defaults: {_controller: WebServiceBundle:GuideService:all }
+AjoutNote:
+    path: /AjoutNote/{id_user}/{id_bonplan}/{rating}
+    defaults: {_controller: WebServiceBundle:BonplanService:ajout_Note }
+allRatingDescBonplan:
+    path: /allRatingDescBonplan
+    defaults: {_controller: WebServiceBundle:BonplanService:allRatingDesc }
+allRatingAscBonplan:
+    path: /allRatingAscBonplan
+    defaults: {_controller: WebServiceBundle:BonplanService:allRatingAsc }
+byTagBonplan:
+    path: /byTagBonplan/{tag}
+    defaults: {_controller: WebServiceBundle:BonplanService:byTagAsc }
+byType:
+    path: /byType/{receivedType}
+    defaults: {_controller: WebServiceBundle:BonplanService:byType }
+GalleriebyTag:
+    path: /GalleriebyTag/{tag}
+    defaults: {_controller: WebServiceBundle:GalerieService:byTagDescrription }
+GalleriebyType:
+    path: /GalleriebyType/{Type}
+    defaults: {_controller: WebServiceBundle:GalerieService:byType }
+GalleriebyGouv:
+    path: /GalleriebyGouv/{Gouv}
+    defaults: {_controller: WebServiceBundle:GalerieService:byGouv }
+GalleriebyGouvType:
+    path: /GalleriebyGouvAndType/{Gouv}/{Type}
+    defaults: {_controller: WebServiceBundle:GalerieService:byGouvType }
+GuidebyGouv:
+    path: /GuidebyGouv/{Gouv}
+    defaults: {_controller: WebServiceBundle:GuideService:byGouvGuide }  
+allVideo:
+    path: /allVideo
+    defaults: {_controller: WebServiceBundle:WebService:allVideoClient }
+
+allProVideo:
+    path: /allProVideo/{idUser}
+    defaults: {_controller: WebServiceBundle:WebService:allVideoPro }
+
+updateVideo:
+    path: /updateVideo/{idVideo}/{titre}/{desc}
+    defaults: {_controller: WebServiceBundle:WebService:updateVideo}
+deleteVideo:
+    path: /deleteVideo/{idVideo}
+    defaults: {_controller: WebServiceBundle:WebService:deleteVideo}
+addComment:
+    path: /addComment/{idVideo}/{comment}/{idUser}
+    defaults: {_controller: WebServiceBundle:WebService:addComment}
+allComments:
+    path: /allComment/{idVideo}
+    defaults: {_controller: WebServiceBundle:WebService:allComment}
+
+searchVideo:
+    path: /search/{tag}
+    defaults: {_controller: WebServiceBundle:WebService:search}
+
+addRating:
+    path: /addRating/{idVideo}/{rate}/{idUser}
+    defaults: {_controller: WebServiceBundle:WebService:addRating}
+
+userRate:
+    path: /ratingVal/{idVideo}/{idUser}
+    defaults: {_controller: WebServiceBundle:WebService:ratingOfUser}
+topRatedVideo:
+    path: /topRated
+    defaults: {_controller: WebServiceBundle:WebService:Acceuil}
+
+
+
+
+
+
+
+
+
+
+Products:
+    path: /Products
+    defaults: {_controller: WebServiceBundle:WebService:Products}
+
+categories:
+    path: /categories
+    defaults: {_controller: WebServiceBundle:WebService:categories}
+
+add:
+    path:     /add/{ref}/{nom}/{cat}/{mat}/{p_base}/{p_vente}/{quantity}/{img}/{idUser}
+    defaults: { _controller: WebServiceBundle:WebService:add }
+
+delete:
+    path:     /delete/{idp}
+    defaults: { _controller: WebServiceBundle:WebService:delete}
+
+edit:
+    path:     /edit/{id}/{ref}/{nom}/{cat}/{mat}
+    defaults: { _controller: WebServiceBundle:WebService:update}
+
+editStock:
+    path:     /editStock/{id}/{prix_b}/{prix_v}/{quantity}
+    defaults: { _controller: WebServiceBundle:WebService:updateStock}
+
+recherche:
+    path:     /recherche/{tag}
+    defaults: { _controller: WebServiceBundle:WebService:ProductsRecherches}
+
+rechercheParPrix:
+    path:     /rechercheParPrix/{min}/{max}
+    defaults: { _controller: WebServiceBundle:WebService:ProductsParPrix}
+
+rechercheParCategorie:
+    path:     /rechercheParCategorie/{cat}
+    defaults: { _controller: WebServiceBundle:WebService:ProductsParCategorie}
+
+
+
+
+
+
+
+
+Paniers :
+    path: /Paniers
+    defaults: {_controller: WebServiceBundle:WebService:allPanier}
+
+updatePanier:
+    path: /updateQuantite/{idPanier}/{Quantite}
+    defaults: {_controller: WebServiceBundle:WebService:updateQuantite }
+
+supprimerDuPanier:
+    path: /supprimerDuPanier/{idPanier}
+    defaults: {_controller: WebServiceBundle:WebService:supprimerDuPanier}
+
+ajouterPanier:
+    path: /ajouterPanier/{idUser}/{idProduit}
+    defaults: {_controller: WebServiceBundle:WebService:ajouterPaniers}
+
+updateFlag:
+    path: /updateFlag/{idUser}
+    defaults: {_controller: WebServiceBundle:WebService:updateFlag}
+
+updateQuantiteProduit:
+    path: /updateQuantiteProduit/{idProduit}/{qDispo}/{qVendu}
+    defaults: {_controller: WebServiceBundle:WebService:updateQuantiteProduit}
+
+ajouterCommande:
+    path: /ajouterCommande
+    defaults: {_controller: WebServiceBundle:WebService:ajouterCommande}
+Commande:
+    path: /commande/{totalePrix}
+    defaults: {_controller: WebServiceBundle:WebService:Commande}
+
+
+
+
+
+
+
+
+
+    

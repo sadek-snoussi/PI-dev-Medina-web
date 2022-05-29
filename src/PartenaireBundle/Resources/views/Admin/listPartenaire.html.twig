@@ -1,0 +1,171 @@
+{% extends ":admin:base_admin.html.twig" %}
+
+{% block content %}
+    <div class="page-wrapper">
+
+    {% if app.session.flashBag.has('success') %}
+        <div class="alert alert-success">
+            {% for msg in app.session.flashBag.get('success') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Liste des partenaires</h3>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active">partenaires</li>
+                </ol>
+            </div>
+
+            <div class="">
+                <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"> Liste des Partenaires</h4>
+                        <h6 class="card-subtitle"></h6>
+                        <div class="table-responsive">
+                            <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h4 class="modal-title" id="myModalLabel">Add New Contact</h4> </div>
+                                        <div class="modal-body">
+                                            <from class="form-horizontal form-material">
+                                                <div class="form-group">
+                                                    <div class="col-md-12 m-b-20">
+                                                        <input type="text" class="form-control" placeholder="nom" name="nom"> </div>
+                                                    <div class="col-md-12 m-b-20">
+                                                        <input type="text" class="form-control" placeholder="prenom"name="prenom"> </div>
+                                                    <div class="col-md-12 m-b-20">
+                                                        <input type="text" class="form-control" placeholder="tel" name="tel"> </div>
+                                                    <div class="col-md-12 m-b-20">
+                                                        <input type="text" class="form-control" placeholder="role" name="role"> </div>
+                                                    <div class="col-md-12 m-b-20">
+                                                        <input type="text" class="form-control" placeholder="email" name="email"> </div>
+                                                    <div class="col-md-12 m-b-20">
+                                                        <input type="text" class="form-control" placeholder="specialité" name="specialite"> </div>
+
+                                                    <div class="col-md-12 m-b-20">
+                                                        <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>Upload Contact Image</span>
+                                                            <input type="file" class="upload"> </div>
+                                                    </div>
+                                                </div>
+                                            </from>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Save</button>
+                                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div><table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list footable-loaded footable" data-page-size="10">
+                                <thead>
+
+                                <tr>
+
+                                    <th class="footable-sortable">Nom<span class="footable-sort-indicator"></span></th>
+                                    <th class="footable-sortable">Prenom<span class="footable-sort-indicator"></span></th>
+                                    <th class="footable-sortable">tel<span class="footable-sort-indicator"></span></th>
+                                    <th class="footable-sortable">Role<span class="footable-sort-indicator"></span></th>
+                                    <th class="footable-sortable">Email<span class="footable-sort-indicator"></span></th>
+                                    <th class="footable-sortable">Specialité<span class="footable-sort-indicator"></span></th>
+                                    <th class="footable-sortable">Action<span class="footable-sort-indicator"></span></th>
+                                </tr>
+
+                                </thead>
+                                <tbody>
+                                {% for user in users %}
+                                    <tr class="footable-even" style="">
+
+                                        <input name="iduser" hidden value="{{ user.id }}">
+                                        <td>
+                                            <a href="javascript:void(0)"><img src="{{ asset('admin/images/users/4.jpg') }}" alt="user" width="40" class="img-circle"> {{ user.nomuser }}</a>
+                                        </td>
+                                        <td>{{ user.prenomuser }}</td>
+                                        <td>{{ user.teluser }}</td>
+                                        <td><span class="label label-danger">{{ user.typeuser }}</span> </td>
+                                        <td>{{ user.email }}</td>
+                                        <td>{{ user.specialitepart }}</td>
+
+
+                                        <td class="text-nowrap">
+
+
+                                            <a href="{{ path('partenaire_grade',{'id':user.id}) }}" data-toggle="tooltip" data-original-title="info"> <i class="fa ti-flag-alt-2"></i> </a>
+                                            <a  data-toggle="modal" data-target="#supprimer{{ user.id }}" > <i class="fa fa-close text-danger"></i> </a>
+                                        </td>
+
+
+                                        <div class="modal fade in" id="supprimer{{ user.id }}"  >
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+
+
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Confirmation.</h4>
+                                                    </div>
+
+
+                                                    <div class="modal-body">
+                                                        <h4>Vous êtes sur le point de supprimer {{ user.username }}</h4><br>
+                                                        <h4>êtes-vous sûr de vouloir continuer ?</h4><br>
+
+                                                        <a  href="{{ path('partenaire_supp',{ 'id':user.id }) }}"   class="btn btn-default" >Oui</a>
+                                                        <a  class="btn btn-default" data-dismiss="modal">Annuler</a>
+                                                    </div>
+
+
+
+                                                    <div class="modal-footer" align="center">
+
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

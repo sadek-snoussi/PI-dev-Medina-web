@@ -1,0 +1,61 @@
+{% extends "client/layout.html.twig" %}
+
+{% block title %}Gallerie{% endblock %}
+
+{% block body %}
+
+    {% block flexslider %}
+        <div class="flexslider home-slider">
+            <ul class="slides">
+                <img alt="alt" src="{{ asset('client/images/100_00671.jpg') }}" >
+            </ul>
+        </div>
+    {% endblock %}
+    {% block content %}
+        <div id="content">
+            <div class="container">
+                    <div class="row">
+                            <h1 class="h1" align="center" >Visites  Guidées</h1>
+                             </br>
+                             </br>
+                            <div class=".col-lg-12 .col-lg-offset-12  ">
+                                <div class="box_1"> <iframe title="Virtual tour by tourmaker" width="1280" height="550" align="center"
+                                                            src="https://makevt.com/media/tourmaker/kvphxjqyud/" frameborder="2" allowfullscreen></iframe>
+
+                                </div>
+
+                            </div>
+                        </br>
+                        <h2 class="h2" align="center" > Souk El Medina, Centre Ville, Tunis</h2>
+                        </br>
+                        </br>
+                            <div class=".col-md-6 .col-md-offset-3  ">
+
+                                    <div class="box_1"> <iframe title="Virtual tour by tourmaker" width="1280" height="550" src="https://makevt.com/media/tourmaker/qilvpehrbd/" frameborder="0" allowfullscreen></iframe>
+
+                                    </div>
+
+
+                            </div>
+                        </br>
+                        <h2 class="h2" align="center" >Bon Plan :  Salon de Thé, DAR EL Mnouchi, Souk Elleffa, Tunis</h2>
+                        </br>
+                        </br>
+                            <div class=".col-md-6 .col-md-offset-3  ">
+
+                                    <div class="box_1">  <iframe title="Virtual tour by tourmaker" width="1280" height="550" src="https://makevt.com/media/tourmaker/fzdkqltspu/" frameborder="0" allowfullscreen></iframe>
+
+                                    </div>
+
+                            </div>
+                        </br>
+                        <h1 class="h1" align="center" >Culture : Musée Bardo,Tunis</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock content %}
+
+
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends ":client:layout.html.twig" %}
+{% block title %}
+Mes Commandes
+{% endblock %}
+{% block flexslider %}
+{% endblock %}
+{% block content %}
+
+
+
+    <div id="content">
+        <div class="container" >
+            <div class="title clearfix">
+
+                <div class="col-md-offset-5">
+                    <h2>Mes Commandes</h2>
+                </div>
+            </div>
+            <div class="cart_c">
+                <div class="cart_top">
+                    <div class="row">
+                        <div >
+                            <div class="cart_tbl">
+                                    <div class="clearfix title_row">
+                                    <ul>
+                                        <li>Id commande</li>
+                                        <li>Nom</li>
+                                        <li>Prenom</li>
+                                        <li>Etat </li>
+                                        <li>Prix  </li>
+                                       {# <li>Produit</li> #}
+                                    </ul>
+                                </div>
+                                <div class="clearfix con_row">
+
+
+                                    {% for commande in commandes %}
+                                        {% if app.user.id == commande.user.id %}
+                                    <ul>
+                                        <li><p><span class="label label-primary">{{ commande.idcommande }}</span></p></li>
+                                        <li><p>{{ commande.nom }}</p></li>
+                                        <li><p>{{ commande.prenom }}</p></li>
+                                        {% if commande.etatCommande == 'En cours de validation' %}
+                                        <li><p><span class="label label-warning">{{ commande.etatCommande }}</p></li>
+                                        {% elseif commande.etatCommande == 'Validée' %}
+                                    <li><p><span class="label label-success">{{ commande.etatCommande }}</span></p>
+                                        {% else %}
+                                        <li><p><span class="label label-danger">{{ commande.etatCommande }}</span></p>
+                                        {% endif %}
+                                        <li><h5>{{ commande.totalprixcommande }} Dt</h5></li>
+                                       {# <li><a  data-toggle="modal" data-target="#sofienne">Produits</a></li> #}
+                                    </ul>
+                                       {% endif %}
+                                    {% endfor %}
+
+                                </div>
+
+                            </div>
+                            {# display navigation #}
+                            <div class="text-center">
+                                {{ knp_pagination_render(commandes) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{#
+    <div class="modal fade in" id="sofienne" role="dialog"  >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Produits</h4>
+                </div>
+
+                <div class="modal-body">
+
+                    <div id="content">
+                        <div class="container" style="width: auto">
+                            <div class="cart_c">
+                                <div class="cart_top">
+                                    <div class="row">
+                                        <div >
+                                            <div class="cart_tbl">
+                                                <div class="clearfix title_row">
+                                                    <ul>
+                                                        <li>Nom</li>
+                                                        <li>Prenom</li>
+                                                        <li>Etat </li>
+                                                        <li>Prix  </li>
+                                                        <li>Produit</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="clearfix con_row">
+                                                    {% for panier in paniers %}
+                                                        {% if app.user.id == panier.user.id %}
+                                                            {% if panier.flag == 1 %}
+                                                                <ul>
+                                                                    <li>Nom</li>
+                                                                    <li>Prenom</li>
+                                                                    <li>Etat </li>
+                                                                    <li>Prix  </li>
+                                                                    <li>Produit</li>
+                                                                </ul>
+                                                            {% endif %}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer" align="center">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+#}
+
+
+
+
+{% endblock %}

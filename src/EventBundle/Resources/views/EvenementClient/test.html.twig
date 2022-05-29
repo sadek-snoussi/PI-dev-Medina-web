@@ -1,0 +1,38 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <base href="https://localhost/">
+</head>
+
+<table  border="1">
+
+
+
+    <form method="post">
+
+
+        <tr >
+           <td colspan="2" > <h2>{{ event.nomevent }}</h2></td>
+
+
+        </tr>
+        <tr>
+            <td ><h3>Numero Inscription:{{ inscri.idinscri }}</h3></td>
+            <td ><h1>{{ inscri.nom }}  {{ inscri.prenom }} </h1></td>
+        </tr>
+
+        <tr>
+            <td><h1>{{ inscri.adressemail }} </h1></td>
+            <td ><h2>Date inscription {{ "now"|date("m/d/Y") }} </h2></td>
+        </tr>
+
+        <tr >
+          <td colspan="2"> <h3>Lieux:{{ event.lieux }}</h3></td>
+        </tr>
+
+    </form>
+
+</table>
+
+
+</html>

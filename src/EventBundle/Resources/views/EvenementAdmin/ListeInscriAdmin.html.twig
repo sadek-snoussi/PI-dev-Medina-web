@@ -1,0 +1,106 @@
+{% extends ':admin:base_admin.html.twig' %}
+{% block content %}
+    <div class="page-wrapper" style="min-height: 612px;">
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <!-- column -->
+                <div class="col-lg-6">
+                    <div class="card">
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div class="">
+                <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+            </div>
+
+            <!-- column -->
+            <div class="col-12">
+                <div class="card">
+
+                    <div class="card-body">
+
+                        <h4 class="card-title">Liste des Inscriptions</h4>
+
+                        <div class="table-responsive">
+
+                            <table class="table table-striped">
+                                <thead>
+
+                                <tr>
+                                    <th>Numero inscription</th>
+                                    <th>Nom </th>
+
+                                    <th>Prenom</th>
+                                    <th>Date Inscription</th>
+                                    <th>Adresse Email</th>
+                                    <th>Evenement</th>
+                                    {% for inscri in inscriptions %}
+                                <tr>
+                                    <td>{{ inscri.idinscri }}</td>
+                                    <td>{{ inscri.nom }}</td>
+                                    <td>{{ inscri.prenom }}</td>
+                                    <td>{{ inscri.dateinscri |date('Y-m-d') }}</td>
+                                    <td>{{ inscri.adressemail }}</td>
+                                    <td>{{ inscri.event.nomevent }}</td>
+
+                                </tr>
+                                {% endfor %}
+
+
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- column -->
+            <div class="text-center">{{ knp_pagination_render(inscriptions) }}</div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right sidebar -->
+        <!-- ============================================================== -->
+        <!-- .right-sidebar -->
+
+        <!-- ============================================================== -->
+        <!-- End Right sidebar -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+
+    </div>
+{% endblock %}

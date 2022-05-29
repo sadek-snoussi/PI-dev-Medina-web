@@ -1,0 +1,50 @@
+
+<div align="center"><h1>Ma Commande</h1></div>
+<h3>Mr/M</h3> <h4 style="font: bold"> {{ app.user.prenomuser }} {{ app.user.nomuser }} vous avez passe le   </h4> <h4> {{  'now'|date('d/m/Y') }} a {{ 'now'|date('H:i') }} la commande suivante : </h4>
+<br>
+<br>
+<table class="table table-bordered" border="2">
+    <tr>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Email</th>
+        <th>Telephone</th>
+        <th>Etat de commande</th>
+        <th>Prix Totale</th>
+        <th>Mode de Payement</th>
+        <th>Produit</th>
+        <th>Prix Produit</th>
+        <th>Adresse</th>
+    </tr>
+    <tr>
+        <td>{{ commande.nom }} </td>
+        <td>{{ commande.prenom }} </td>
+        <td>{{ commande.email }} </td>
+        <td>{{ commande.tel }} </td>
+        <td style="color: red">Encours de traitement </td>
+        <td>{{ commande.totalprixcommande }} Dt </td>
+        <td>Payement a la livrision</td>
+        <td>
+        {% for panier in paniers %}
+        {% if app.user.id == panier.user.id  %}
+        <ul><li>{{ panier.produit.nomproduit }} </li></ul>
+        {% endif %}
+        {% endfor %}
+        </td>
+
+        <td>
+            {% for panier in paniers %}
+                {% if app.user.id == panier.user.id  %}
+                    <ul><li>{{ panier.produit.prixventeproduit }} Dt </li></ul>
+                {% endif %}
+            {% endfor %}
+        </td>
+        <td> {{ commande.adresse }} ,  {{ commande.ville }} , {{ commande.gouvernorat }} , {{ commande.codepostale }}  , {{ commande.pays }} </td>
+
+
+    </tr>
+</table>
+<br>
+<h3>Verifier votre compte pour suivre l'avancement de votre commande.</h3>
+<br><br><br>
+<h6>Souk el madina.</h6>

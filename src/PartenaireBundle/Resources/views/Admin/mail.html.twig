@@ -1,0 +1,58 @@
+
+
+{% extends "admin/base_admin.html.twig" %}
+
+
+
+    {% block content %}
+<div class="card-body">
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-themecolor">Envoyer un mail</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item active">partenaires</li>
+                        <li class="breadcrumb-item active">mail</li>
+                    </ol>
+                </div>
+
+                <div class="">
+                    <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+                </div>
+            </div>
+
+            {{ form_start(form) }}
+    <h3 class="card-title">Compose New Message</h3>
+    <div class="form-group">
+        <label for="Nom"> TO : </label><span class="req">* </span>
+       {{ form_widget(form.email, {'attr':{'class':'form-control','required' : 'true'}}) }}
+    </div>
+    <div class="form-group">
+        <input class="form-control" placeholder="Subject:" value="Grade">
+    </div>
+    <div class="form-group">
+        <textarea class="textarea_editor form-control" rows="15" placeholder="Enter text ..." name="body" >Bonjour Mr/Mme {{ user.nomuser }} puisque vous avez depassez 1000
+produits vendus , Nous allons vous proposer de migrer du grade gold à Premium avec une Réeduction de 30% le prix sera 50dt par mois seulement</textarea>
+        <input type="hidden" name="_wysihtml5_mode" value="1">
+
+    </div>
+
+
+            {{ form_widget(form.valider, {'attr':{'class':'fa fa-envelope-o btn btn-success m-t-20 ','value' : 'send'}}) }}
+
+            {{ form_end(form) }}
+
+
+</div>
+
+    </div>
+</div>
+{% endblock %}

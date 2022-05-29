@@ -1,0 +1,143 @@
+prod_homepage:
+    path:     /
+    defaults: { _controller: ProdBundle:Default:index }
+
+index_Acceuil:
+    path:     /Acceuil
+    defaults: { _controller: IndexBundle:Index:Acceuil }
+index_Admin:
+    path:     /homeA
+    defaults: { _controller: IndexBundle:HomeA:homeAdmin }
+
+ajout_produit:
+    path:     /ajoutProd
+    defaults: { _controller: ProdBundle:Prod:AjoutProduit }
+
+supp_produit:
+    path:     /supp_produit/{id}
+    defaults: { _controller: ProdBundle:Prod:SupprimerProduit}
+
+upDate_produit:
+    path:     /upDate_produit/{id}
+    defaults: { _controller: ProdBundle:Prod:UpdateProd}
+
+
+
+MesProduits:
+    path:     /MesProduits
+    defaults: { _controller: ProdBundle:Prod:MesProduits }
+
+selectAllClient:
+    path:     /selectAllClient
+    defaults: { _controller: ProdBundle:Prod:selectAllClient}
+
+
+
+
+
+
+
+selectCategories:
+    path:     /selectCategories/{id}
+    defaults: { _controller: ProdBundle:Prod:selectCategorie}
+
+
+
+
+
+
+
+AjoutCategorie:
+    path:     /AjoutCategorie
+    defaults: { _controller: ProdBundle:Categorie:AjoutCat}
+
+supp_Categorie:
+    path:     /suppCategorie/{id}
+    defaults: { _controller: ProdBundle:Categorie:SuppCat}
+
+listCategorie:
+    path:     /listCategorie
+    defaults: { _controller: ProdBundle:Categorie:ListCat}
+
+UpDateCategorie:
+    path:     /UpdateCategorie/{id}
+    defaults: { _controller: ProdBundle:Categorie:UpdateCat}
+
+
+ValiderProduit:
+    path:     /ValiderProduit
+    defaults: { _controller: ProdBundle:Prod:ValiderProd}
+
+
+accepterProd:
+    path:     /accepterProd/{id}
+    defaults: { _controller: ProdBundle:Prod:accepterProd}
+
+refuserProduit:
+    path:     /refuserProduit/{id}
+    defaults: { _controller: ProdBundle:Prod:refuserProduit}
+
+
+gererStock:
+    path:     /gererStock
+    defaults: { _controller: ProdBundle:Prod:gestionStock}
+
+UpDateStock:
+    path:     /UpDateStock/{id}
+    defaults: { _controller: ProdBundle:Prod:UpDateStock}
+
+
+Gerer_PDF:
+    path:     /Gerer_PDF/{id}
+    defaults: { _controller: ProdBundle:Prod:gererPdf}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

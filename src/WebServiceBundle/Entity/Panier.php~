@@ -1,0 +1,60 @@
+<?php
+
+namespace WebServiceBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Panier
+ *
+ * @ORM\Table(name="panier", indexes={@ORM\Index(name="IDX_24CC0DF2A76ED395", columns={"user_id"}), @ORM\Index(name="IDX_24CC0DF2F347EFB", columns={"produit_id"})})
+ * @ORM\Entity
+ */
+class Panier
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="flag", type="integer", nullable=false)
+     */
+    private $flag;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="quantiteProduit", type="integer", nullable=false)
+     */
+    private $quantiteproduit = '1';
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+    /**
+     * @var \Produit
+     *
+     * @ORM\ManyToOne(targetEntity="Produit")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="produit_id", referencedColumnName="idProduit")
+     * })
+     */
+    private $produit;
+
+
+}
+

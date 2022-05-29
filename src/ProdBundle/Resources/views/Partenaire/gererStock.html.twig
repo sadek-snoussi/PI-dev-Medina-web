@@ -1,0 +1,210 @@
+{% extends ":client:layout.html.twig" %}
+{% block flexslider %}
+{% endblock %}
+
+{% block content %}
+
+
+
+    <div class="container">
+        <center>
+            <div class="page-header">
+                <h3>Mon Stock.</h3>
+            </div>
+        </center>
+
+
+    <br>
+    <div class="span5">
+
+    <table class="table table-striped table-condensed">
+        <thead>
+        <tr>
+            <th>Reference </th>
+            <th>Date d'exposition</th>
+            <th>Nom Produit</th>
+            <th>Categorie </th>
+            <th>Prix Base</th>
+            <th>Prix Vente</th>
+            <th>Quantité</th>
+            <th> </th>
+        </tr>
+        </thead>
+
+
+
+
+        {% for produit in produits %}
+
+
+            <tr>
+                <td>{{ produit.referenceProd }}</td>
+                <td>{{ produit.dateexpoproduit | date("m/d/Y", "Europe/Paris") }}</td>
+                <td>{{ produit.nomproduit }}</td>
+                <td>{{ produit.idcategorie.nomcategorie }}</td>
+
+
+                <td>
+                   {{ produit.prixBaseproduit }}
+                   {#<input class="form-control input-sm" id="ex1" type="text">#}
+                </td>
+                <td>
+                    {{ produit.prixventeproduit }}
+                    {#<input class="form-control input-sm" id="ex1" type="text">#}
+                </td>
+                <td>
+                    {{ produit.qtedispoproduit }}
+                    {#<input class="form-control input-sm" id="ex1" type="text">#}
+                </td>
+
+
+
+                <td>
+                    <a href="{{ path('UpDateStock',{'id': produit.idproduit}   ) }}"  class="btn btn-warning">
+                    <i class="fa fa-edit"></i></a>
+                </td>
+
+
+            </tr>
+
+
+
+        {% endfor %}
+
+    </table>
+        <center>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#bilan">Generer Bilan</button>
+        </center>
+    </div>
+    </div>
+
+
+    {#*********************************************BILAN***********************************************************#}
+
+    <div class="modal fade" id="bilan">
+        <div class="modal-dialog" style="width: 900px">
+            <div class="modal-content ">
+
+
+                <div class="modal-header ">
+                    <a href="#" data-dismiss="modal" class="class pull-right"><span class="fa fa-remove"></span></a>
+                    <h3 class="modal-title">Vos Activités.</h3>
+                </div>
+
+
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table ">
+
+
+                                <thead>
+                                <tr>
+                                    <th>Reference Produit</th>
+                                    <th>Nom Produit</th>
+                                    <th>Date D'exposition</th>
+                                    <th>Quantité Vendue</th>
+                                    <th>Prix de Base</th>
+                                    <th>Prix de vente</th>
+                                    <th>Gain Potentiel</th>
+
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                {% set total=0 %}
+                                {% set qte=0 %}
+
+
+
+                                {% for prod in produits %}
+                                    {% set gain= prod.qtevenduproduit*(prod.prixventeproduit - prod.prixbaseproduit) %}
+
+                                    <tr>
+                                    <td>{{ prod.referenceProd }}</td>
+                                    <td>{{ prod.nomproduit }}</td>
+                                    <td>{{ prod.dateexpoproduit | date("m/d/Y", "Europe/Paris") }}</td>
+                                    <td>{{ prod.qtevenduproduit }}</td>
+                                    <td>{{ prod.prixbaseproduit }}</td>
+                                    <td>{{ prod.prixventeproduit }}</td>
+                                    <td>{{ gain }}</td>
+                                        {% set total = total+gain %}
+                                        {% set qte = qte + prod.qtevenduproduit %}
+
+
+                                    </tr>
+                                    {% endfor %}
+
+                                <tr>
+                                    <td colspan="3" align="center">Quatité totale =  </td>
+
+                                    <td>{{ qte }} </td>
+                                    <td colspan="2" align="center">Total = </td>
+                                    <td>{{ total }} </td>
+
+
+
+
+
+                                </tr>
+                                </tbody>
+
+
+
+
+                            </table>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+                        <center>
+                        <a href="{{ path('Gerer_PDF',{'id':app.user.id }) }}" class="btn btn-default">
+                            <i class="fa fa-download"></i></a>
+                        </center>
+
+                    </div>
+                </div>
+
+
+                <div class="modal-footer">
+
+
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+    {#****************************************************************************************************************
+    ****************************************************************************************************************#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

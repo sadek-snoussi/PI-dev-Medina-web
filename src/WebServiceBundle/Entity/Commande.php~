@@ -1,0 +1,144 @@
+<?php
+
+namespace WebServiceBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Commande
+ *
+ * @ORM\Table(name="commande", indexes={@ORM\Index(name="IDX_6EEAA67DA76ED395", columns={"user_id"}), @ORM\Index(name="IDX_6EEAA67DF77D927C", columns={"panier_id"})})
+ * @ORM\Entity
+ */
+class Commande
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idCommande", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idcommande;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dateCommande", type="string", length=255, nullable=true)
+     */
+    private $datecommande;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="typeCommande", type="string", length=254, nullable=true)
+     */
+    private $typecommande;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="modePayementCommande", type="string", length=254, nullable=true)
+     */
+    private $modepayementcommande;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etatCommande", type="string", length=254, nullable=false)
+     */
+    private $etatcommande;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="totalPrixCommande", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $totalprixcommande;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=254, nullable=true)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=254, nullable=true)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=254, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tel", type="string", length=254, nullable=true)
+     */
+    private $tel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pays", type="string", length=254, nullable=true)
+     */
+    private $pays;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gouvernorat", type="string", length=254, nullable=true)
+     */
+    private $gouvernorat;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=254, nullable=true)
+     */
+    private $ville;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=254, nullable=true)
+     */
+    private $adresse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codepostale", type="string", length=254, nullable=true)
+     */
+    private $codepostale;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+    /**
+     * @var \Panier
+     *
+     * @ORM\ManyToOne(targetEntity="Panier")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="panier_id", referencedColumnName="id")
+     * })
+     */
+    private $panier;
+
+
+}
+

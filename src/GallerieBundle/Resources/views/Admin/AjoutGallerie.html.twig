@@ -1,0 +1,61 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block content %}
+    {{ form_start(form) }}
+
+    <div class="container">
+        <div class="page-wrapper">
+            <div class="container-fluid">
+                <div class="row page-titles">
+                    <div class="col-md-6 align-self-center">
+
+                        <div class="card-header bg-info" style="font-size: x-large" align="center">
+                            <h4 class="m-b-0 text-white">Ajouter Image Gallerie</h4>
+                        </div>
+                        </br>
+
+                        <div class="form-group">
+                            <label for="Nom"><span class="req">* </span> Titre : </label>
+                            {{ form_widget(form.TitreGallerie,{'attr':{'class':'form-control' ,'required':'true' }}) }}
+                            {{ form_errors(form.TitreGallerie) }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prenom"><span class="req">* </span> Description : </label>
+                            {{ form_widget(form.Description,{'attr':{'class':'form-control','required':'true'}}) }}
+                            {{ form_errors(form.Description) }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email"><span class="req">* </span> Type : </label>
+                            {{ form_widget(form.typeGallerie,{'attr':{'class':'form-control' ,'required':'true' }}) }}
+                            {{ form_errors(form.typeGallerie) }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Telephone"><span class="req">* </span> Lieu : </label>
+                            {{ form_widget(form.lieugallerie,{'attr':{'class':'form-control','required':'true'}}) }}
+                            {{ form_errors(form.lieugallerie) }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Photo"><span class="req">* </span> Image : </label>
+                            {{ form_widget(form.imgGallerie,{'attr':{'class':'form-control','required':'true'}}) }}
+                            {{ form_errors(form.imgGallerie) }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_widget(form.Ajouter,{'attr':{'class':'btn btn-outline-success'}}) }}
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {{ form_end(form) }}
+{% endblock %}

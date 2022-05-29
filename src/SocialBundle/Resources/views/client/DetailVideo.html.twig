@@ -1,0 +1,106 @@
+{% extends ':client:layout.html.twig' %}
+
+{% block flexslider %}
+{% endblock flexslider %}
+
+{% block headmeta %}
+    <meta property="og:url"           content="http://lesouk.com/Medina/web/detailvide/{{ video.idvideo }} "/>
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Your Website Title" />
+    <meta property="og:description"   content="Your description" />
+    <meta property="og:image"         content="http://lesouk.com/Medina/web/client/images/souk.png" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/foscomment/css/comments.css') }}" />
+
+{% endblock %}
+
+    {% block content %}
+
+
+
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">"Do It Yourself"</h1>
+                <font size="3" color="#505050"> Entre tradition et créativité, nos artisants ouvrent les portes de leurs ateliers pour vous faire découvrir leurs métiers,
+                    produits et savoir-faire.</br> Entrez dans leurs secrets de fabrication et laissez-vous séduire par le charme de l'artisanat  !
+                </font>
+            </div>
+        </section>
+
+
+        <div class="video-details-container">
+
+            <div class="video-details-row">
+                <div class="left-col">
+
+                    <video controls>
+                        <source src="{{ asset('uploads/videos/' ~ video.video) }} " >
+                    </video>
+
+                    <div style="display:flex ; flex-direction: row ; justify-content: space-between;">
+                        <div style="display: flex; flex-direction: column; text-align: left">
+                            <p> <span class="video-title">{{ video.titre }}</span><br/> <span class="video-timestamp">Ajoutée le {{ video.dateexpovideo|date }} par {{ video.iduser.nomuser }}</span>  </p>
+                            <p class="video-desc">{{ video.descriptionvideo }} </p>
+
+                            <div class="video-details-row">
+                                <div class="social-btns-share-container">
+                                    {{ facebookButton() }}
+                                    {{ twitterButton({url : "test.com/test"}) }}
+                                    {{ googleplusButton() }}
+                                </div>
+                            </div>
+                        </div>
+                        <div style="text-align: left; margin-top : 15px;">
+                            {{ form(ratingform) }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="right-col">
+                    <div>{% include 'FOSCommentBundle:Thread:async.html.twig'   with {'id': 'foo' ~ video.idvideo} %}</div>
+                </div> <!-- video details desc bloc -->
+            </div> <!-- video details row-->
+        </div> <!-- video details container-->
+<!--
+        <style>
+            .fos_comment_comment_show{ margin: 20px 0;}
+            .fos_comment_comment_metas{ font-size: 16px;margin-top: 0;  margin-bottom: 5px; font-weight: 500;}
+            .fos_comment_comment_body{font-size: 14px;}
+            .fos_comment_comment_replies{ margin-left: 20px; }
+            .fos_comment_comment_form_holder h3{ font-size: 16px;}
+        </style>
+-->
+
+
+
+        <div>
+
+</div>
+
+        <script src="{{ asset('client/js/jquery/2.0.3/jquery.min.js') }}"></script>
+
+
+    <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+   <script>forceStarVal(
+                {% if retrievedRatingResult %}
+                {{ retrievedRatingResult.rating  }}
+                {% endif %}
+        );</script>
+
+
+        <script>
+
+                    function updateGPlusBtn(){
+                        $('#___plusone_0').css('verticalAlign','middle') ;
+                        console.log("Gplus btn updated!");
+                    }
+                    setTimeout(updateGPlusBtn, 2000);
+
+        </script>
+
+    {% endblock content %}
+
+
+
+

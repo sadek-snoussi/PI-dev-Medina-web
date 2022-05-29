@@ -1,0 +1,93 @@
+event_homepage:
+        path:     /
+        defaults: { _controller: EventBundle:Default:index }
+event_ajout:
+        path:     /ajoutE
+        defaults: { _controller: EventBundle:Event:ajouter}
+
+event_ajout_form:
+        path:     /ajoutEvent
+        defaults: { _controller: EventBundle:Event:AjoutEventform}
+
+DeleteEvent:
+        path:     /Delete/{id}
+        defaults: { _controller: EventBundle:Event:delete}
+UpdateE:
+        path : /modifier/{id}
+        defaults: { _controller: EventBundle:Event:modifier}
+affiche2:
+        path : /aff
+        defaults: { _controller: EventBundle:Event:aff}
+
+stand_ajout:
+        path:     /ajoutS
+        defaults: { _controller: EventBundle:Stand:ajouterStand}
+
+stand_affiche:
+        path:     /affS
+        defaults: { _controller: EventBundle:Stand:affStand}
+
+DeleteStand:
+        path:     /DeleteS/{id}
+        defaults: { _controller: EventBundle:Stand:deleteStand}
+UpdateS:
+        path : /modifierS/{id}
+        defaults: { _controller: EventBundle:Stand:modifierStand}
+
+
+
+ListEventClient:
+        path : /affEventC
+        defaults: { _controller: EventBundle:Event:actualiteEvent}
+
+inscription:
+        path : /inscriEvent
+        defaults: { _controller: EventBundle:Inscription:inscription}
+inscriReussite:
+        path : /ReussiInscri
+        defaults: { _controller: EventBundle:Inscription:inscrireussite}
+
+
+afficheStandEvent:
+        path : /afficheEventStand
+        defaults: { _controller: EventBundle:Stand:afficheStandEvent}
+
+
+
+afficheStandClient:
+        path : /affStand
+        defaults: { _controller: EventBundle:Stand:ReservationStand}
+
+
+reserverStandClient:
+        path : /reserverSC/{ids}/{ide}/{idu}
+        defaults: { _controller: EventBundle:Stand:Reservation}
+
+
+
+reserverReussi:
+        path : /reservReussi
+        defaults: { _controller: EventBundle:Stand:ReservationReuusite}
+
+consulter:
+        path : /consulter
+        defaults: { _controller: EventBundle:Event:Consulter}
+
+List_inscription:
+       path : /ListInscri
+       defaults: { _controller: EventBundle:Inscription:ListInscription}
+
+
+test:
+    path : /test
+    defaults: { _controller: EventBundle:Event:EnvoyerMail}
+
+Generer_Pdf1:
+    path:  /pdf/{ide}/{idi}
+    defaults: { _controller: EventBundle:Inscription:pdf}
+
+
+
+Generer_Pdf2:
+    path:  /pdf2/{ids}/{ide}
+    defaults: { _controller: EventBundle:Stand:pdfStand}

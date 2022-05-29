@@ -1,0 +1,163 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+{% for msg in app.flashes('success') %}
+    <div class="alert alert-success" >
+        {{ msg }}
+    </div>
+{% endfor %}
+
+
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+
+
+
+<div class="container">
+    <div class="row" >
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+             <fieldset>
+                 <legend class="text-center" style="font-size: x-large">S'inscrire</legend>
+                 <legend class="text-center" style="color: red; font-size: smaller">Veuillez saisir des informations valide pour vous inscrire</legend>
+
+    <div class="form-group">
+        <label for="Nom"><span class="req">* </span> Nom : </label>
+        {{ form_widget(form.nomuser,{'attr':{'class':'form-control'}}) }}
+        {{ form_errors(form.nomuser) }}
+    </div>
+
+    <div class="form-group">
+        <label for="Prenom"><span class="req">* </span> Prenom : </label>
+        {{ form_widget(form.prenomuser,{'attr':{'class':'form-control'}}) }}
+        {{ form_errors(form.prenomuser) }}
+    </div>
+
+    <div class="form-group">
+        <label for="Email"><span class="req">* </span> Email : </label>
+        {{ form_widget(form.email,{'attr':{'class':'form-control'}}) }}
+        {{ form_errors(form.email) }}
+    </div>
+
+
+    <div class="form-group">
+        <label for="Username"><span class="req">* </span>  Nom d'utilisateur : </label>
+        {{ form_widget(form.username,{'attr':{'class':'form-control'}}) }}
+        {{ form_errors(form.username) }}
+    </div>
+
+
+    <div class="form-group">
+        <label for="password"><span class="req">* </span>  mot de passe : </label>
+        {{ form_widget(form.plainPassword.first,{'attr':{'class':'form-control'}}) }}
+
+    </div>
+    <div class="form-group">
+        <label for="password"><span class="req">* </span>  confirmer mot de passe : </label>
+        {{ form_widget(form.plainPassword.second,{'attr':{'class':'form-control'}}) }}
+
+    </div>
+
+    <div class="form-group">
+        <label for="password"><span class="req">* </span>  Numero : </label>
+        {{ form_widget(form.teluser,{'attr':{'class':'form-control'}}) }}
+
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="date"><span class="req">* </span>  Date de  naissance : </label>
+        {{ form_widget(form.datenaissuser,{'attr':{'class': 'form-control'}}) }}
+    </div>
+
+
+    <div class="form-group">
+         <input class="btn_c" type="submit" name="submit_reg" value="S'inscrire">
+    </div>
+
+
+</fieldset>
+
+        </div>
+        {#   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+
+           <div class="form-group">
+
+
+                 <a href="partenaire_ajoutProf" class="btn_c btn_c2 ">Demande de partenariat</a>
+             </div>
+             #}
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+{{ form_end(form) }}
+
+
+
+
+
+    {# <input type="checkbox" required name="terms" onchange="this.setCustomValidity(validity.valueMissing ? 'Please indicate that you accept the Terms and Conditions' : '');" id="field_terms">   <label for="terms">I agree with the <a href="terms.php" title="You may read our terms and conditions by clicking on this link">terms and conditions</a> for Registration.</label><span class="req">* </span>#}
+
+
+    {#  //////////////////////////////////////////////////////////////////////////// #}
+
+
+
+
+
+
+    {# <div class="form-group">
+         <label for="Password"><span class="req">* </span>  Password : </label>
+         {{ form_widget(form.plainPassword.first,{'attr':{'class':'form-control'}}) }}
+         {{ form_errors(form.plainPassword.first) }}
+     </div>
+
+
+     <div class="form-group">
+         <label for="Confirm Password"><span class="req">* </span>  Confirm Password : </label>
+         {{ form_widget(form.plainPassword.second,{'attr':{'class':'form-control'}}) }}
+         {{ form_errors(form(form.plainPassword.second)) }}
+     </div> #}
+
+
+    <!--         <div class="form-group">
+                 <label for="password"><span class="req">* </span> Password: </label>
+                 <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="pass1" /> </p>
+
+                 <label for="password"><span class="req">* </span> Password Confirm: </label>
+                 <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16" placeholder="Enter again to validate"  id="pass2" onkeyup="checkPass(); return false;" />
+                 <span id="confirmMessage" class="confirmMessage"></span>
+             </div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

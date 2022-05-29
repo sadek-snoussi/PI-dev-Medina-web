@@ -1,0 +1,98 @@
+{% extends ":admin:base_admin.html.twig" %}
+
+{% block content %}
+    <div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Liste des Clients</h3>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active">Clients</li>
+                </ol>
+            </div>
+
+            <div class="">
+                <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"> Liste des Clients</h4>
+                        <h6 class="card-subtitle"></h6>
+                        <div class="table-responsive">
+                       <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list " data-page-size="10">
+                                <thead>
+
+                                <tr>
+
+                                    <th class="footable-sortable">Nom<span class="footable-sort-indicator"></span></th>
+                                    <th class="footable-sortable">Prenom<span class="footable-sort-indicator"></span></th>
+                                    <th class="footable-sortable">tel<span class="footable-sort-indicator"></span></th>
+
+                                    <th class="footable-sortable">Email<span class="footable-sort-indicator"></span></th>
+
+                                    <th class="footable-sortable">Action<span class="footable-sort-indicator"></span></th>
+                                </tr>
+
+                                </thead>
+                                <tbody>
+                                {% for user in users %}
+
+                                    <tr class="footable-even" style="">
+
+                                        {% if user.typeuser == 'freelancer' %}
+                                            <td>
+                                                <a href="javascript:void(0)"><img src="{{ asset('uploads/logo/' ~ user.urlphotofree ) }}" alt="user" width="40" class="img-circle"> {{ user.nomuser }}</a>
+                                            </td>
+
+                                        {% elseif user.typeuser == 'pro' %}
+                                            <td>
+                                                <a href="javascript:void(0)"><img src="{{ asset('uploads/logo/' ~ user.urllogopro ) }}" alt="user" width="40" class="img-circle"> {{ user.nomuser }}</a>
+                                            </td>
+                                        {% else %}
+                                            <td>
+                                                <a href="javascript:void(0)"><img src="{{ asset('admin/images/users/4.jpg') }}" alt="user" width="40" class="img-circle"> {{ user.nomuser }}</a>
+                                            </td>
+                                        {% endif %}
+
+                                        <td>{{ user.prenomuser }}</td>
+                                        <td>{{ user.teluser }}</td>
+
+                                        <td>{{ user.email }}</td>
+
+
+
+                                        <td class="text-nowrap">
+                                            <a href="{{ path('client_supp',{'id':user.id}) }}" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

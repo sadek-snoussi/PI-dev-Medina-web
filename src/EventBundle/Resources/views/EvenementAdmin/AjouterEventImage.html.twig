@@ -1,0 +1,187 @@
+{% extends ':admin:base_admin.html.twig' %}
+
+
+
+{% block content %}
+    <div class="page-wrapper">
+
+
+
+
+
+
+
+
+        <div class="container-fluid">
+            <div class="row page-titles">
+
+
+            </div>
+
+
+
+
+
+
+            <div class="col-lg-12">
+                {{ form_start(form) }}
+                <div class="card ">
+                    <div class="card-header bg-info">
+                        <h4 class="m-b-0 text-white">Ajouter Evenement</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" class="form-horizontal">
+                            <div class="form-body">
+
+                                <hr class="m-t-0 m-b-40">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <div class="form-group row">
+                                            <label class="control-label text-right col-md-3">Nom Evenement</label>
+                                            <div class="col-md-9">
+                                                {{ form_widget(form.nomevent, {'attr':{'class':'form-control','required' : 'true'}}) }}
+                                                {{ form_errors(form.nomevent) }}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--/span-->
+
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <div class="form-group row">
+                                            <label class="control-label text-right col-md-3">Description</label>
+                                            <div class="col-md-9">
+                                                {{ form_widget(form.descriptionevent, {'attr':{'class':'form-control','required' : 'true'}}) }}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                                <!--/span-->
+                                <div class="col-md-9">
+                                    <div class="form-group row">
+                                        <label class="control-label text-right col-md-3">Date Evenement</label>
+                                        <div class="col-md-9">
+                                            {{ form_widget(form.dateevent, {'attr':{'class':'','required' : 'true'  }}) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+
+                            <!--/row-->
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group row">
+                                        <label class="control-label text-right col-md-3">Objectif</label>
+                                        <div class="col-md-9">
+                                            {{ form_widget(form.objectifevent, {'attr':{'class':'form-control','required' : 'true'}}) }}
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <!--/row-->
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group row">
+                                        <label class="control-label text-right col-md-3">Nombre max stand</label>
+                                        <div class="col-md-9">
+                                            {{ form_widget(form.nbrestand, {'attr':{'class':'form-control','required' : 'true'}}) }}
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                            <!--/row-->
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group row">
+                                        <label class="control-label text-right col-md-3">Lieux</label>
+                                        <div class="col-md-9">
+                                            {{ form_widget(form.lieux, {'attr':{'class':'form-control','required' : 'true'}}) }}
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <!--/row-->
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group row">
+                                        <label class="control-label text-right col-md-3">Nombre Places</label>
+                                        <div class="col-md-9">
+                                            {{ form_widget(form.nbrePlace, {'attr':{'class':'form-control','required' : 'true'}}) }}
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group row">
+
+                                        <div class="col-md-9">
+                                            {{ form_widget(form.urlafficheevent, {'attr':{'class':'image-preview-input-title','required' : 'true'}}) }}
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <!--/row-->
+
+                    </div>
+                    <hr>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-md-offset-3 col-md-9">
+                                        {{ form_widget(form.Ajouter, {'attr':{'class':'btn btn-success','value' : 'Ajouter'}}) }}
+                                        <input type="button" class="btn btn-inverse" value="Annuler"/>
+                                     {#   {{ form_widget(form.Envoyer Mail, {'attr':{'class':'btn btn-success','value' : 'Envoyer'}}) }} #}
+                                    </div>
+
+
+                                    {{ form_end(form) }}
+                                </div>
+                            </div>
+                            <div class="col-md-9"> </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+{% endblock %}

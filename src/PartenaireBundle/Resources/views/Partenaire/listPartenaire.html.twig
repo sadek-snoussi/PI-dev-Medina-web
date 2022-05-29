@@ -1,0 +1,87 @@
+{% extends "client/layout.html.twig" %}
+
+{% block title %}Nos Partenaires{% endblock %}
+
+{% block body %}
+
+
+
+    {% block content %}
+        <div id="content">
+        <div class="container">
+        <div class="catelog_c">
+
+            <div class="row">
+                <div class="col-lg-3 col-md-3  col-sm-4 col-xs-12 ">
+                    <div class="sidebar sidebar_1 " >
+                        <div class="side_box" style="text-align: center">
+                            <h5><a href="#" class="tgl_btn">Specialité</a></h5>
+                            <ul class="tgl_c">
+                                {{ form_start(form1) }}
+                                {{ form_widget(form1.specialitepart,{'attr':{'class':'form-group-custom'}}) }}
+                                {{ form_widget(form1.rechercher,{'attr':{'class':'btn btn-primary'}}) }}
+                                {{ form_end(form1) }}
+                            </ul>
+                        </div>
+                        <div class="side_box">
+                            <h5><a href="#" class="tgl_btn" style="text-align: center">type de partenariat</a></h5>
+                            <ul class="tgl_c">
+                                {{ form_start(form2) }}
+                                {{ form_widget(form2.typeuser,{'attr':{'class':'form-group-custom'}}) }}
+                                {{ form_widget(form2.rechercher,{'attr':{'class':'btn btn-primary'}}) }}
+                                {{ form_end(form2) }}
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <form method="post" action="{{ path('recherchePart') }}">
+                    <div class="col-lg-9">
+
+                        <div class="side_box" style="text-align: center">
+
+                            <input class="form-control" name="tag">
+                        </div>
+
+                        <div class="form-group">
+                            <input class="btn_c btn btn-default btn-circled btn-sm fa fa-search" type="submit" value="Rechercher" >
+                        </div>
+                    </div>
+                </form>
+
+
+                <div class="row view-grid animated  fadeInUp" data-animation="fadeInUp" >
+
+
+                    {% for user in users %}
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 ">
+
+                            <div class="main_box">
+                                <div class="box_1">
+                                    <img width="259" height="200" src="{{ asset('uploads/logo/'~ user.urllogopro ) }}" draggable="false">
+
+                                </div>
+                                <div class="desc">
+                                    <h5><a>{{ user.email }}</a>
+                                    </h5>
+                                    <p>{{ user.nomentreprisepro }}</p>
+                                    <div class="price">{{ user.adresse }} </div>
+                                    <p>{{ user.typeuser }}</p>
+
+                                    <br>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+{% endblock %}

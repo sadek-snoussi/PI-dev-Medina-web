@@ -1,0 +1,163 @@
+{% extends "client/layout.html.twig" %}
+
+{% block title %}Gallerie{% endblock %}
+
+{% block body %}
+
+    {% block flexslider %}
+        <div class="flexslider home-slider">
+            <ul class="slides">
+                <img alt="alt" src="{{ asset('client/images/100_00671.jpg') }}" >
+                <div class="flex-caption">
+                    <div class="banner">
+                        <h1>Visite Guidée</h1>
+                        <div class="line_1"></div>
+                        <p>Cette partie est consacré pour la visite guidée 3D </p>
+                        <p>Visiter la Galerie en 3D </p>
+                        <a class="btn_c" href="{{ path('Visite') }}">Visiter</a> </div>
+                </div>
+            </ul>
+        </div>
+    {% endblock %}
+
+    {% block content %}
+        <div id="content">
+        <div class="container">
+            <div class="catelog_c">
+
+
+
+
+
+
+
+
+
+
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-3  col-sm-4 col-xs-12 ">
+                        <div class="sidebar sidebar_1 " >
+
+
+                            <div class="side_box" style="text-align: center">
+
+                                <h5><a href="#" class="tgl_btn">TYPE BONPLAN</a></h5>
+                                <ul class="tgl_c">
+
+
+                                    {{ form_start(ListBonplan) }}
+                                    {{ form_widget(ListBonplan.typebonplan,{'attr':{'class':'form-group-custom'}}) }}
+                                    {{ form_widget(ListBonplan.Chercher,{'attr':{'class':'btn btn-primary'}}) }}
+                                    {{ form_end(ListBonplan) }}
+
+
+
+
+
+                                </ul>
+                            </div>
+
+
+                            <div class="side_box" style="text-align: center">
+
+                                <h5><a href="#" class="tgl_btn">Avis Bonplan</a></h5>
+                                <ul class="tgl_c">
+
+                                    {{ form_start(ListBonplan1) }}
+                                    {{ form_widget(ListBonplan1.AvgRating ,{'attr':{'class':'form-group-custom test'}}) }}
+                                    {{ form_widget(ListBonplan1.Chercher,{'attr':{'class':'btn btn-primary'}}) }}
+                                    {{ form_end(ListBonplan1) }}
+
+
+                                </ul>
+
+                            </div>
+
+
+
+
+                            {#
+                            <div class="side_box" style="text-align: center">
+                                <h5><a href="#" class="tgl_btn">Tri par avis</a></h5>
+                                <ul class="tgl_c">
+                                    {{ form_start(ListBonplan2) }}
+                                    {{ form_widget(ListBonplan2.AvisBonplan ,{'attr':{'class':'form-group-custom'}}) }}
+                                    {{ form_widget(ListBonplan2.Trier,{'attr':{'class':'btn btn-primary'}}) }}
+                                    {{ form_end(ListBonplan2) }}
+                                </ul>
+
+                            </div>
+                            #}
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                        <div class="product_c">
+                            <div class="row view-grid animated  fadeInUp" data-animation="fadeInUp" >
+                                <h2 class="h2" >Bonplan</h2>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th width="25%">Nom du Bon plan</th>
+                                                <th width="15%">{{ knp_pagination_sortable(BP_list, 'Type', 'lbp.typebonplan', {'direction': 'asc'}) }}
+                                                </th>
+                                                <th width="25%" >{{ knp_pagination_sortable(BP_list, 'Avis', 'lbp.avgrating', {'direction': 'asc'}) }}</th>
+                                                <th width="5%">Localisation</th>
+                                                <th width="30%">Image</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for Bonplan in BP_list %}
+                                                <tr>
+                                                    <td>{{ Bonplan.nombonplan }}</td>
+                                                    <td>{{ Bonplan.typebonplan }}</td>
+                                                    <td>{{ Bonplan.avgrating | rating(5, "fa- 0x")}}</td>
+                                                    <td><a href="{{ path('Geoindex',{'id':Bonplan.idbonplan}) }}"><img alt="alt" src="{{ asset('client/images/loca.png') }}" style="width: 50px" ></a></td>
+
+                                                    <td><a target="_blank" href="{{ asset('uploads/imgBonplan/' ~ Bonplan.imgBonplan)  }}">
+                                                            <img class="modal-content" id="myImg" src="{{ asset('uploads/imgBonplan/' ~ Bonplan.imgBonplan) }}" width="250" height="200" >
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+
+                                            </tbody>
+                                        </table>
+                                        <div class="navigation"  >
+                                             {{ knp_pagination_render(BP_list) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="plans" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Bon plans</h4>
+                    </div>
+                    <div class="modal-body">
+                        <a>Localisation</a>
+                    </div>
+                    <div class="modal-body">
+                        <a>site web</a>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    {% endblock content %}
+
+
+{% endblock %}

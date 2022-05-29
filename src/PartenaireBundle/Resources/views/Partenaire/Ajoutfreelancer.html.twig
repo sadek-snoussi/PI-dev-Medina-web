@@ -1,0 +1,72 @@
+{% extends ':client:layout.html.twig' %}
+{% block flexslider %}
+{% endblock flexslider %}
+
+    {% block content %}
+        <head>
+            <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+            <title> demander d'etre un  Freelancer </title>
+            <center>
+
+                <div class="container">
+                    <div class="page-header">
+                        <h3>  </h3>
+                    </div>
+                </div>
+            </center>
+
+        </head>
+        <body>
+        <div class="container">
+            <div class="page-header">
+                <h3>  Demande de partenariat (Freelancer)</h3>
+                <input type="text" value="{{ app.user.id  }}" name="iduser" hidden>
+            </div>
+            <div class="row" >
+
+                <div class="col-md-4 col-md-offset-4 center">
+                    {{ form_start(form) }}
+
+
+                    <div  class=" form-group ">
+                        <label for="Prenom">
+                            <span class="req"></span> Numero de l entreprise </label>
+                        <div class="btn btn-default" style="width: 100%">
+                            {{ form_widget(form.telbureaupro, {'attr':{'class':'image-preview-input-title','required' : 'true'}}) }}
+                        </div>
+
+                    </div>
+
+
+
+                    <div  class=" form-group ">
+                        <label for="Prenom">
+                            <span class="req"></span> Specialité : </label>
+                        <div class="btn btn-default" style="width: 100%">
+                            {{ form_widget(form.specialitepart, {'attr':{'class':'image-preview-input-title','required' : 'true'}}) }}
+                        </div>
+
+                    </div>
+
+                    <div  class=" form-group ">
+                        <label for="Prenom">
+                            <span class="req"></span> Logo de l entreprise : </label>
+                        <div class="btn btn-default" style="width: 100%">
+                            {{ form_widget(form.urlphotofree, {'attr':{'class':'image-preview-input-title','required' : 'true'}}) }}
+                        </div>
+
+                        {{ form_row(form.urlphotofree) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(form.demander, {'attr':{'class':'btn_c','value' : 'ajouter'}}) }}
+
+                    </div>
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+        </body>
+
+    {% endblock content %}

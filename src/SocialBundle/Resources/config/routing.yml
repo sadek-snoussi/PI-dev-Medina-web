@@ -1,0 +1,47 @@
+social_homepage:
+    path:     /
+    defaults: { _controller: SocialBundle:Default:index }
+ajouter:
+    path:     /ajouter
+    defaults: {_controller: SocialBundle:Video:add}
+afficher:
+    path:     /afficher
+    defaults: {_controller: SocialBundle:Video:show}
+
+afficherClient:
+    path:     /afficherclient
+    defaults: {_controller: SocialBundle:Video:showClient}
+
+detailVideo:
+    path:     /detailvideo/{id}
+    defaults: { _controller: SocialBundle:Video:showDetailsVideo}
+
+supprimer:
+    path:     /supprimer/{id}
+    defaults: { _controller: SocialBundle:Video:delete }
+
+maj:
+    path:     /maj/{id}
+    defaults: { _controller: SocialBundle:Video:update}
+
+valideVideo:
+    path:     /valide
+    defaults: { _controller: SocialBundle:Video:validationVideo}
+
+validerVideo:
+    path:     /valider/{id}
+    defaults: { _controller: SocialBundle:Video:validation}
+
+rejeterVideo:
+    path:     /rejeter/{id}
+    defaults: { _controller: SocialBundle:Video:rejeter}
+
+topratedvideo:
+    path:     /home
+    defaults: { _controller: SocialBundle:Video:topVideo}
+
+
+
+
+
+

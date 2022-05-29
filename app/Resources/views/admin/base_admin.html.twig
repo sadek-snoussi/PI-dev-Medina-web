@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from wrappixel.com/demos/admin-templates/admin-wrap/main/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Feb 2018 21:11:55 GMT -->
+<head>
+
+    <link rel="stylesheet" href="{{ asset('client/css/preloader.css') }}">
+    <script type="text/javascript" src="{{ asset('client/js/preloader.js') }}"></script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/images/favicon.png') }}">
+    <title>Admin | Souk</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('admin/node_modules/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/node_modules/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
+    <!-- This page CSS -->
+    <!-- chartist CSS -->
+    <link href="{{ asset('admin/node_modules/morrisjs/morris.css') }}" rel="stylesheet">
+    <!--c3 CSS -->
+    <link href="{{ asset('admin/node_modules/c3-master/c3.min.css') }}" rel="stylesheet">
+    <!--Toaster Popup message CSS -->
+    <link href="{{ asset('admin/node_modules/toast-master/css/jquery.toast.css') }}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
+    <!-- Dashboard 1 Page CSS -->
+    <link href="{{ asset('admin/css/pages/dashboard1.css') }}" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="{{ asset('admin/css/colors/default.css') }}" id="theme" rel="stylesheet">
+    <link href="{{ asset('client/css/rating.css') }}" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+<!-- ============================================================== -->
+<!-- Preloader - style you can find in spinners.css -->
+<!-- ============================================================== -->
+<div class="preloader-container">
+    <div class="preloader-content-group">
+        <div class="preloader-logo-bg">
+            <div class="preloader-logo-positioner">
+                <img class="preloader-logo-spinner" alt="Le SOUQ" src="{{ asset('client/images/logo_souk_spinner.png') }}"/>
+            </div>
+        </div>
+        <div class="preloader-text">Chargement de votre SOUK ... Veuillez patienter ...</div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div id="main-wrapper">
+    <!-- ============================================================== -->
+    <!-- Topbar header - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <header class="topbar">
+        <nav class="navbar top-navbar navbar-expand-md navbar-light">
+            <!-- ============================================================== -->
+            <!-- Logo -->
+            <!-- ============================================================== -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ path('index_Admin') }}">
+                    <!-- Logo icon --><b>
+                        <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                        <!-- Dark Logo icon -->
+                        <img src="{{ asset('admin/images/haha.png') }}" alt="homepage" class="dark-logo" />
+                        <!-- Light Logo icon -->
+                        <img src="{{ asset('client/images/souk.png') }}" alt="homepage" class="light-logo" />
+                    </b>
+                    <!--End Logo icon -->
+                    <!-- Logo text --><span>
+                         <!-- dark Logo text -->
+                         <img src="{{ asset('client/images/souk.png') }}" alt="homepage" class="souk-logo" />
+                        <!-- Light Logo text -->
+                         <img src="{{ asset('admin/images/logo-light-text.png') }}" class="light-logo" alt="homepage" /></span> </a>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Logo -->
+            <!-- ============================================================== -->
+            <div class="navbar-collapse">
+                <!-- ============================================================== -->
+                <!-- toggle and nav items -->
+                <!-- ============================================================== -->
+                <ul class="navbar-nav mr-auto">
+                    <!-- This is  -->
+                    <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="sl-icon-menu"></i></a> </li>
+                    <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="sl-icon-menu"></i></a> </li>
+                    <!-- ============================================================== -->
+                    <!-- Search -->
+                    <!-- ============================================================== -->
+                    <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="icon-Magnifi-Glass2"></i></a>
+                        <form class="app-search">
+                            <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
+                    </li>
+                </ul>
+                <!-- ============================================================== -->
+                <!-- User profile and search -->
+                <!-- ============================================================== -->
+                <ul class="navbar-nav my-lg-0">
+                    <!-- ============================================================== -->
+                    <!-- Comment -->
+                    <!-- ============================================================== -->
+
+                    <!-- ============================================================== -->
+                    <!-- End Comment -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Messages -->
+                    <!-- ============================================================== -->
+
+                    <!-- ============================================================== -->
+                    <!-- End Messages -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- mega menu -->
+                    <!-- ============================================================== -->
+
+                    <!-- ============================================================== -->
+                    <!-- End mega menu -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Language -->
+                    <!-- ============================================================== -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="flag-icon flag-icon-fr"></i></a>
+                        <div class="dropdown-menu dropdown-menu-right animated bounceInDown"><i class="flag-icon flag-icon-tn"></i> Tunisie</a> </div>
+                    </li>
+                    <!-- ============================================================== -->
+                    <!-- Profile -->
+                    <!-- ============================================================== -->
+                    <li class="nav-item dropdown u-pro">
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('admin/images/users/21.png') }}" alt="user" class="" />
+                            <span class="hidden-md-down"> Administrateur &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                        <div class="dropdown-menu dropdown-menu-right animated flipInY">
+                            <ul class="dropdown-user">
+                                <li>
+                                    <div class="dw-user-box">
+                                        <div class="u-img"><img src="{{ asset('admin/images/users/1.jpg') }}" alt="user"></div>
+                                        <div class="u-text">
+                                            <h4>Administrateur</h4>
+                                            <p class="text-muted">youthvision.soukmedina@gmail.com</p></div>
+                                    </div>
+                                </li>
+                                <li role="separator" class="divider"></li>
+
+                                <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- ============================================================== -->
+    <!-- End Topbar header -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <aside class="left-sidebar">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                    <li class="nav-small-cap">--- PERSONAL</li>
+                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="icon-Receipt-4"></i><span class="hide-menu">Gestion Clients/Partenaire</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="{{ path('partenaire_list') }}">Liste des Partenaires</a></li>
+                            <li><a href="{{ path('client_list') }}">Liste des Clients</a></li>
+
+                        </ul>
+                    </li>
+                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="icon-Double-Circle"></i><span class="hide-menu">Gestion Evenements</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="{{ path('stand_affiche') }}">Stand</a></li>
+                            <li><a href="{{ path('affiche2') }}">Evenement</a></li>
+                            <li><a href="{{ path('List_inscription') }}">Liste des Inscriptions</a></li>
+
+                        </ul>
+                    </li>
+                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="icon-Box-Full"></i><span class="hide-menu">Gestion Galerie</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="{{ path('Ajout_Gallerie') }}">Ajouter Image</a></li>
+                            <li><a href="{{ path('Affiche_Gallerie') }}">Afficher Image</a></li>
+                        </ul>
+                    </li>
+		     <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="icon-Box-Full"></i><span class="hide-menu">Gestion Guides</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="{{ path('Ajout_Guide') }}">Ajouter un Guide</a></li>
+                            <li><a href="{{ path('Affiche_Guide') }}">Afficher les Guides</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="icon-Box-Full"></i><span class="hide-menu">Gestion Bon plan</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="{{ path('Ajout_Bonplan') }}">Ajouter un Bon plan</a></li>
+                            <li><a href="{{ path('Affiche_Bonplan') }}">Afficher les Bonplan</a></li>
+                        </ul>
+                    </li>
+                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="icon-Box-Full"></i><span class="hide-menu">Gestion Categories</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="listCategorie">Liste des Categories</a></li>
+                            <li><a href="{{ asset('admin/app-email.html') }}"> </a></li>
+
+                        </ul>
+                    </li>
+
+
+                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="icon-Receipt-4"></i><span class="hide-menu">Validation</span></a>
+                        <ul aria-expanded="false" class="collapse">
+			
+                            <li><a href="{{path('ValiderProduit') }}">Produits</a></li>
+                           <li><a href="{{ path('listpartenaire_Avalider') }}">Validation de Partenariat</a></li>
+                            <li><a href="{{ path('Valider_Commande') }}">Commande</a></li>
+			     <li><a href="{{ path('valideVideo') }}">Videos Partenaires</a></li>
+			    
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+            <!-- End Sidebar navigation -->
+        </div>
+        <!-- End Sidebar scroll-->
+    </aside>
+    <!-- ============================================================== -->
+    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+{% block content %}
+    {% endblock %}
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="{{ asset('admin/js/html5shiv.js') }}"></script>
+<script src="{{ asset('admin/js/respond.min.js') }}"></script>
+<script src="{{ asset('admin/node_modules/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap popper Core JavaScript -->
+<script src="{{ asset('admin/node_modules/bootstrap/js/popper.min.js') }}"></script>
+<script src="{{ asset('admin/node_modules/bootstrap/js/bootstrap.min.js') }}"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="{{ asset('admin/node_modules/ps/perfect-scrollbar.jquery.min.js') }}"></script>
+<!--Wave Effects -->
+<script src="{{ asset('admin/js/waves.js') }}"></script>
+<!--Menu sidebar -->
+<script src="{{ asset('admin/js/sidebarmenu.js') }}"></script>
+<!--Custom JavaScript -->
+<script src="{{ asset('admin/js/custom.min.js') }}"></script>
+<!-- ============================================================== -->
+<!-- This page plugins -->
+<!-- ============================================================== -->
+<!--morris JavaScript -->
+<script src="{{ asset('admin/node_modules/raphael/raphael-min.js') }}"></script>
+<script src="{{ asset('admin/node_modules/morrisjs/morris.min.js') }}"></script>
+<!--c3 JavaScript -->
+<script src="{{ asset('admin/node_modules/d3/d3.min.js') }}"></script>
+<script src="{{ asset('admin/node_modules/c3-master/c3.min.js') }}"></script>
+<!-- Popup message jquery -->
+<script src="{{ asset('admin/node_modules/toast-master/js/jquery.toast.js') }}"></script>
+<!-- Chart JS -->
+<script src="{{ asset('admin/js/dashboard1.js') }}"></script>
+    <script src="{{ asset('client/js/rating.js') }}"></script>
+
+<!-- ============================================================== -->
+<!-- Style switcher -->
+<!-- ============================================================== -->
+<script src="{{ asset('admin/node_modules/styleswitcher/jQuery.style.switcher.js') }}"></script>
+</div>
+</body>
+
+
+<!-- Mirrored from wrappixel.com/demos/admin-templates/admin-wrap/main/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Feb 2018 21:13:29 GMT -->
+</html>

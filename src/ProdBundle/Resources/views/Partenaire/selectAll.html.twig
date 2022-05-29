@@ -1,0 +1,290 @@
+{% extends ":client:layout.html.twig" %}
+{% block flexslider %}
+
+    {% endblock %}
+{% block content %}
+
+    <div class="container">
+
+
+        {% if app.session.flashBag.has('success') %}
+            <div class="alert alert-success">
+                <a data-dismiss="alert" class="class pull-right"><i class="fa fa-remove"></i></a>
+
+                {% for msg in app.session.flashBag.get('success') %}
+                    {{ msg }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+
+
+
+        <div class="row">
+            <center>
+    <div class="page-header">
+        <h3>Mes produits.</h3>
+    </div>
+            </center>
+            <br>
+            <br>
+            <div class="span5">
+
+                <table class="table table-striped table-condensed">
+                    <thead>
+                    <tr>
+                        <th> Reference </th>
+                        <th> Date d'exposition </th>
+                        <th> Nom Produit </th>
+                        <th> Categorie </th>
+                        <th> Matiere </th>
+                        <th> Photo </th>
+                        <th> Status </th>
+                        <th> </th>
+                    </tr>
+                    </thead>
+
+
+
+
+                    {% for produit in produits %}
+                    <tr>
+                        <td>{{ produit.referenceProd }}</td>
+                        <td>{{ produit.dateexpoproduit | date("m/d/Y", "Europe/Paris")}}</td>
+                        <td>{{ produit.nomproduit }}</td>
+                        <td>{{ produit.idcategorie.nomcategorie }}</td>
+                        <td>{{ produit.matiereproduit }}</td>
+                        <td>
+                            <img width="65" height="50" src="{{ asset('uploads/ImgProduit/'~ produit.urlimgproduit ) }}" draggable="false">
+                        </td>
+
+
+
+
+                        {% if produit.validiteProduit == 2%}
+                            <td><span class="label label-success">verifié</span></td>
+                        {% endif %}
+
+                        {% if produit.validiteProduit == 0 %}
+                            <td><span class="label label-warning">Enc cours</span></td>
+                        {% endif %}
+
+                        {% if  produit.validiteProduit == 1 %}
+                            <td><span class="label label-danger">Non-verifié</span> </td>
+                        {% endif %}
+
+
+
+                        <td>
+                            <button type="submit" class="btn btn-default" data-toggle="modal" data-target="#product_view{{ produit.idproduit }}">
+                                    <i class="icon-File"></i>Details
+                                    </button>
+
+                            <button  class="btn btn-default" data-target="#edit{{ produit.idproduit }}" data-toggle="modal">
+                                <i class="fa fa-edit"></i></button>
+
+                            <button  data-toggle="modal" data-target="#confirm{{ produit.idproduit }}"  class="btn btn-default"   >
+                                <i class="fa fa-remove"></i> </button>
+
+                            </td>
+
+                    </tr>
+
+                        {#****************************************************************************************************************#}
+                        {#****************************************************************************************************************#}
+
+                        <div class="modal fade" id="confirm{{ produit.idproduit }}">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+
+                                    <div class="modal-header">
+                                        <h3 class="modal-title">êtes-vous sûr?</h3>
+                                    </div>
+
+                                    <div class="modal-body">
+
+
+                                        <h4>Vous êtes en train de supprimer le produit {{ produit.nomproduit }}.</h4><br>
+                                        <h4>Voulez-vous continuer ?</h4>
+                                        <br>
+
+                                        <div class="col-md-offset-8" >
+
+                                            <a href="{{ path('supp_produit',{'id': produit.idproduit} ) }}" class="btn btn-warning">Oui</a>
+                                            <a data-dismiss="modal" class="btn btn-warning">Annuler</a>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="modal-footer">
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        {#****************************************************************************************************************#}
+                        {#****************************************************************************************************************#}
+                        <div class="modal fade" id="edit{{ produit.idproduit }}">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+
+                                    <div class="modal-header">
+                                        <h3 class="modal-title">êtes-vous sûr?</h3>
+                                    </div>
+
+                                    <div class="modal-body">
+
+
+                                        <h4>Vous êtes en train de modifier le produit {{ produit.nomproduit }}.</h4><br>
+                                        <h4>En cas de modification, le produit sera en attente de validation.</h4><br>
+                                        <h4>Voulez-vous continuer ?</h4>
+                                        <br>
+
+                                        <div class="col-md-offset-8" >
+
+                                            <a href="{{ path('upDate_produit',{'id':produit.idproduit}) }}" class="btn btn-warning">Oui</a>
+                                            <a data-dismiss="modal" class="btn btn-warning">Annuler</a>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="modal-footer">
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        {#****************************************************************************************************************#}
+                        {#****************************************************************************************************************#}
+
+                        <div class="modal fade product_view" id="product_view{{ produit.idproduit }}">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+
+                                    <div class="modal-header">
+                                        <a href="#" data-dismiss="modal" class="class pull-right"><span class="fa fa-remove"></span></a>
+                                        <h3 class="modal-title">Mes Produits.</h3>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <div class="row">
+
+
+
+
+                                            <div class="col-md-6 product_img">
+
+                                                <h3>{{ produit.nomproduit }}.</h3>
+                                                <br>
+                                                <img src="{{ asset('uploads/ImgProduit/'~ produit.urlimgproduit ) }}" class="img-responsive">
+
+                                            </div>
+
+                                            <div class="col-xs-6 product_content">
+
+
+
+                                                <p>Référence : <h3>{{ produit.referenceProd }}.</h3></p>
+
+                                                <br>
+                                                <p>Date d'éxposition : <h3>{{ produit.dateexpoproduit | date("m/d/Y", "Europe/Paris") }}.</h3></p>
+
+                                                <br>
+
+                                                <p>Catégorie : <h3>{{ produit.idcategorie.nomcategorie}}.</h3></p>
+                                                <br>
+
+
+                                                <p>Matière : <h3>{{ produit.matiereproduit }}.</h3></p>
+
+                                                <br>
+
+                                                <p>Prix : <h3>{{ produit.prixventeproduit }} DT.</h3></p>
+
+                                                <br>
+
+                                                <p>Quantité Disponible : <h3>{{ produit.qtedispoproduit }} Pièces.</h3></p>
+
+                                                <br>
+                                                <p>Date d'Expiration : <h3>{{ produit.dateexpirationproduit | date("m/d/Y", "Europe/Paris") }}.</h3></p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        {#****************************************************************************************************************#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    {% endfor %}
+                </table>
+                <center>
+                    <a href="{{ path('ajout_produit') }}" class="btn btn-default">
+                        <i class="icon-File"></i>Ajouter Produit</a>
+                </center>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}

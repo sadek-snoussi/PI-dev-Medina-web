@@ -1,0 +1,33 @@
+{% extends ':client:layout.html.twig' %}
+
+ {% block content %}
+<div class="album text-muted">
+    <div class="container">
+        <div class="row">
+            {% for video in videos %}
+                <div class="video-element" >
+
+                    <video controls onClick="location.href='{{ path('detailVideo', {'id':video.idvideo}) }}';">
+                        <source src="{{ asset('uploads/videos/' ~ video.video) }} " >
+                    </video>
+
+
+
+                    {#<video src="{{ asset('uploads/videos/' ~ video.video) }} "  style="height: 280px; width: 375px; display: block;">  </video>#}
+                    <div class="video-info-mgr">
+                        <p class="video-title">{{ video.titre }}  </p><p>{{ video.dateexpovideo|date }}</p>
+
+
+                        <p class="video-desc">{{ video.descriptionvideo }} </p>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+
+ {% endblock content %}
+

@@ -1,0 +1,181 @@
+{% extends "client/layout.html.twig" %}
+     {% block flexslider %}
+
+
+     {% endblock %}
+{% block content %}
+
+    <div id="content">
+        <div class="container">
+            <div class="catelog_c">
+                <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+
+                    </div>
+
+                    <div class="col-lg-7" >
+                        <div class="product_c">
+                            {% for event in events %}
+                                <div class="blog_blk red5 clearfix " >
+
+                                    <div class="box">
+                                        <figure ><img  alt="alt"  src="{{ asset('uploads/img/' ~ event.urlafficheevent ) }}" width="500px" >
+
+                                        </figure>
+                                    </div>
+                                    <div class="blog_desc">
+
+                                        <h1 align="center">{{ event.nomevent }} </h1>
+                                        <table border="0">
+
+                                            <tr><td>  <img src="{{ asset('client/images/calendar3.png') }}" width="25px" height="25px"/>  </td>
+                                                <td>{{ event.dateevent|date('Y-m-d H:i') }} h</td></tr>
+                                            <tr> <td>  <img src="{{ asset('client/images/maps-and-flags.png') }}" width="25px" height="25px" /> {{ event.lieux }} </td>
+                                            </tr>
+                                            <input type="text" name="utilisateur" value="{{ app.user.id }}" hidden >
+                                        </table>
+                                    </div>
+
+                                    <button class="btn btn-rounded btn-block btn-outline-info "  data-target="#details" data-toggle="modal" >Details</button>
+
+
+
+                                  {# ///////////////////////////////////////////////////////////////////////////////////////////////   #}
+
+
+                                    <div class="modal fade in" id="details"  >
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" align="center" style="color: #721c24">{{ event.nomevent }}</h4>
+
+
+                                                    <div class="modal-body" align="center">
+                                                        <h4> Description   :{{ event.descriptionevent }}</h4><br>
+                                                        <h4> Objectif     : {{ event.objectifevent }}</h4><br>
+                                                        <h4> Nombre Stands Disponibles    : {{ event.nbrestand }}</h4><br>
+                                                        <h4> Nombre Places Disponibles    : {{ event.nbrePlace }}</h4><br>
+
+                                                        <br>
+
+
+
+                                                    </div>
+
+
+
+                                                    <div class="modal-footer" align="center">
+
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        {# *********************************************************************************************************************#}
+
+
+
+
+
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                                    {%  if event.nbrestand <= 0 %}
+                                    <div class="overlay">
+                                        <a  class="btn btn-rounded btn-block btn-outline-info "  data-target="#res" data-toggle="modal" ><span style="font-family: Arial" style="color:#721c24" > Reserver Stand </span></a>
+                                    </div>
+
+                                    {#*********************************************************************************************************************#}
+
+                                    <div class="modal fade in" id="res"  >
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+
+                                                <div class="modal-header" align="center">
+                                                    <h4 class="modal-title">Reservation Stand</h4>
+                                                </div>
+
+
+                                                <div class="modal-body" align="center">
+                                                    <h4>Tous Les Stands Sont Réservés</h4><br>
+                                                    <br>
+
+
+
+                                                </div>
+
+
+
+                                                <div class="modal-footer" align="center">
+
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    {# *********************************************************************************************************************#}
+
+                                    {% else %}
+
+
+
+
+                                    <a  href="{{ path( 'afficheStandClient',{'ide':event.idevent } ) }}"  class="btn btn-rounded btn-block btn-outline-info "   >Reserver Stand</a>
+
+                                  {% endif %}
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+                                {# *********************************************************************************************************************#}
+
+
+
+
+
+
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="text-center">{{ knp_pagination_render(events) }}</div>
+
+    </div>
+
+
+
+{% endblock %}

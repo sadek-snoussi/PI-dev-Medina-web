@@ -1,0 +1,145 @@
+{% extends ":client:layout.html.twig" %}
+{% block title %}
+  Shopping Cart
+{% endblock  %}
+{% block flexslider %}
+{% endblock %}
+{% block content %}
+
+    {% if app.user is null %}
+        <div class="container" align="center">
+        <br>
+        <br>
+        <br>
+        <h1>Connect first !! <a href="{{ path('fos_user_security_login') }}">LogIn</a></h1>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    {% else %}
+
+    <div id="content">
+        <div class="container">
+            <div class="title clearfix">
+
+                <div class="col-md-offset-6">
+                        <h2>Your cart - Checkout</h2>
+                </div>
+            </div>
+            <div class="cart_c">
+                <div class="cart_top">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12" >
+                            <div class="sidebar">
+                                <div class="side_box side_box_1 red5">
+                                    <h5>helpful information</h5>
+                                    <ul>
+                                        <li><a href="#">Deliver</a></li>
+                                        <li><a href="#">Payment </a></li>
+                                        <li><a href="#">Warranty</a></li>
+                                        <li><a href="#">Services</a></li>
+                                        <li><a href="#">Discounts</a></li>
+                                        <li><a href="#">Loyalty Program</a></li>
+                                        <li><a href="#">Contacts</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                            <div class="cart_tbl">
+                                <div class="clearfix title_row">
+                                    <ul>
+                                        <li>Photo</li>
+                                        <li>Name</li>
+                                        <li>Quantity</li>
+                                        <li>Price</li>
+                                    </ul>
+                                </div>
+
+                                <form method="post" name="a" id="a">
+                                <div class="clearfix con_row">
+                                    {% for panier in paniers %}
+                                        {% if app.user.id == panier.user.id  %}
+                                            <ul>
+                                                <li><div class="thumb"><span> <img alt="alt"  src="{{ asset('uploads/ImgProduit/'~ panier.produit.urlimgproduit) }}" class="" draggable="false"> </span></div></li>
+                                                    <li>
+                                                        <h5>{{ panier.produit.nomproduit }}</h5>
+                                                        <p></p>
+                                                    </li>
+                                                <li>
+                                                    {% set c =  panier.produit.qtedispoproduit  %}
+                                                    {% set c = c + 1 %}
+                                                    {% if (c < 10) and (c  >= 1)  %}
+                                                        <h6><span class="label label-warning">only {{ c  }} left</span></h6>
+                                                    {% elseif c <= 0 %}
+                                                        <h6><span class="label label-danger">Out of stock</span></h6>
+                                                    {% else %}
+                                                        <h6><span class="label label-success">Disponible</span></h6>
+                                                    {% endif %}
+                                                    <br>
+                                                    <a  class="minus_btn" href="{{ path('Moins_Quantite',{'idpn':panier.id}) }}"></a>
+                                                    <input type="text" class="txtbox" placeholder="{{ panier.quantiteproduit }}" name="nombre" pattern="[0-9]{*}" readonly>
+                                                    <a  class="plus_btn" href="{{ path('Plus_Quantite',{'idpn':panier.id}) }}"></a>
+
+                                                </li>
+
+                                                <li>
+                                                    <div class="price">{{ panier.produit.prixventeproduit }}</div>
+                                                    <a href="{{ path('Supprimer_du_Panier', {'id':panier.id}) }}" class="del_btn"></a>
+                                                </li>
+                                                </li>
+                                            </ul>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+
+                                </form>
+
+
+                                <div class="clearfix total_row">
+                                    <ul>
+                                        <li>
+                                            <p><span ></span></p>
+                                        </li>
+                                        <li>
+                                            <div class="total_val">Total value:</div>
+                                        </li>
+
+                                            {% set x = 0 %}
+                                            {% set idpn = 0 %}
+                                            {% for p in paniers %}
+                                                {% if app.user.id == p.user.id  %}
+                                                    {% set x= x + (p.produit.prixventeproduit * p.quantiteproduit) %}
+                                                {% set idpn = p.id %}
+                                                {% endif %}
+                                            {% endfor %}
+                                            {% set y =0 %}
+                                            {% set y = x %}
+                                        <li>
+                                            <div class="price"> {{ y }}   </div>
+                                            <input type="number" step="any" value="{{ y }}" id="prixtotale" name="prixtotale" hidden>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+                                <div class="cart_btn clearfix">
+                                    <a href="{{ path('Afficher_Produit') }}" class="btn btn-danger"><span class="fa fa-chevron-left"></span> Retour</a>
+                                    <a href="{{ path('shopping_commande_view',{ 'idpn':idpn }) }}" class="btn btn-success" >Passez Commande <span class="fa fa-chevron-right"></span></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    {% endif %}
+{% endblock  %}

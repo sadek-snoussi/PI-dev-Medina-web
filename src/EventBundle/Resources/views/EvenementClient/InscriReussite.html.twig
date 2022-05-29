@@ -1,0 +1,50 @@
+{% extends "client/layout.html.twig" %}
+     {% block flexslider %}
+
+
+     {% endblock %}
+
+{%  block content %}
+<center>
+
+ <table  border="0">
+
+
+
+        <form method="post">
+
+            <tr>
+                <td><h1>{{ event.nomevent }}</h1></td>
+                <td><img  alt="alt"  src="{{ asset('uploads/img/' ~ event.urlafficheevent ) }}" height="120px" ></td>
+            </tr>
+
+               <tr> <td ><h5>{{ inscri.nom }}  {{ inscri.prenom }} </h5></td></tr>
+            <tr>  <td  ><h5>Numero Inscription   : {{ inscri.idinscri }}</h5></td>
+
+            </tr>
+
+           <tr>
+               <td><h5>Date Evenement {{ event.dateevent | date("m/d/Y")  }} </h5></td>
+               <td ><h5>Date inscription {{ "now"|date("m/d/Y") }} </h5></td>
+           </tr>
+
+            <tr>
+                <td><h5>Lieux:{{ event.lieux }}</h5></td>
+                <td><h5>{{ inscri.adressemail }}</h5></td>
+            </tr>
+
+        </form>
+
+     <tr>
+         <td align="center"> N'oubliez pas d'apporter votre Pass le jour de l'evenement </td>
+   <td align="right"> <a class="btn btn-default fa fa-file-pdf-o"  href="{{ path('Generer_Pdf1',{'ide':event.idevent,'idi':inscri.idinscri}  )  }}">imprimer</a>
+   </td>    <input type="text" name="utilisateur" value="{{ app.user.id }}" hidden>
+     </tr>
+
+ </table>
+
+
+
+
+</center>
+        {% endblock %}

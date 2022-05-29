@@ -1,0 +1,71 @@
+partenaire_homepage:
+    path:     /
+    defaults: { _controller: PartenaireBundle:Default:index }
+partenaire_ajoutProf:
+    path: /ajoutPro
+    defaults: { _controller: PartenaireBundle:Pro:AjoutPro}
+partenaire_ajoutF:
+    path: /ajoutF
+    defaults: { _controller: PartenaireBundle:Freelancer:AjoutFreelancer}
+partenaire_modifPro:
+    path : /profileProUpdate
+    defaults: { _controller: PartenaireBundle:Pro:modifierProfilePro}
+partenaire_modifFree:
+    path : /profileFreeUpdate
+    defaults: { _controller: PartenaireBundle:Freelancer:modifierProfileFree}
+partenaire_list:
+    path : admin/listPartenaire
+    defaults: { _controller: PartenaireBundle:Admin:listPart}
+client_list:
+    path : admin/listClient
+    defaults: { _controller: PartenaireBundle:Admin:listclients}
+listpartenaire_Avalider:
+    path : admin/listvalidPartenaire
+    defaults: { _controller: PartenaireBundle:Admin:validationlist}
+partenaire_validation:
+    path : admin/validPartenaire/{id}
+    defaults: { _controller: PartenaireBundle:Admin:validation}
+partenaire_Novalidation:
+    path: admin/novalidPartenaire/{id}
+    defaults: { _controller: PartenaireBundle:Admin:novalidation}
+partenaire_supp:
+    path : /supp/{id}
+    defaults: { _controller: PartenaireBundle:Admin:deletePro}
+client_supp:
+    path : /supp/{id}
+    defaults: { _controller: PartenaireBundle:Admin:deleteclient}
+partenaire_list_client:
+    path : /contact
+    defaults: { _controller: PartenaireBundle:Pro:listPartContact}
+partenaire_grade:
+    path: /grade/{id}
+    defaults: {_controller: PartenaireBundle:Grade:grade}
+demandePartFree:
+    path: /demandeFree/{userid}
+    defaults: { _controller: PartenaireBundle:Freelancer:AjoutFreelancer }
+demandePartPro:
+    path: /demandePro/{userid}
+    defaults: { _controller: PartenaireBundle:Pro:AjoutPro }
+mail:
+    path: /mail/{id}
+    defaults: { _controller: PartenaireBundle:Admin:envoyerMail }
+my_app_mail_accuse:
+    path: /success
+    defaults: { _controller: PartenaireBundle:Admin:success }
+modif_grade:
+    path: /modifGrade/{id}
+    defaults: { _controller: PartenaireBundle:Grade:modifierGrade}
+attribuer_grade:
+    path: /attribuerGrade/{id}/{plat}/{gold}
+    defaults: { _controller: PartenaireBundle:Grade:attribuerGrade}
+Aff_grade2:
+    path: /affgrade2
+    defaults: { _controller: PartenaireBundle:Grade:afficherGrade}
+recherchePart:
+    path: /rechPart
+    defaults: { _controller: PartenaireBundle:Pro:Recherche}
+
+
+
+
+

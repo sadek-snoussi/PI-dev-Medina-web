@@ -1,0 +1,15 @@
+user_homepage:
+    path:     /utilisateur
+    defaults: { _controller: UserBundle:Default:index }
+Page_part:
+     path:   /Partenaire
+     defaults: { _controller: UserBundle:Default:Partenaire }
+Page_Admin:
+     path:   /Admin
+     defaults: { _controller: UserBundle:Default:admin }
+logout_redirect:
+    path:   /logout
+    defaults: { _controller: UserBundle:Default:RedirectionLogout }
+Page_home:
+    path: /Home
+    defaults: {_controller: UserBundle:Default:redirectt }

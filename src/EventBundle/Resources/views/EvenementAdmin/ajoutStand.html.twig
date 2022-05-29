@@ -1,0 +1,104 @@
+{% extends ':admin:base_admin.html.twig' %}
+
+
+
+{% block content %}
+    <div class="page-wrapper">
+        <div class="container-fluid">
+
+
+
+
+            <div class="col-lg-12">
+                <div class="card ">
+                    <div class="card-header bg-info">
+                        <h4 class="m-b-0 text-white">Ajouter Stand</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" class="form-horizontal">
+                            <div class="form-body">
+
+                                <hr class="m-t-0 m-b-40">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label text-right col-md-4">Superficie</label>
+                                            <div class="col-md-7">
+                                                <input type="number"  min="1"  class="form-control" placeholder="Superficie Stand" name="superficie" >
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--/span-->
+
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="control-label text-center col-md-4">Emplacement</label>
+                                            <div class="col-md-7">
+                                                <input type="text" class="form-control" placeholder="Emplacement Stand"  name="emplacement" pattern="[A-Za-z]{3,}" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <!--/span-->
+                                <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="control-label text-right col-md-4">Couleur</label>
+                                        <div class="col-md-7">
+                                            <input type="string" class="form-control" placeholder="choisir couleur" name="couleur" pattern="[A-Za-z]{3,}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/span-->
+                            </div>
+
+                            <!--/row-->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="control-label text-right col-md-4">Prix</label>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" name="prix" min="1">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <!--/row-->
+                    </div>
+                    <hr>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <input type="submit" class="btn btn-success" value="Ajouter"/>
+                                        <input type="reset" class="btn btn-inverse" value="Annuler"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6"> </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+{% endblock %}
